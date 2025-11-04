@@ -25,6 +25,10 @@ const Ministries = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [error, setError] = useState(null);
   
+  // Categories for tabs
+  const categories = [
+  ];
+  
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
@@ -216,14 +220,7 @@ const Ministries = () => {
     return matchesSearch && matchesTab;
   });
 
-  // Get unique categories for tabs
-  const categories = [
-    { id: 'all', name: 'All Ministries', icon: <FaChurch /> },
-    { id: 'KAMA', name: 'KAMA', icon: <FaMale /> },
-    { id: 'M.U.', name: 'M.U.', icon: <FaFemale /> },
-    { id: 'KAYO', name: 'KAYO', icon: <FaUsers /> },
-    { id: 'children', name: 'Children', icon: <FaUserFriends /> }
-  ];
+  // Categories are now defined at the top of the component
 
   return (
     <div className="ministries-page">

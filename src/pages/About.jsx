@@ -3,7 +3,7 @@ import { FaChurch, FaCross, FaUsers, FaHandsHelping, FaQuoteLeft, FaArrowRight }
 import { IoMdTime } from 'react-icons/io';
 import { GiChurch } from 'react-icons/gi';
 import { BsCalendarCheck } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/About.css';
 
 const About = () => {
@@ -93,6 +93,21 @@ const About = () => {
   ];
 
   const [activeTab, setActiveTab] = useState('our-story');
+  const location = useLocation();
+
+  // Sync active tab with URL
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.includes('beliefs')) {
+      setActiveTab('our-beliefs');
+    } else if (path.includes('leadership')) {
+      setActiveTab('leadership');
+    } else if (path.includes('journey')) {
+      setActiveTab('our-journey');
+    } else {
+      setActiveTab('our-story');
+    }
+  }, [location]);
 
   // Handle hash-based navigation on component mount
   useEffect(() => {
@@ -121,17 +136,30 @@ const About = () => {
     };
   }, []);
 
-  const TabButton = ({ id, label, icon: Icon }) => (
-    <button
-      className={`tab-button ${activeTab === id ? 'active' : ''}`}
-      onClick={() => setActiveTab(id)}
-      aria-selected={activeTab === id}
-      role="tab"
-    >
-      {Icon && <Icon className="tab-icon" />}
-      {label}
-    </button>
-  );
+  const navigate = useNavigate();
+
+  const TabButton = ({ id, label, icon: Icon }) => {
+    const getPath = (tabId) => {
+      switch(tabId) {
+        case 'our-beliefs': return '/about/beliefs';
+        case 'leadership': return '/about/leadership';
+        case 'our-journey': return '/about/journey';
+        default: return '/about';
+      }
+    };
+
+    return (
+      <Link
+        to={getPath(id)}
+        className={`tab-button ${activeTab === id ? 'active' : ''}`}
+        role="tab"
+        aria-selected={activeTab === id}
+      >
+        {Icon && <Icon className="tab-icon" />}
+        {label}
+      </Link>
+    );
+  };
 
   return (
     <div className="about-page">
@@ -180,17 +208,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Tab Navigation */}
-      <div className="tab-navigation">
-        <div className="container">
-          <div className="tabs" role="tablist">
-            <TabButton id="our-story" label="Our Story" icon={FaChurch} />
-            <TabButton id="our-beliefs" label="What We Believe" icon={FaCross} />
-            <TabButton id="leadership" label="Leadership Team" icon={FaUsers} />
-            <TabButton id="our-journey" label="Our Journey" icon={GiChurch} />
-          </div>
-        </div>
-      </div>
+     
 
       {/* Tab Content */}
       <div className="tab-content">

@@ -25,7 +25,12 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />}>
+            <Route index element={<About defaultTab="our-story" />} />
+            <Route path="beliefs" element={<About defaultTab="our-beliefs" />} />
+            <Route path="leadership" element={<About defaultTab="leadership" />} />
+            <Route path="journey" element={<About defaultTab="our-journey" />} />
+          </Route>
           <Route path="/ministries" element={<Ministries />} />
           <Route path="/ministries/kama" element={<KAMA />} />
           <Route path="/ministries/mothers-union" element={<MothersUnion />} />

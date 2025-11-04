@@ -26,7 +26,7 @@ const KAMA = () => {
         'Annual conferences and retreats',
         'Spiritual growth workshops'
       ],
-      requirements: 'Open to all Anglican men aged 25+ (married) or married men under 25',
+      requirements: 'Open to all Anglican men ',
       leaders: 'Parish KAMA Chairman and Committee'
     }
   };
@@ -93,11 +93,6 @@ const KAMA = () => {
                 <p className="motto">"As for me and my household will serve the Lord"</p>
                 <p className="bible-verse">Joshua 24:15-16</p>
               </div>
-              <p>
-                KAMA's members are drawn from Anglican Clergy men and Laity. They must be over 25 years of age and married. 
-                Membership is in some cases open to those below the age of 25, provided that they are married. The members 
-                must also ascribe to the Mission of the association and are publicly enrolled as members.
-              </p>
             </div>
           </div>
         </div>
