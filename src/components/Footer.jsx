@@ -544,7 +544,7 @@ const Footer = () => {
               fontSize: '0.7rem',
               color: 'rgba(255, 255, 255, 0.5)'
             }}>
-              <p style={{ margin: 0 }}>Designed &amp; Engineered by EI Tech Innovations</p>
+              <p style={{ margin: 0 }}>Designed &amp; Engineered by E.I Tech Innovations</p>
             </div>
           </div>
         </div>
