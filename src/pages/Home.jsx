@@ -121,28 +121,90 @@ const Home = () => {
     ),
     // Handle slide changes and focus management
     beforeChange: (current, next) => {
-      // Remove tabindex from all slides
+      // Remove tabindex from all slides and make them not focusable
       const allSlides = document.querySelectorAll('.slick-slide');
-      allSlides.forEach(slide => {
-        slide.setAttribute('tabindex', '-1');
+      const allSlideContents = document.querySelectorAll('.slick-slide > div');
+      
+      allSlides.forEach((slide, index) => {
+        // Set aria-hidden based on active state
+        const isActive = index === next;
+        slide.setAttribute('aria-hidden', !isActive);
+        slide.setAttribute('tabindex', isActive ? '0' : '-1');
+        
+        // Make all interactive elements in non-active slides not focusable
+        if (!isActive) {
+          const focusableElements = slide.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          focusableElements.forEach(el => {
+            el.setAttribute('tabindex', '-1');
+            el.setAttribute('aria-hidden', 'true');
+          });
+        }
       });
       
-      // Set tabindex="0" on the next active slide
-      if (allSlides[next]) {
-        allSlides[next].setAttribute('tabindex', '0');
-      }
+      // Ensure the slide content div has the correct aria-hidden state
+      allSlideContents.forEach((content, index) => {
+        content.setAttribute('aria-hidden', index !== next);
+      });
     },
     // Initialize tabindex on mount and after slide changes
     afterChange: (current) => {
       const slides = document.querySelectorAll('.slick-slide');
+      const slideContents = document.querySelectorAll('.slick-slide > div');
+      
       slides.forEach((slide, index) => {
-        slide.setAttribute('tabindex', index === current ? '0' : '-1');
-        // Ensure only the active slide is focusable
-        if (index === current) {
-          slide.setAttribute('aria-hidden', 'false');
-        } else {
-          slide.setAttribute('aria-hidden', 'true');
+        const isActive = index === current;
+        slide.setAttribute('aria-hidden', !isActive);
+        slide.setAttribute('tabindex', isActive ? '0' : '-1');
+        
+        // Make interactive elements in active slide focusable
+        if (isActive) {
+          const focusableElements = slide.querySelectorAll('button, [href], input, select, textarea, [tabindex="-1"]');
+          focusableElements.forEach(el => {
+            el.removeAttribute('aria-hidden');
+            // Only set tabindex to 0 if it was previously -1
+            if (el.getAttribute('tabindex') === '-1') {
+              el.setAttribute('tabindex', '0');
+            }
+          });
         }
+      });
+      
+      // Ensure the slide content div has the correct aria-hidden state
+      slideContents.forEach((content, index) => {
+        content.setAttribute('aria-hidden', index !== current);
+      });
+      
+      // Set focus to the current slide for better keyboard navigation
+      if (slides[current]) {
+        slides[current].focus({ preventScroll: true });
+      }
+    },
+    // Initialize the slider with proper accessibility attributes
+    onInit: () => {
+      const slides = document.querySelectorAll('.slick-slide');
+      const slideContents = document.querySelectorAll('.slick-slide > div');
+      
+      slides.forEach((slide, index) => {
+        const isActive = index === 0; // First slide is active by default
+        slide.setAttribute('role', 'tabpanel');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', `Slide ${index + 1}`);
+        slide.setAttribute('aria-hidden', !isActive);
+        slide.setAttribute('tabindex', isActive ? '0' : '-1');
+        
+        // Make only the active slide's content focusable
+        if (!isActive) {
+          const focusableElements = slide.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          focusableElements.forEach(el => {
+            el.setAttribute('tabindex', '-1');
+            el.setAttribute('aria-hidden', 'true');
+          });
+        }
+      });
+      
+      // Set initial aria-hidden state for slide contents
+      slideContents.forEach((content, index) => {
+        content.setAttribute('aria-hidden', index !== 0);
       });
     },
     appendDots: dots => (
