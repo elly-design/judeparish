@@ -176,11 +176,12 @@ const About = () => {
                 textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
                 color: '#fff',
                 position: 'relative',
-                display: 'inline-block'
+                display: 'inline-block',
+                fontSize: 'clamp(2rem, 5vw, 3rem)',
+                marginBottom: '1rem'
               }}>
                 ACK St. Jude
               </h1>
-              <div className="divider"></div>
               <p className="hero-description">
                 A vibrant community of faith, hope and love where lives are transformed through the power of the Gospel.
               </p>

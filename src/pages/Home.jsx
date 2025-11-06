@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "../styles/slick-overrides.css";
+import "./Home.css";
 import { 
   FaArrowRight, 
   FaBook, 
@@ -490,51 +491,57 @@ const Home = () => {
               />
             </motion.div>
             
-            {/* Welcome Message */}
+            {/* Vicar's Welcome Section */}
             <motion.div 
+              className="vicar-message"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.6,
+                  ease: [0.16, 1, 0.3, 1]
+                }
+              }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ 
-                duration: 0.8, 
-                delay: 0.2,
-                ease: [0.16, 1, 0.3, 1] 
-              }}
-              style={{
-                padding: '0 0 0 2rem',
-                position: 'relative'
-              }}
+              style={{ width: '100%' }}
             >
-              <div style={{
-                color: '#2563eb',
-                fontWeight: '600',
-                fontSize: '0.95rem',
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                marginBottom: '1.5rem'
-              }}>
+              <motion.div 
+                className="vicar-subtitle"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { 
+                    delay: 0.1,
+                    duration: 0.5
+                  }
+                }}
+                viewport={{ once: true }}
+              >
                 A Message From Our Vicar
-              </div>
+              </motion.div>
               
-              <h2 style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                margin: '0 0 1.5rem 0',
-                color: '#0f172a',
-                lineHeight: '1.2',
-                background: 'linear-gradient(90deg, #0f172a 0%, #1e293b 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                maxWidth: '90%'
-              }}>
-                Welcome to St. Jude Miritini  Anglican Church
-              </h2>
+              <motion.h2 
+                className="vicar-title"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { 
+                    delay: 0.2,
+                    duration: 0.5
+                  }
+                }}
+                viewport={{ once: true }}
+              >
+                Welcome to St. Jude Miritini Anglican Church
+              </motion.h2>
               
               <div style={{
                 marginBottom: '2rem',
                 position: 'relative'
               }}>
-                
                 <p style={{
                   fontSize: '1.1rem',
                   lineHeight: '1.8',

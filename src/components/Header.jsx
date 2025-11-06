@@ -32,11 +32,33 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Close mobile menu and dropdowns when route changes or window is resized
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 992) {
+        // Reset mobile menu state when resizing to desktop
+        setIsMobileMenuOpen(false);
+        setAboutDropdownOpen(false);
+        setMinistriesDropdownOpen(false);
+        document.body.classList.remove('menu-open');
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    // Close menus on route change
     setIsMobileMenuOpen(false);
+    setAboutDropdownOpen(false);
+    setMinistriesDropdownOpen(false);
     document.body.classList.remove('menu-open');
     document.body.style.overflow = 'auto';
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [location]);
 
   const toggleMobileMenu = () => {
@@ -93,12 +115,48 @@ const Header = () => {
 
   const toggleDropdown = (e, type) => {
     e.preventDefault();
+    e.stopPropagation();
+    
     if (type === 'about') {
-      setAboutDropdownOpen(!aboutDropdownOpen);
+      const newState = !aboutDropdownOpen;
+      setAboutDropdownOpen(newState);
       setMinistriesDropdownOpen(false);
+      
+      // Scroll to show the dropdown on mobile
+      if (window.innerWidth <= 992 && newState) {
+        const dropdownButton = e.currentTarget.closest('.nav-item');
+        setTimeout(() => {
+          dropdownButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          
+          // Ensure the dropdown content is visible
+          const dropdownContent = dropdownButton.querySelector('.dropdown-menu');
+          if (dropdownContent) {
+            dropdownContent.style.display = 'block';
+            dropdownContent.style.visibility = 'visible';
+            dropdownContent.style.opacity = '1';
+          }
+        }, 50);
+      }
     } else if (type === 'ministries') {
-      setMinistriesDropdownOpen(!ministriesDropdownOpen);
+      const newState = !ministriesDropdownOpen;
+      setMinistriesDropdownOpen(newState);
       setAboutDropdownOpen(false);
+      
+      // Scroll to show the dropdown on mobile
+      if (window.innerWidth <= 992 && newState) {
+        const dropdownButton = e.currentTarget.closest('.nav-item');
+        setTimeout(() => {
+          dropdownButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          
+          // Ensure the dropdown content is visible
+          const dropdownContent = dropdownButton.querySelector('.dropdown-menu');
+          if (dropdownContent) {
+            dropdownContent.style.display = 'block';
+            dropdownContent.style.visibility = 'visible';
+            dropdownContent.style.opacity = '1';
+          }
+        }, 50);
+      }
     }
   };
 
@@ -117,26 +175,26 @@ const Header = () => {
       role="banner"
     >
       {/* Mobile Menu Backdrop */}
-      {isMobileMenuOpen && (
-        <div 
-          className="mobile-menu-backdrop" 
-          onClick={toggleMobileMenu}
-          role="button"
-          aria-label="Close menu"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === 'Enter' && toggleMobileMenu()}
-        />
-      )}
+      <div 
+        className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'active' : ''}`}
+        onClick={toggleMobileMenu}
+        role="button"
+        aria-label="Close menu"
+        tabIndex={isMobileMenuOpen ? 0 : -1}
+        onKeyDown={(e) => e.key === 'Enter' && toggleMobileMenu()}
+      />
       
       <nav className="navbar">
         <div className="container">
-          <Link to="/" className="logo" aria-label="Home">
-            <div className="logo-content">
-              <img 
-                src="/cropped-LOGOmsa.png" 
-                alt="Church Logo" 
-                className="logo-image"
-              />
+          <Link to="/" className="logo" aria-label="Home" onClick={closeAllMenus}>
+            <img 
+              src="/cropped-LOGOmsa.png" 
+              alt="Church Logo" 
+              className="logo-image"
+            />
+            <div className="logo-text">
+              <h1>ACK St. Jude</h1>
+              <p>Miritini Parish</p>
             </div>
           </Link>
 
@@ -147,11 +205,12 @@ const Header = () => {
             aria-expanded={isMobileMenuOpen}
             aria-controls="main-navigation"
           >
-            <span className="menu-icon">
-              <FaBars className="menu-open" />
-              <FaTimes className="menu-close" />
-            </span>
-            <span className="sr-only">{isMobileMenuOpen ? 'Close' : 'Menu'}</span>
+            <div className="hamburger">
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </div>
+            <span className="sr-only">Menu</span>
           </button>
 
           <div 
@@ -163,39 +222,27 @@ const Header = () => {
                 {navLinks.map((link, index) => (
                   <li 
                     key={link.path || `nav-${index}`}
-                    className={`nav-item ${link.subItems ? 'has-dropdown' : ''} ${aboutDropdownOpen ? 'dropdown-open' : ''}`}
+                    className={`nav-item ${link.subItems ? 'has-dropdown' : ''}`}
                   >
                     {link.subItems ? (
-                      <>
+                      <div className="dropdown-wrapper">
                         <button 
                           className={`nav-link ${link.subItems.some(item => item.path === location.pathname) ? 'active' : ''}`}
                           onClick={(e) => toggleDropdown(e, link.label === 'About Us' ? 'about' : 'ministries')}
-                          onMouseEnter={() => link.label === 'About Us' ? setAboutDropdownOpen(true) : setMinistriesDropdownOpen(true)}
+                          onMouseEnter={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(true) : setMinistriesDropdownOpen(true))}
                           aria-expanded={link.label === 'About Us' ? aboutDropdownOpen : ministriesDropdownOpen}
                           aria-haspopup="true"
                         >
                           {link.label}
-                          <span 
-                            className="dropdown-arrow" 
-                            style={{ 
-                              fontSize: '1.2em',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              width: '1em',
-                              height: '1em',
-                              marginLeft: '5px',
-                              transform: 'none !important',
-                              transition: 'none !important'
-                            }}
-                          >
-                            {link.label === 'About Us' ? '✝' : '✝'}
+                          <span className="dropdown-arrow">
+                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
                           </span>
                         </button>
                         <ul 
-                          className="dropdown-menu"
-                          onMouseLeave={() => link.label === 'About Us' ? setAboutDropdownOpen(false) : setMinistriesDropdownOpen(false)}
-                          style={{ display: link.label === 'About Us' ? (aboutDropdownOpen ? 'block' : 'none') : (ministriesDropdownOpen ? 'block' : 'none') }}
+                          className={`dropdown-menu ${link.label === 'About Us' ? (aboutDropdownOpen ? 'open' : '') : (ministriesDropdownOpen ? 'open' : '')}`}
+                          onMouseLeave={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(false) : setMinistriesDropdownOpen(false))}
                         >
                           {link.subItems.map((subItem) => (
                             <li key={subItem.path}>
@@ -205,15 +252,13 @@ const Header = () => {
                                 onClick={closeAllMenus}
                                 aria-current={location.pathname === subItem.path ? 'page' : undefined}
                               >
-                                <span className="submenu-item">
-                                  {subItem.icon}
-                                  <span>{subItem.label}</span>
-                                </span>
+                                {subItem.icon}
+                                <span>{subItem.label}</span>
                               </Link>
                             </li>
                           ))}
                         </ul>
-                      </>
+                      </div>
                     ) : (
                       <Link 
                         to={link.path} 
@@ -229,10 +274,10 @@ const Header = () => {
               </ul>
               
               <div className="cta-buttons">
-                <Link to="/give" className="btn btn-outline" onClick={closeMobileMenu}>
+                <Link to="/give" className="btn btn-outline" onClick={closeAllMenus}>
                   Give Online
                 </Link>
-                <Link to="/visit" className="btn btn-primary" onClick={closeMobileMenu}>
+                <Link to="/visit" className="btn btn-primary" onClick={closeAllMenus}>
                   Plan a Visit
                 </Link>
               </div>
