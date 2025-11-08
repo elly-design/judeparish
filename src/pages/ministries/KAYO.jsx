@@ -13,7 +13,7 @@ const KAYO = () => {
     time: '4:30 PM - 6:30 PM',
     contact: '+254 700 000002',
     email: 'kayo@ackstjude.org',
-    image: '/images/youth.jpeg',
+    image: '/images/youth2.jpeg',
     details: {
       motto: 'Be strong in the Lord',
       vision: 'A growing, caring Anglican Youth boldly Proclaiming Christ.',

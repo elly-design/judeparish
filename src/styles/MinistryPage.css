@@ -1,6 +1,22 @@
 /* Ministry Page Layout */
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: brightness(0.9) contrast(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1) contrast(1.15);
+  }
+}
+
 .ministry-page {
   padding-bottom: 4rem;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Back Button */
@@ -20,7 +36,11 @@
 }
 
 /* Hero Section */
+/* Hero Section with Smooth Animation */
 .ministry-hero {
+  --animation-duration: 20s;
+  --zoom-scale: 1.03;
+  
   position: relative;
   padding: 12rem 0 10rem;
   color: white;
@@ -30,9 +50,28 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
   background-image: var(--hero-bg-image, none);
-  background-color: #f8f9fa; /* Fallback color */
+  background-color: #f8f9fa;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+  overflow: hidden;
+  
+  /* Image Quality Enhancement */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Animation */
+  animation: fadeInZoom var(--animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  
+  /* Smooth out the animation */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 .ministry-hero .overlay {
@@ -41,9 +80,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--hero-overlay, rgba(0, 0, 0, 0.3));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.3) 30%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   z-index: 1;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(0.5px) brightness(1.05) contrast(1.1);
+  -webkit-backdrop-filter: blur(0.5px) brightness(1.05) contrast(1.1);
 }
 
 .ministry-hero .container {
