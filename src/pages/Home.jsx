@@ -761,7 +761,7 @@ const Home = () => {
                     color: '#64748b',
                     fontSize: '0.9rem'
                   }}>
-                    Vicar, St. Jude's Anglican Church
+                    Vicar
                   </div>
                 </div>
               </div>
