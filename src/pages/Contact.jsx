@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane } from 'react-icons/fa';
-import { FaFacebook, FaYoutube, FaWhatsapp, FaTiktok, FaInstagram } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane, FaFacebook, FaYoutube, FaWhatsapp, FaTiktok, FaInstagram } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
