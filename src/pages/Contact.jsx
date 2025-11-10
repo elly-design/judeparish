@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaPaperPlane } from 'react-icons/fa';
-import { FaFacebook, FaYoutube, FaWhatsapp, FaTiktok } from 'react-icons/fa';
+import { FaFacebook, FaYoutube, FaWhatsapp, FaTiktok, FaInstagram } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -126,11 +126,8 @@ const Contact = () => {
                   <a href="http://www.youtube.com/@miritiniparishackstjude6572" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                     <FaYoutube />
                   </a>
-                  <a href="https://wa.me/yournumber" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                    <FaWhatsapp />
-                  </a>
-                  <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <FaTiktok />
+                  <a href="https://www.instagram.com/explore/locations/241566813167470/ack-st-jude-parish-miritini/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <FaInstagram />
                   </a>
                 </div>
               </div>
