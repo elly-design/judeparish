@@ -42,6 +42,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/give" element={<Give />} />
+          <Route path="/visit" element={<Contact isVisitPage={true} />} />
         </Routes>
       </main>
       <Footer />
