@@ -145,6 +145,45 @@
   padding: 0 1rem;
 }
 
+.ministry-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
+}
+
+.ministry-description:hover {
+  background: rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+}
+
+.ministry-description p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.ministry-description p::first-line {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 /* Specific styles for KAMA page */
 .ministry-page[data-ministry="kama"] .ministry-hero {
   background-image: url('/images/bible-scripture.jpg');
