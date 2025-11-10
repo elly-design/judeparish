@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaMobileAlt, FaMoneyBillWave } from 'react-icons/fa';
+import Typewriter from '../components/Typewriter';
 import './Give.css';
 
 const Give = () => {
@@ -14,7 +15,7 @@ const Give = () => {
         </Link>
         
         <div className="give-header">
-          <h1>Give Online</h1>
+          <h1><Typewriter text="Give Online" speed={100} /></h1>
           <p>Your generous giving helps us spread the Gospel and serve our community.</p>
         </div>
 

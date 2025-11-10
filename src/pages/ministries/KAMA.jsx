@@ -27,7 +27,7 @@ const KAMA = () => {
         'Spiritual growth workshops'
       ],
       requirements: 'Open to all Anglican men ',
-      leaders: 'Parish KAMA Chairman and Committee'
+      leaders: <>Parish KAMA Chairman and Committee</>
     }
   };
 

@@ -105,14 +105,81 @@ const Services = () => {
   return (
     <div className="services-page">
       {/* Hero Section */}
-      <section className="services-hero" style={{ backgroundImage: 'url("/images/services-banner.jpg")' }}>
-        <div className="container">
-          <h1><Typewriter text="Our Services" speed={100} delay={500} /></h1>
-          <p><Typewriter 
-            text="Join us for worship, fellowship, and the Word of God" 
-            speed={50} 
-            delay={1500} 
-          /></p>
+      <section className="services-hero" style={{ 
+        position: 'relative',
+        minHeight: '70vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        color: '#ffffff',
+        padding: '40px 20px',
+        overflow: 'hidden'
+      }}>
+        <style>{`
+          @keyframes fadeInZoom {
+            0% { opacity: 0; transform: scale(1); }
+            20% { opacity: 1; }
+            100% { opacity: 1; transform: scale(1.1); }
+          }
+        `}</style>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url('/images/church.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1,
+          animation: 'fadeInZoom 12s ease-out forwards',
+          opacity: 0
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)'
+          }} />
+        </div>
+        <div className="container" style={{
+          position: 'relative',
+          zIndex: 2,
+          maxWidth: '800px',
+          margin: '0 auto',
+          padding: '2rem',
+          textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontWeight: '800',
+            color: '#ffffff',
+            marginBottom: '1.5rem',
+            lineHeight: '1.2',
+            letterSpacing: '0.5px',
+            textTransform: 'uppercase'
+          }}>
+            <Typewriter text="Our Services" speed={80} delay={300} />
+          </h1>
+          <p style={{
+            fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+            color: '#f8f8f8',
+            margin: '0 auto',
+            maxWidth: '700px',
+            lineHeight: '1.6',
+            fontWeight: '400',
+            textShadow: '0 1px 3px rgba(0, 0, 0, 0.8)'
+          }}>
+            <Typewriter 
+              text="Join us for worship, fellowship and the Word of God" 
+              speed={40} 
+              delay={800} 
+            />
+          </p>
         </div>
         <div className="overlay"></div>
       </section>

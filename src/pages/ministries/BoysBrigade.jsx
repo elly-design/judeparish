@@ -56,7 +56,7 @@ const BoysBrigade = () => {
         'Skills development workshops'
       ],
       requirements: 'Boys aged 6-18 years',
-      leaders: 'Mr. James Mwangi (Captain), Mr. Peter Kamau (Lieutenant)'
+      leaders: <><div>Mr. James Mwangi (Captain)</div><div>Mr. Peter Kamau (Lieutenant)</div></>
     }
   };
 

@@ -37,9 +37,9 @@ html, body, #root {
   position: relative;
   height: 60vh;
   min-height: 450px;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  --bg-image: url('/images/service.jpeg');
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              var(--bg-image) center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,6 @@ html, body, #root {
   color: #ffffff;
   z-index: 1;
   padding: 0 20px;
-  background-color: #1976D2; /* Fallback solid color */
 }
 
 /* Typewriter effect styles */
@@ -108,31 +107,7 @@ html, body, #root {
 }
 
 .services-hero .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg, 
-    rgba(25, 118, 210, 0.9) 0%, 
-    rgba(33, 150, 243, 0.85) 50%, 
-    rgba(66, 165, 245, 0.8) 100%
-  );
-  z-index: 1;
-  backdrop-filter: blur(2px);
-}
-
-/* Animation for subtle effect */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.services-hero .overlay {
-  background-size: 200% 200%;
-  animation: gradientShift 15s ease infinite;
+  display: none;
 }
 
 /* Contact Section - Matching Contact Page */
