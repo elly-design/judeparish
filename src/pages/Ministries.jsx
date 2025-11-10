@@ -59,6 +59,7 @@ const Ministries = () => {
       fullName: 'Kenya Anglican Men\'s Association',
       tagline: 'Strengthening Men in Faith & Leadership',
       description: 'A vibrant fellowship of men dedicated to spiritual growth, leadership development and community transformation through Christ-centered initiatives and brotherhood.',
+      cardClass: 'kama-card',
       icon: <FaMale className="ministry-icon" />,
       category: 'men',
       contact: 'kama@ackstjude.org',
@@ -307,7 +308,7 @@ const Ministries = () => {
               {filteredMinistries.map((ministry) => (
                 <motion.div 
                   key={ministry.id}
-                  className="ministry-card"
+                  className={`ministry-card ${ministry.id === 'kama' ? 'kama-card' : ''} ${ministry.id === 'mothers-union' ? 'mothers-union-card' : ''} ${ministry.id === 'kayo' ? 'kayo-card' : ''} ${ministry.id === 'gfs' ? 'gfs-card' : ''} ${ministry.id === 'boys-brigade' ? 'boys-brigade-card' : ''}`}
                   variants={item}
                   whileHover={{ y: -5, boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}
                 >
@@ -371,7 +372,7 @@ const Ministries = () => {
                   </div>
                   <div className="card-body">
                     <h4 className="ministry-tagline">{ministry.tagline}</h4>
-                    <p className="ministry-description">{ministry.description}</p>
+                    <div className="ministry-description">{ministry.description}</div>
                     
                     {/* Features section removed as requested */}
                     {/* Meeting Time section removed as requested */}
