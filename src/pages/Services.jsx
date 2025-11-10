@@ -118,9 +118,17 @@ const Services = () => {
       }}>
         <style>{`
           @keyframes fadeInZoom {
-            0% { opacity: 0; transform: scale(1); }
-            20% { opacity: 1; }
-            100% { opacity: 1; transform: scale(1.1); }
+            0% { 
+              opacity: 0; 
+              transform: scale(1); 
+            }
+            30% { 
+              opacity: 1; 
+            }
+            100% { 
+              opacity: 1; 
+              transform: scale(1.1); 
+            }
           }
         `}</style>
         <div style={{
@@ -134,7 +142,7 @@ const Services = () => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           zIndex: -1,
-          animation: 'fadeInZoom 12s ease-out forwards',
+          animation: 'fadeInZoom 20s ease-in-out forwards',
           opacity: 0
         }}>
           <div style={{
