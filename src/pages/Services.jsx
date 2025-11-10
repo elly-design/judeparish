@@ -125,7 +125,6 @@ const Services = () => {
             <div className="section-header">
               <span className="subtitle">When We Meet</span>
               <h2 className="section-title">Service Times</h2>
-              <div className="divider"></div>
               <p className="section-description">
                 We welcome you to join us for any of our weekly services and activities.
               </p>

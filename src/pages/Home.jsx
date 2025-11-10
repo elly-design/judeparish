@@ -28,6 +28,63 @@ import './Home.css';
 import '../styles/hero-buttons.css';
 
 const Home = () => {
+  // Mobile styles with !important flags
+  const mobileStyles = {
+    ctaSection: {
+      padding: '3rem 1rem !important',
+      minHeight: 'auto !important',
+      position: 'relative !important',
+      zIndex: '1 !important',
+      overflow: 'visible !important'
+    },
+    ctaContent: {
+      position: 'relative !important',
+      zIndex: '2 !important',
+      maxWidth: '100% !important',
+      padding: '0 !important',
+      margin: '0 auto !important'
+    },
+    ctaButtons: {
+      display: 'flex !important',
+      flexDirection: 'column !important',
+      gap: '1rem !important',
+      width: '100% !important',
+      maxWidth: '400px !important',
+      margin: '0 auto !important',
+      padding: '0 1rem !important',
+      position: 'relative !important',
+      zIndex: '10 !important'
+    },
+    button: {
+      display: 'flex !important',
+      alignItems: 'center !important',
+      justifyContent: 'center !important',
+      width: '100% !important',
+      minHeight: '3.5rem !important',
+      padding: '1rem 1.5rem !important',
+      fontSize: '1.1rem !important',
+      borderRadius: '8px !important',
+      textDecoration: 'none !important',
+      fontWeight: '600 !important',
+      boxSizing: 'border-box !important',
+      border: 'none !important',
+      cursor: 'pointer !important',
+      transition: 'all 0.3s ease !important',
+      position: 'relative !important',
+      zIndex: '20 !important'
+    },
+    primaryButton: {
+      backgroundColor: '#ffffff !important',
+      color: '#1a4d8f !important',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1) !important'
+    },
+    secondaryButton: {
+      backgroundColor: 'rgba(255, 255, 255, 0.1) !important',
+      color: '#ffffff !important',
+      border: '2px solid rgba(255, 255, 255, 0.8) !important',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1) !important'
+    }
+  };
   // Animation controls
   const controls = useAnimation();
   const ref = useRef(null);
@@ -819,22 +876,67 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="cta-section section-padding bg-primary text-white">
-        <div className="container">
-          <div className="cta-content text-center">
-            <div className="cta-icon">
+      <section className="cta-section section-padding bg-primary text-white" style={mobileStyles.ctaSection}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="cta-content text-center" style={mobileStyles.ctaContent}>
+            <div className="cta-icon" style={{
+              width: '80px',
+              height: '80px',
+              fontSize: '2.25rem',
+              margin: '0 auto 1.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}>
               <FaCross />
             </div>
-            <h2 className="cta-title">Experience God's Love With Us</h2>
-            <p className="cta-text">
+            <h2 className="cta-title" style={{
+              fontSize: '1.75rem',
+              margin: '0 auto 1.25rem',
+              padding: '0 0.5rem',
+              lineHeight: '1.3',
+              fontWeight: '700',
+              position: 'relative',
+              zIndex: 2
+            }}>Experience God's Love With Us</h2>
+            <p className="cta-text" style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.6',
+              margin: '0 auto 2rem',
+              padding: '0 0.5rem',
+              maxWidth: '600px',
+              position: 'relative',
+              zIndex: 2
+            }}>
               No matter where you are on your spiritual journey, you are welcome here. 
               Join us this Sunday and experience the joy of worshiping God in community.
             </p>
-            <div className="cta-buttons">
-              <Link to="/services" className="btn btn-light btn-lg">
+            <div className="cta-buttons" style={mobileStyles.ctaButtons}>
+              <Link 
+                to="/services" 
+                className="btn btn-light btn-lg"
+                style={{ 
+                  ...mobileStyles.button, 
+                  ...mobileStyles.primaryButton,
+                  backgroundColor: '#ffffff',
+                  color: '#1a4d8f'
+                }}
+              >
                 Service Times
               </Link>
-              <Link to="/new-here" className="btn btn-outline-light btn-lg">
+              <Link 
+                to="/new-here" 
+                className="btn btn-outline-light btn-lg"
+                style={{ 
+                  ...mobileStyles.button, 
+                  ...mobileStyles.secondaryButton,
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  color: '#ffffff',
+                  border: '2px solid rgba(255, 255, 255, 0.8)'
+                }}
+              >
                 I'm New Here
               </Link>
             </div>
