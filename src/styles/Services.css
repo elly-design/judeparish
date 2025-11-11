@@ -37,7 +37,7 @@ html, body, #root {
   position: relative;
   height: 60vh;
   min-height: 450px;
-  --bg-image: url('/images/service.jpeg');
+  --bg-image: url('images/service.jpeg');
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
               var(--bg-image) center/cover no-repeat fixed;
   display: flex;

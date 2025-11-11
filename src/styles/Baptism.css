@@ -23,7 +23,7 @@
   border-radius: 12px 12px 0 0;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
-    url('../../public/images/baptism.jpeg') no-repeat center center;
+    url('images/baptism.jpeg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   background-blend-mode: overlay;

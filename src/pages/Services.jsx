@@ -76,7 +76,7 @@ const Services = () => {
       preacher: 'Rev. John Mwangi',
       date: 'June 5, 2023',
       reference: 'Hebrews 11:1-6',
-      image: '/images/sermons/sermon1.jpg',
+      image: 'images/sermons/sermon1.jpg',
       audio: '/audio/sermon1.mp3',
       video: 'https://www.youtube.com/embed/example1'
     },
@@ -86,7 +86,7 @@ const Services = () => {
       preacher: 'Pastor Sarah Wanjiku',
       date: 'May 29, 2023',
       reference: 'James 5:13-18',
-      image: '/images/sermons/sermon2.jpg',
+      image: 'images/sermons/sermon2.jpg',
       audio: '/audio/sermon2.mp3',
       video: 'https://www.youtube.com/embed/example2'
     },
@@ -96,7 +96,7 @@ const Services = () => {
       preacher: 'Rev. Peter Kamau',
       date: 'May 22, 2023',
       reference: 'Ephesians 2:8-10',
-      image: '/images/sermons/sermon3.jpg',
+      image: 'images/sermons/sermon3.jpg',
       audio: '/audio/sermon3.mp3',
       video: 'https://www.youtube.com/embed/example3'
     }
@@ -137,7 +137,7 @@ const Services = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundImage: `url('/images/church.jpg')`,
+          backgroundImage: `url('images/church.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

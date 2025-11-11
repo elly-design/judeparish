@@ -13,28 +13,28 @@ const About = () => {
       id: 1,
       name: 'Rev. Canon Richard Otieno',
       role: 'Vicar',
-      image: '/images/richard.jpg',
+      image: 'images/richard.jpg',
       bio: 'Rev. Canon Richard has been serving as our Vicar. He is passionate about preaching the Gospel and shepherding the flock.'
     },
     {
       id: 2,
       name: 'Elder Sarah Wanjiku',
       role: 'Church Warden',
-      image: '/images/team/elder1.jpg',
+      image: 'images/team/elder1.jpg',
       bio: 'Elder Sarah has been a dedicated member of our church for over 20 years, serving in various leadership capacities.'
     },
     {
       id: 3,
       name: 'Deacon Peter Kamau',
       role: 'Youth Leader',
-      image: '/images/team/youth-leader.jpg',
+      image: 'images/team/youth-leader.jpg',
       bio: 'Deacon Peter leads our vibrant youth ministry, helping young people grow in their faith and relationship with Christ.'
     },
     {
       id: 4,
       name: 'Mrs. Grace Achieng',
       role: 'Women\'s Ministry',
-      image: '/images/team/women-leader.jpg',
+      image: 'images/team/women-leader.jpg',
       bio: 'Mrs. Grace coordinates the women\'s fellowship and various outreach programs to support women in our community.'
     }
   ];
@@ -165,7 +165,7 @@ const About = () => {
     <div className="about-page">
       {/* Hero Section */}
       <section className="about-hero">
-        <div className="hero-background" style={{ backgroundImage: 'url("/images/about-banner.jpg")' }}>
+        <div className="hero-background" style={{ backgroundImage: 'url("images/about-banner.jpg")' }}>
           <div className="overlay"></div>
         </div>
         <div className="hero-content">
@@ -263,7 +263,7 @@ const About = () => {
               </div>
             </div>
             <div className="welcome-image">
-              <img src="/images/church-building.jpg" alt="ACK St. Jude Church" />
+              <img src="images/church-building.jpg" alt="ACK St. Jude Church" />
             </div>
           </div>
         </div>
@@ -325,7 +325,7 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               </Link>
             </div>
             <div className="statement-image">
-              <img src="/images/bible-study.jpg" alt="Bible Study" />
+              <img src="images/bible-study.jpg" alt="Bible Study" />
             </div>
           </div>
         </div>

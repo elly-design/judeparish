@@ -186,7 +186,7 @@
 
 /* Specific styles for KAMA page */
 .ministry-page[data-ministry="kama"] .ministry-hero {
-  background-image: url('/images/bible-scripture.jpg');
+  background-image: url('images/bible-scripture.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

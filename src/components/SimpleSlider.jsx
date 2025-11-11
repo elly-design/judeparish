@@ -133,6 +133,25 @@ const SimpleSlider = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     beforeChange: (_, next) => setCurrentSlide(next),
+    // Add accessibility improvements
+    adaptiveHeight: false,
+    // Remove aria-hidden from slides with focusable elements
+    customPaging: i => (
+      <button
+        aria-label={`Go to slide ${i + 1}`}
+        style={{
+          width: '12px',
+          height: '12px',
+          padding: 0,
+          margin: '0 5px',
+          border: 'none',
+          borderRadius: '50%',
+          backgroundColor: currentSlide === i ? '#4a6cf7' : '#ccc',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s ease',
+        }}
+      />
+    ),
     responsive: [
       {
         breakpoint: 1199,
@@ -214,7 +233,16 @@ const SimpleSlider = () => {
     <div className="simple-slider" style={sliderStyle}>
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.id} className="slide">
+          <div 
+            key={slide.id} 
+            className="slide"
+            // Add tabIndex to make the slide focusable
+            tabIndex="-1"
+            // Add role and aria attributes for better screen reader support
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${slide.id} of ${slides.length}`}
+          >
             <div 
               className="slide-bg"
               style={{
@@ -242,6 +270,8 @@ const SimpleSlider = () => {
                     <Link 
                       key={btnIndex}
                       to={button.to}
+                      // Ensure links are only in the tab order when their slide is active
+                      tabIndex={currentSlide === slides.findIndex(s => s.id === slide.id) ? 0 : -1}
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',

@@ -63,7 +63,7 @@ const Ministries = () => {
       icon: <FaMale className="ministry-icon" />,
       category: 'men',
       contact: 'kama@ackstjude.org',
-      image: '/images/ministries/kama.jpg',
+      image: 'images/ministries/kama.jpg',
       color: '#1a4d8f',
       features: [
         { icon: <FaBookOpen />, text: 'Bible Study' },
@@ -93,7 +93,7 @@ const Ministries = () => {
       icon: <FaFemale className="ministry-icon" />,
       category: 'women',
       contact: 'mothersunion@ackstjude.org',
-      image: '/images/ministries/mothers-union.jpg',
+      image: 'images/ministries/mothers-union.jpg',
       color: '#8e44ad',
       features: [
         { icon: <FaPray />, text: 'Prayer' },
@@ -123,7 +123,7 @@ const Ministries = () => {
       icon: <FaUsers className="ministry-icon" />,
       category: 'youth',
       contact: 'kayo@ackstjude.org',
-      image: '/images/ministries/youth.jpg',
+      image: 'images/ministries/youth.jpg',
       color: '#e74c3c',
       features: [
         { icon: <FaMusic />, text: 'Worship' },
@@ -153,7 +153,7 @@ const Ministries = () => {
       icon: <FaMale className="ministry-icon" />,
       category: 'children',
       contact: 'boysbrigade@ackstjude.org',
-      image: '/images/ministries/boys-brigade.jpg',
+      image: 'images/ministries/boys-brigade.jpg',
       color: '#27ae60',
       features: [
         { icon: <FaCross />, text: 'Discipleship' },
@@ -184,7 +184,7 @@ const Ministries = () => {
       icon: <FaFemale className="ministry-icon" />,
       category: 'children',
       contact: 'gfs@ackstjude.org',
-      image: '/images/ministries/gfs.jpg',
+      image: 'images/ministries/gfs.jpg',
       color: '#e91e63',
       features: [
         { icon: <FaPray />, text: 'Prayer' },
@@ -325,11 +325,11 @@ const Ministries = () => {
                       }}>
                         <img 
                           src={
-                            ministry.id === 'kama' ? "/images/KAMA_LOGO.bmp" :
-                            ministry.id === 'mothers-union' ? "/images/M.U..png" :
-                            ministry.id === 'kayo' ? "/images/KAYOLOGO.png" :
-                            ministry.id === 'boys-brigade' ? "/images/boysbrigade.jpg" :
-                            "/images/Girls-Friendly-SocietyLogo.webp"
+                            ministry.id === 'kama' ? "images/KAMA_LOGO.bmp" :
+                            ministry.id === 'mothers-union' ? "images/M.U..png" :
+                            ministry.id === 'kayo' ? "images/KAYOLOGO.png" :
+                            ministry.id === 'boys-brigade' ? "images/boysbrigade.jpg" :
+                            "images/Girls-Friendly-SocietyLogo.webp"
                           } 
                           alt={`${ministry.fullName}`} 
                           style={{

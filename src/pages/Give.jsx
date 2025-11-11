@@ -73,7 +73,7 @@ const Give = () => {
               
               <div className="mpesa-image-container">
                 <img 
-                  src="/images/mpesa.png" 
+                  src="images/mpesa.png" 
                   alt="M-Pesa Payment" 
                   className="mpesa-image"
                   onError={(e) => {

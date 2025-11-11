@@ -292,7 +292,7 @@ p { margin: 0 0 15px; }
   height: 60vh;
   min-height: 500px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
-              url('/images/ministries/ministry-hero.jpg') no-repeat center center/cover;
+              url('images/ministries/ministry-hero.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -32,7 +32,7 @@
   z-index: 1;
   width: 100%;
   box-sizing: border-box;
-  background-image: url('/images/church-bg.jpg');
+  background-image: url('images/church-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1806,7 +1806,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/pattern.png');
+  background-image: url('images/pattern.png');
   opacity: 0.1;
   z-index: 1;
 }
