@@ -11,8 +11,7 @@ const slides = [
   {
     id: 1,
     preTitle: 'Welcome to',
-    title: "St. Jude's Anglican Church",
-    description: 'Growing in Faith, Serving with Love, Building Community',
+    title: "St. Jude Miritini Anglican Church",
     image: 'images/church.jpg',
     buttons: [
       { text: 'Our Story', to: '/about', variant: 'primary' },
@@ -22,8 +21,7 @@ const slides = [
   {
     id: 2,
     preTitle: 'Transforming Lives',
-    title: 'Strengthening Families and Empowering Faith Communities',
-    description: 'Join us in our mission to transform lives through faith',
+    title: 'A Home of Faith, Love and Service',
     image: 'images/bible-scripture.jpg',
     buttons: [
       { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
@@ -33,8 +31,7 @@ const slides = [
   {
     id: 3,
     preTitle: 'Guided by the Holy Spirit',
-    title: 'Empowered to Radiate Christ\'s Light to the World',
-    description: 'Experience the power of faith in our community',
+    title: 'Shine His Light',
     image: 'images/richard.jpg',
     buttons: [
       { text: "I'm New Here", to: '/new-here', variant: 'primary' },
@@ -191,8 +188,30 @@ const SimpleSlider = () => {
     return <div style={{ height: '100vh', minHeight: '600px' }} />;
   }
 
+  // Calculate dynamic styles based on screen size
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  
+  const sliderStyle = {
+    position: 'relative',
+    width: '100%',
+    height: isMobile ? '70vh' : '100vh',
+    minHeight: isMobile ? '350px' : '500px',
+    marginTop: '0',
+    paddingTop: '0',
+    overflow: 'hidden'
+  };
+
+  const slideContentStyle = {
+    marginTop: isMobile ? '-3rem' : '0',
+    padding: isMobile ? '0 1rem 1rem' : '2rem',
+    width: '100%',
+    maxWidth: '1200px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  };
+
   return (
-    <div className="simple-slider" style={{ position: 'relative', width: '100%', height: '100vh', minHeight: '600px' }}>
+    <div className="simple-slider" style={sliderStyle}>
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="slide">
@@ -214,10 +233,10 @@ const SimpleSlider = () => {
                 padding: '2rem'
               }}
             >
-              <div className="slide-content">
-                <span className="slide-pre-title">{slide.preTitle}</span>
+              <div className="slide-content" style={slideContentStyle}>
+                {slide.preTitle && <span className="slide-pre-title">{slide.preTitle}</span>}
                 <h2>{slide.title}</h2>
-                <p>{slide.description}</p>
+                {slide.description && <p>{slide.description}</p>}
                 <div className="slide-buttons">
                   {slide.buttons.map((button, btnIndex) => (
                     <Link 
