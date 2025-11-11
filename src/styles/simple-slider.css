@@ -137,9 +137,13 @@
   -webkit-tap-highlight-color: transparent;
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s,
-              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
   will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .slick-active .slide-content {
@@ -158,8 +162,12 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s,
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .slick-active .slide-pre-title {
@@ -175,8 +183,12 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s,
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .slick-active h2 {

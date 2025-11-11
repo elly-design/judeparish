@@ -104,18 +104,21 @@ const SimpleSlider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Add a small delay to ensure the component is fully mounted
-    const timer = setTimeout(() => {
-      setIsMounted(true);
-      // Force reflow to ensure proper rendering
-      window.dispatchEvent(new Event('resize'));
-      
-      // Preload all slide images for smoother transitions
+    // Preload images for smoother transitions
+    const preloadImages = () => {
       slides.forEach(slide => {
         const img = new Image();
         img.src = `/${slide.image}`;
       });
-    }, 100);
+    };
+    
+    // Small delay to ensure smooth initial render
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+      window.dispatchEvent(new Event('resize'));
+      preloadImages();
+    }, 50); // Reduced delay for faster initialization
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -133,23 +136,24 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1200, // Slightly slower for a more deliberate transition
+    speed: 450, // Balanced transition speed
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 7000, // Show each slide for 7 seconds
-    pauseOnHover: true,
+    autoplaySpeed: 3500, // 3.5 seconds per slide
+    pauseOnHover: false, // Disable hover pause for continuous flow
     fade: true,
-    cssEase: 'cubic-bezier(0.65, 0, 0.35, 1)', // Smoother easing function
+    cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Natural easing
     arrows: true,
     accessibility: true,
     draggable: true,
     swipe: true,
+    touchMove: true,
     swipeToSlide: true,
-    touchThreshold: 10,
-    edgeFriction: 0.3,
-    waitForAnimate: true,
-    pauseOnFocus: true,
+    touchThreshold: 10, // More responsive touch
+    edgeFriction: 0.25, // Smoother edge friction
+    waitForAnimate: false, // Don't wait for animation to complete
+    pauseOnFocus: false,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     beforeChange: (_, next) => setCurrentSlide(next),
