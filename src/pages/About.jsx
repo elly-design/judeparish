@@ -13,7 +13,7 @@ const About = () => {
       id: 1,
       name: 'Rev. Canon Richard Otieno',
       role: 'Vicar',
-      image: 'images/richard.jpg',
+      image: '/images/richard.jpg',
       bio: 'Rev. Canon Richard has been serving as our Vicar. He is passionate about preaching the Gospel and shepherding the flock.'
     },
     {
