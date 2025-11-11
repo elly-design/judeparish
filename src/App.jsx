@@ -18,6 +18,7 @@ import KAYO from './pages/ministries/KAYO';
 import BoysBrigade from './pages/ministries/BoysBrigade';
 import GFS from './pages/ministries/GFS';
 import Give from './pages/Give.jsx';
+import Baptism from './pages/Baptism.jsx';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/give" element={<Give />} />
           <Route path="/visit" element={<Contact isVisitPage={true} />} />
+          <Route path="/baptism" element={<Baptism />} />
         </Routes>
       </main>
       <Footer />
