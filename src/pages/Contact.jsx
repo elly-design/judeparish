@@ -103,17 +103,6 @@ const Contact = () => {
                     <p>info@stjudeanglican.org<br />contact@stjudeanglican.org</p>
                   </div>
                 </div>
-                
-                <div className="contact-method">
-                  <div className="contact-icon">
-                    <FaClock />
-                  </div>
-                  <div className="contact-text">
-                    <h3>Office Hours</h3>
-                    <p>Monday - Friday: 8:00 AM - 5:00 PM<br />
-                    Sunday: 7:00 AM - 12:30 PM</p>
-                  </div>
-                </div>
               </div>
               
               <div className="social-links">
