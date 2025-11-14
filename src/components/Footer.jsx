@@ -499,28 +499,14 @@ const Footer = () => {
                     margin: '0.2rem 0',
                     lineHeight: '1.5'
                   }}>
-                    <a href="tel:+254700000000" style={{
+                    <a href="tel:+254745002529" style={{
                       color: 'rgba(255, 255, 255, 0.85)',
                       textDecoration: 'none',
                       fontSize: '0.75rem',
                       transition: 'color 0.2s ease'
                     }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
                        onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
-                      +254 700 000000
-                    </a>
-                  </p>
-                  <p style={{
-                    margin: '0.2rem 0 0',
-                    lineHeight: '1.5'
-                  }}>
-                    <a href="tel:+254711000000" style={{
-                      color: 'rgba(255, 255, 255, 0.85)',
-                      textDecoration: 'none',
-                      fontSize: '0.75rem',
-                      transition: 'color 0.2s ease'
-                    }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
-                       onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
-                      +254 711 000000
+                      +254 745002529
                     </a>
                   </p>
                 </div>
@@ -559,7 +545,7 @@ const Footer = () => {
                     margin: '0.2rem 0',
                     lineHeight: '1.5'
                   }}>
-                    <a href="mailto:info@stfaithsanglican.org" style={{
+                    <a href="mailto:ackstjudemiritinichuch@gmail.com" style={{
                       color: 'rgba(255, 255, 255, 0.85)',
                       textDecoration: 'none',
                       fontSize: '0.75rem',
@@ -567,22 +553,7 @@ const Footer = () => {
                       transition: 'color 0.2s ease'
                     }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
                        onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
-                      info@stjudeanglican.org
-                    </a>
-                  </p>
-                  <p style={{
-                    margin: '0.2rem 0 0',
-                    lineHeight: '1.5'
-                  }}>
-                    <a href="mailto:contact@stfaithsanglican.org" style={{
-                      color: 'rgba(255, 255, 255, 0.85)',
-                      textDecoration: 'none',
-                      fontSize: '0.85rem',
-                      wordBreak: 'break-word',
-                      transition: 'color 0.2s ease'
-                    }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
-                       onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
-                      contact@stjudeanglican.org
+                      ackstjudemiritinichuch@gmail.com
                     </a>
                   </p>
                 </div>

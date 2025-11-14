@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaMobileAlt, FaMoneyBillWave } from 'react-icons/fa';
+import { FaArrowLeft, FaMobileAlt, FaMoneyBillWave, FaHammer } from 'react-icons/fa';
 import Typewriter from '../components/Typewriter';
 import './Give.css';
 
 const Give = () => {
-  const [activeTab, setActiveTab] = useState('mpesa'); // Only 'mpesa' and 'bank' tabs remain
+  const [activeTab, setActiveTab] = useState('mpesa'); // 'mpesa', 'bank', and 'development' tabs
 
   return (
     <div className="give-page">
@@ -31,6 +31,12 @@ const Give = () => {
             onClick={() => setActiveTab('bank')}
           >
             <FaMoneyBillWave className="tab-icon" /> Bank Transfer
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'development' ? 'active' : ''}`}
+            onClick={() => setActiveTab('development')}
+          >
+            <FaHammer className="tab-icon" /> Development Account
           </button>
         </div>
 
@@ -92,7 +98,7 @@ const Give = () => {
               <div className="bank-details">
                 <div className="detail-item">
                   <span className="detail-label">Bank:</span>
-                  <span className="detail-value">To be updated</span>
+                  <span className="detail-value">K.C.B</span>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Account Name:</span>
@@ -100,11 +106,38 @@ const Give = () => {
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Account Number:</span>
-                  <span className="detail-value">To be updated</span>
+                  <span className="detail-value">1272160718</span>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">Branch:</span>
-                  <span className="detail-value">To be updated</span>
+                  <span className="detail-value">Changamwe</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'development' && (
+            <div className="development-account">
+              <h2>Development Account</h2>
+              <p>Support our church development projects and infrastructure improvements through the development account.</p>
+              
+              <div className="development-content">
+                <div className="development-details">
+                  <div className="development-note">
+                    <p>Your generous contributions to our development fund help us maintain and improve our church facilities and support community development projects.</p>
+                  </div>
+                </div>
+                
+                <div className="development-image-container">
+                  <img 
+                    src="/images/Developmentacc.jpeg" 
+                    alt="Church Development Project"
+                    className="development-image"
+                    onError={(e) => {
+                      e.target.onerror = null; 
+                      e.target.src = 'https://via.placeholder.com/600x400?text=Development+Account';
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -113,7 +146,7 @@ const Give = () => {
 
         <div className="giving-note">
           <p>Thank you for your generous giving. Your support helps us continue our mission and ministry.</p>
-          <p>For any assistance, please contact us at <a href="tel:+254712345678">+254 712 345 678</a> or <a href="mailto:info@ackstjudemiritini.org">info@ackstjudemiritini.org</a></p>
+          <p>For any assistance, please contact us at <a href="tel:+254745002529">+254 745 002 529</a> or <a href="mailto:ackstjudemiritinichuch@gmail.com">ackstjudemiritinichuch@gmail.com</a></p>
         </div>
       </div>
     </div>

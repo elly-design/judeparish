@@ -1332,16 +1332,10 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   margin-top: 4rem;
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.statement-of-faith:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
 }
 
 .statement-content {
@@ -1404,7 +1398,6 @@
   border-radius: 50px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1412,14 +1405,6 @@
   font-size: 0.85rem;
   margin-top: 10px;
   backdrop-filter: blur(5px);
-}
-
-.statement-content .btn-outline:hover {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: #1a1a1a;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .statement-image {
@@ -1437,11 +1422,7 @@
   bottom: 0;
   background: linear-gradient(45deg, rgba(26, 77, 143, 0.4), rgba(26, 77, 143, 0.1));
   z-index: 1;
-  transition: all 0.5s ease;
-}
-
-.statement-of-faith:hover .statement-image::before {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .statement-image img {
@@ -1449,11 +1430,274 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
 }
 
-.statement-of-faith:hover .statement-image img {
-  transform: scale(1.05);
+/* =================================
+   PARISH STAFF SECTION - VIBRANT STYLE
+   ================================= */
+.parish-staff {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8faff 0%, #f0f6ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Removed decorative background pattern */
+
+.parish-staff .container {
+  position: relative;
+  z-index: 1;
+}
+
+.parish-staff h3 {
+  font-size: 2.5rem;
+  color: #1a4d8f;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #1a4d8f, #3a6daf);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  width: 100%;
+}
+
+.parish-staff h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #f8b400, #ffd700);
+  border-radius: 2px;
+}
+
+.parish-staff > p {
+  color: #4a5568;
+  text-align: center;
+  max-width: 800px;
+  margin: 1.5rem auto 4rem;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  font-weight: 400;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin: 3rem 0;
+  padding: 0 1rem;
+}
+
+.staff-card {
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border: 1px solid #f0f0f0;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Removed decorative top border */
+
+/* Removed hover effects for a static appearance */
+
+.staff-image {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Removed gradient overlay from staff images */
+
+.staff-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.staff-details {
+  padding: 1.5rem;
+  position: relative;
+  background: white;
+  z-index: 3;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.staff-details h4 {
+  font-size: 1.25rem;
+  color: #1a4d8f;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  line-height: 1.3;
+}
+
+.staff-details h4 {
+  position: relative;
+  display: block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.staff-role {
+  display: block;
+  color: #1a4d8f;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0.3rem 0 1rem;
+  font-style: italic;
+}
+
+.staff-card:hover .staff-role {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(248, 180, 0, 0.3);
+}
+
+.staff-bio {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  position: relative;
+  padding-bottom: 0;
+  flex-grow: 1;
+}
+
+.staff-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 0;
+  justify-content: center;
+}
+
+.staff-social a {
+  color: #1a4d8f;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.staff-social a:hover {
+  color: #f8b400;
+  text-decoration: none;
+}
+
+/* Removed hover effects for social icons */
+
+/* Removed decorative shapes for a cleaner look */
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .staff-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-image {
+    height: 200px;
+  }
+  
+  .staff-details {
+    padding: 1.25rem;
+  }
+  
+  .staff-details h4 {
+    font-size: 1.1rem;
+  }
+  
+  .staff-bio {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 992px) {
+  .parish-staff {
+    padding: 4rem 0;
+  }
+  
+  .staff-grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .parish-staff h3 {
+    font-size: 2rem;
+  }
+  
+  .parish-staff > p {
+    font-size: 1.1rem;
+    margin: 1rem auto 3rem;
+  }
+  
+  .staff-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
+  
+  .staff-image {
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .parish-staff {
+    padding: 3rem 0;
+  }
+  
+  .parish-staff h3 {
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+  }
+  
+  .parish-staff > p {
+    font-size: 1rem;
+    margin: 1rem auto 2.5rem;
+  }
+  
+  .staff-details {
+    padding: 1.5rem;
+  }
+  
+  .staff-details h4 {
+    font-size: 1.3rem;
+  }
+  
+  .staff-bio {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .staff-social a {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
 }
 
 /* Leadership Team */
@@ -1678,9 +1922,8 @@
   line-height: 1.8;
 }
 
-/* History Timeline Section */
-.history-section {
-  padding: 100px 0;
+/* PCC Leaders Section */
+.elders-deacons {
   background-color: #f8f9fa;
 }
 

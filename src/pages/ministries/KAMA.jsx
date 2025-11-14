@@ -26,8 +26,11 @@ const KAMA = () => {
         'Annual conferences and retreats',
         'Spiritual growth workshops'
       ],
-      requirements: 'Open to all Anglican men ',
-      leaders: <>Parish KAMA Chairman and Committee</>
+      requirements: 'Open to all Anglican men',
+      leaders: <>
+        <div>Bernard Righa - Chairman</div>
+        <div>Nicholas Mbogho - Secretary</div>
+      </>
     }
   };
 

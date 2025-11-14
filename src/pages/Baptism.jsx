@@ -47,7 +47,7 @@ const Baptism = () => {
             <Link to="/contact?inquiry=baptism" className="cta-button primary">
               Schedule a Baptism
             </Link>
-            <Link to="/about/our-beliefs" className="cta-button secondary">
+            <Link to="/about/beliefs" className="cta-button secondary">
               Learn More About Our Beliefs
             </Link>
           </div>

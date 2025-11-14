@@ -12,7 +12,7 @@ const slides = [
     id: 1,
     preTitle: 'Welcome to',
     title: "St. Jude Miritini Anglican Church",
-    image: 'images/church.jpg',
+    image: 'images/lay.jpeg',
     buttons: [
       { text: 'Our Story', to: '/about', variant: 'primary' },
       { text: 'Our Beliefs', to: '/what-we-believe', variant: 'outline' }
@@ -22,7 +22,7 @@ const slides = [
     id: 2,
     preTitle: 'Transforming Lives',
     title: 'A Home of Faith, Love and Service',
-    image: 'images/bible-scripture.jpg',
+    image: 'images/choir.jpeg',
     buttons: [
       { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
       { text: 'Connect With Us', to: '/contact', variant: 'outline' }
@@ -32,7 +32,7 @@ const slides = [
     id: 3,
     preTitle: 'Guided by the Holy Spirit',
     title: 'Rooted in Christ',
-    image: 'images/richard.jpg',
+    image: 'images/sunday.jpeg',
     buttons: [
       { text: "I'm New Here", to: '/new-here', variant: 'primary' },
       { text: 'Discover Baptism', to: '/baptism', variant: 'outline' }
@@ -99,7 +99,7 @@ const SamplePrevArrow = ({ className, style, onClick }) => {
   );
 };
 
-const SimpleSlider = () => {
+const SimpleSlider = ({ onBeliefsClick }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -293,36 +293,56 @@ const SimpleSlider = () => {
                 <h2>{slide.title}</h2>
                 {slide.description && <p>{slide.description}</p>}
                 <div className="slide-buttons">
-                  {slide.buttons.map((button, btnIndex) => (
-                    <Link 
-                      key={btnIndex}
-                      to={button.to}
-                      // Ensure links are only in the tab order when their slide is active
-                      tabIndex={currentSlide === slides.findIndex(s => s.id === slide.id) ? 0 : -1}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        padding: '0.75rem 1.5rem',
-                        borderRadius: '4px',
-                        textDecoration: 'none',
-                        fontWeight: '600',
-                        transition: 'all 0.3s ease',
-                        ...(button.variant === 'primary' ? {
-                          backgroundColor: '#4a6cf7',
-                          color: 'white',
-                          border: '2px solid #4a6cf7'
-                        } : {
-                          backgroundColor: 'transparent',
-                          color: 'white',
-                          border: '2px solid white'
-                        })
-                      }}
-                    >
-                      {button.text} {button.variant === 'primary' && (
-                        <FaArrowRight style={{ marginLeft: '8px' }} />
-                      )}
-                    </Link>
-                  ))}
+                  {slide.buttons.map((button, btnIndex) => {
+                    if (button.text === 'Our Beliefs') {
+                      return (
+                        <button
+                          key={btnIndex}
+                          onClick={onBeliefsClick}
+                          className={`btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-outline'}`}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            cursor: 'pointer',
+                            ...(button.variant === 'primary' ? {
+                              backgroundColor: '#4a6cf7',
+                              color: 'white',
+                              border: '2px solid #4a6cf7'
+                            } : {
+                              backgroundColor: 'transparent',
+                              color: 'white',
+                              border: '2px solid white'
+                            })
+                          }}
+                        >
+                          {button.text}
+                          {button.variant === 'primary' && <FaArrowRight className="btn-icon" />}
+                        </button>
+                      );
+                    }
+                    return (
+                      <Link
+                        key={btnIndex}
+                        to={button.to}
+                        className={`btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-outline'}`}
+                        style={{
+                          ...(button.variant === 'primary' ? {
+                            backgroundColor: '#4a6cf7',
+                            color: 'white',
+                            border: '2px solid #4a6cf7'
+                          } : {
+                            backgroundColor: 'transparent',
+                            color: 'white',
+                            border: '2px solid white'
+                          })
+                        }}
+                      >
+                        {button.text}
+                        {button.variant === 'primary' && <FaArrowRight className="btn-icon" />}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>

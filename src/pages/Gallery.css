@@ -16,16 +16,23 @@
 }
 
 .gallery-hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #00C2CB; /* Vibrant teal */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .gallery-hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   max-width: 700px;
   margin: 0 auto;
-  opacity: 0.9;
+  color: #F0F8FF; /* Soft white */
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  padding: 0 1rem;
 }
 
 /* Section Header */

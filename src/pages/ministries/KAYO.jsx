@@ -30,8 +30,8 @@ const KAYO = () => {
       leaders: (
         <>
           <div className="leaders-list">
-            <div>David Kimani (Chairperson)</div>
-            <div>Sarah Muthoni (Secretary)</div>
+            <div>Allan Odongo - Chairperson</div>
+            <div>Marion Wambui - Secretary</div>
           </div>
         </>
       )

@@ -76,7 +76,7 @@ const GFS = () => {
         'Annual rallies and conferences'
       ],
       requirements: 'Girls aged 5-25 years',
-      leaders: <><div>Mrs. Grace Wanjiru (President)</div><div>Miss Ann Mumbi (Secretary)</div></>
+      leaders: <><div>Elizabeth Mbogho - Chairperson</div><div>Pauline Chadwick - Secretary</div></>
     }
   };
 

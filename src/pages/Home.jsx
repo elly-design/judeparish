@@ -1,6 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import ReactDOM from 'react-dom';
+import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+
+// Animation variants
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const fadeIn = (direction, type, delay, duration) => ({
+  hidden: {
+    x: direction === 'left' ? 50 : direction === 'right' ? -50 : 0,
+    y: direction === 'up' ? 50 : direction === 'down' ? -50 : 0,
+    opacity: 0
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: type || 'spring',
+      delay: delay || 0,
+      duration: duration || 0.7,
+      ease: 'easeOut'
+    }
+  }
+});
 import SimpleSlider from '../components/SimpleSlider';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -21,13 +53,186 @@ import {
   FaHandsHelping,
   FaHeadphones,
   FaDownload,
-  FaCross
+  FaCross,
+  FaHeart
 } from 'react-icons/fa';
 import { FaBible } from 'react-icons/fa';
 import './Home.css';
 import '../styles/hero-buttons.css';
 
+// Beliefs Modal Component
+const BeliefsModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  return ReactDOM.createPortal(
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+      padding: '1rem',
+      backdropFilter: 'blur(4px)'
+    }} onClick={onClose}>
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '12px',
+        maxWidth: '800px',
+        width: '100%',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        position: 'relative',
+        padding: '2.5rem',
+        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.2)'
+      }} onClick={e => e.stopPropagation()}>
+        <button 
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            background: 'none',
+            border: 'none',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            color: '#64748b',
+            padding: '0.5rem',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.2s ease',
+            ':hover': {
+              backgroundColor: '#f1f5f9',
+              color: '#1e293b'
+            }
+          }}
+          aria-label="Close modal"
+        >
+          &times;
+        </button>
+        
+        <h2 style={{
+          fontSize: '2rem',
+          fontWeight: '800',
+          color: '#1e293b',
+          marginBottom: '1.5rem',
+          textAlign: 'center',
+          position: 'relative',
+          paddingBottom: '1rem'
+        }}>
+          Our Core Beliefs
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: 'linear-gradient(90deg, #2563eb, #6366f1, #ec4899)',
+            borderRadius: '2px'
+          }}></div>
+        </h2>
+        
+        <div style={{
+          lineHeight: '1.8',
+          color: '#475569',
+          fontSize: '1.1rem'
+        }}>
+          <p style={{ marginBottom: '1.5rem' }}>
+            At ACK St. Jude Miritini Parish, we believe in the power of God's love  a love that transforms hearts, restores hope, and unites us as one family in Christ. We are guided by the Word of God and the teachings of our Lord Jesus Christ, who calls us to live in faith, obedience and compassion toward one another.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            We believe in one God  Father, Son and Holy Spirit  who works in us and through us to bring healing, peace and renewal in our community. Through the grace of Christ, we are saved, sanctified and sent forth to shine His light wherever we go.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            We believe that true faith is expressed not only in words but in acts of love and service. As a parish, we are committed to building a caring, prayerful and supportive community where every person can experience the transforming presence of God.
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            In our journey of faith, we continue to grow together through worship, fellowship and ministry. Our ongoing church development projects are expressions of our shared vision to make God's house a place of excellence, outreach and impact.
+          </p>
+          
+          <p>
+            We invite you to be part of this divine mission through your thanksgiving, tithes, offerings and development donations  giving cheerfully and prayerfully as an act of love and gratitude to God. Every contribution helps us expand God's work, nurture faith and serve our community in deeper ways.
+          </p>
+        </div>
+        
+        <div style={{
+          marginTop: '2.5rem',
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
+          <Link 
+            to="/give" 
+            className="btn"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '0.75rem 1.75rem',
+              backgroundColor: '#2563eb',
+              color: 'white',
+              borderRadius: '8px',
+              fontWeight: '600',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              ':hover': {
+                backgroundColor: '#1d4ed8',
+                transform: 'translateY(-2px)'
+              }
+            }}
+          >
+            Give Now <FaArrowRight style={{ marginLeft: '0.5rem' }} />
+          </Link>
+          
+          <button 
+            onClick={onClose}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '0.75rem 1.75rem',
+              backgroundColor: 'transparent',
+              color: '#2563eb',
+              border: '2px solid #2563eb',
+              borderRadius: '8px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              ':hover': {
+                backgroundColor: 'rgba(37, 99, 235, 0.05)',
+                transform: 'translateY(-2px)'
+              }
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
 const Home = () => {
+  const [isBeliefsModalOpen, setIsBeliefsModalOpen] = useState(false);
+  
   // Mobile styles with !important flags
   const mobileStyles = {
     ctaSection: {
@@ -194,21 +399,23 @@ const Home = () => {
     )
   };
 
-  // Sample data for upcoming events
-  const upcomingEvents = [
+  // Currently no upcoming events
+  const upcomingEvents = [];
+  /* Example event format:
+  [
     {
       id: 1,
       title: 'Sunday Worship Service',
-      date: new Date(new Date().setDate(new Date().getDate() + (7 - new Date().getDay()) % 7)),
+      date: new Date(),
       time: '8:00 AM',
       location: 'Main Sanctuary',
-      excerpt: 'Join us for our weekly Sunday worship service with Holy Communion.',
+      excerpt: 'Join us for worship',
       image: '/images/events/worship-service.jpg'
     },
     {
       id: 2,
       title: 'Bible Study & Prayer',
-      date: new Date(new Date().setDate(new Date().getDate() + (2 - new Date().getDay() + 7) % 7)),
+      date: new Date(),
       time: '5:30 PM',
       location: 'Fellowship Hall',
       excerpt: 'Mid-week Bible study and prayer meeting. All are welcome!',
@@ -217,22 +424,14 @@ const Home = () => {
     {
       id: 3,
       title: 'Youth Fellowship',
-      date: new Date(new Date().setDate(new Date().getDate() + (5 - new Date().getDay() + 7) % 7)),
+      date: new Date(),
       time: '4:00 PM',
       location: 'Youth Center',
-      excerpt: 'An evening of worship, games, and fellowship for youth (ages 13-18).',
-      image: '/images/events/youth-group.jpg'
-    },
-    {
-      id: 4,
-      title: 'Men\'s Breakfast',
-      date: new Date(new Date().setDate(new Date().getDate() + (6 - new Date().getDay() + 7) % 7)),
-      time: '8:00 AM',
-      location: 'Church Hall',
-      excerpt: 'Monthly men\'s breakfast with guest speaker and fellowship.',
-      image: '/images/events/mens-breakfast.jpg'
+      excerpt: 'Fun and fellowship for youth ages 12-18',
+      image: '/images/events/youth-fellowship.jpg'
     }
-  ];
+  ]
+  */
 
   // Quick links data
   const quickLinks = [
@@ -329,7 +528,7 @@ const Home = () => {
     <div className="home">
       {/* Hero Slider */}
       <section className="hero-slider">
-        <SimpleSlider />
+        <SimpleSlider onBeliefsClick={() => setIsBeliefsModalOpen(true)} />
       </section>
 
       {/* Welcome Section */}
@@ -391,21 +590,443 @@ const Home = () => {
                 <Link to="/about" className="btn btn-primary">
                   Our Story <FaArrowRight className="btn-icon" />
                 </Link>
-                <Link to="/what-we-believe" className="btn btn-outline">
+                <button 
+                  onClick={() => setIsBeliefsModalOpen(true)}
+                  className="btn btn-outline"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '0.75rem 1.5rem',
+                    backgroundColor: 'transparent',
+                    color: '#2563eb',
+                    border: '2px solid #2563eb',
+                    borderRadius: '8px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    ':hover': {
+                      backgroundColor: 'rgba(37, 99, 235, 0.05)',
+                      transform: 'translateY(-2px)'
+                    },
+                    fontFamily: 'inherit',
+                    fontSize: '1rem'
+                  }}
+                >
                   Our Beliefs
-                </Link>
+                </button>
               </div>
             </motion.div>
             
-            <motion.div className="welcome-image" variants={item}>
-              <div className="image-container">
+            <motion.div 
+              className="welcome-image" 
+              variants={item}
+              style={{
+                width: '100%',
+                maxWidth: '600px',
+                margin: '0 auto',
+                padding: '0 1rem'
+              }}
+            >
+              <div 
+                className="image-container"
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  paddingBottom: '125%',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                  maxWidth: '100%',
+                  margin: '0 auto'
+                }}
+              >
                 <img 
-                  src="/images/church/welcome-image.jpg" 
+                  src="/images/congregant.jpeg" 
                   alt="St. Jude's Anglican Church community" 
-                  className="main-image"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    transition: 'transform 0.5s ease',
+                    ':hover': {
+                      transform: 'scale(1.03)'
+                    }
+                  }}
                 />
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Beliefs Section */}
+      <section className="beliefs-section" style={{
+        backgroundColor: '#f8fafc',
+        padding: '6rem 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div className="container" style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          {/* Decorative Elements */}
+          <div style={{
+            position: 'absolute',
+            top: '-100px',
+            right: '-100px',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%)',
+            zIndex: -1
+          }}></div>
+          
+          <div style={{
+            position: 'absolute',
+            bottom: '-150px',
+            left: '-150px',
+            width: '500px',
+            height: '500px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0) 70%)',
+            zIndex: -1
+          }}></div>
+
+          <motion.div 
+            className="section-header text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="section-subtitle" style={{
+              display: 'inline-block',
+              color: '#2563eb',
+              fontSize: '1rem',
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '1rem'
+            }}>Our Foundation</span>
+            <h2 className="section-title" style={{
+              fontSize: '2.25rem',
+              fontWeight: '800',
+              color: '#1e293b',
+              marginBottom: '1.5rem',
+              lineHeight: '1.2'
+            }}>Our Beliefs</h2>
+            <div className="divider" style={{
+              width: '80px',
+              height: '4px',
+              backgroundColor: '#2563eb',
+              margin: '0 auto 2rem',
+              borderRadius: '2px'
+            }}></div>
+          </motion.div>
+
+          <div className="beliefs-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem',
+            marginTop: '3rem'
+          }}>
+            {/* Belief Card 1 */}
+            <motion.div 
+              className="belief-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                padding: '2.5rem 2rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                border: '1px solid rgba(226, 232, 240, 0.8)'
+              }}
+              whileHover={{
+                transform: 'translateY(-5px)',
+                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <div className="belief-icon" style={{
+                width: '60px',
+                height: '60px',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <FaHeart style={{ color: '#2563eb', fontSize: '1.75rem' }} />
+              </div>
+              <h3 style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                color: '#1e293b',
+                marginBottom: '1rem',
+                lineHeight: '1.3'
+              }}>God's Transformative Love</h3>
+              <p style={{
+                color: '#475569',
+                lineHeight: '1.7',
+                marginBottom: '1.5rem',
+                fontSize: '1.05rem'
+              }}>
+                We believe in the power of God's love  a love that transforms hearts, restores hope and unites us as one family in Christ. We are guided by the Word of God and the teachings of our Lord Jesus Christ.
+              </p>
+              <div className="belief-number" style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                fontSize: '3.5rem',
+                fontWeight: '800',
+                color: 'rgba(37, 99, 235, 0.05)',
+                lineHeight: 1,
+                userSelect: 'none'
+              }}>01</div>
+            </motion.div>
+
+            {/* Belief Card 2 */}
+            <motion.div 
+              className="belief-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                padding: '2.5rem 2rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                border: '1px solid rgba(226, 232, 240, 0.8)'
+              }}
+              whileHover={{
+                transform: 'translateY(-5px)',
+                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <div className="belief-icon" style={{
+                width: '60px',
+                height: '60px',
+                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <FaCross style={{ color: '#6366f1', fontSize: '1.75rem' }} />
+              </div>
+              <h3 style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                color: '#1e293b',
+                marginBottom: '1rem',
+                lineHeight: '1.3'
+              }}>The Holy Trinity</h3>
+              <p style={{
+                color: '#475569',
+                lineHeight: '1.7',
+                marginBottom: '1.5rem',
+                fontSize: '1.05rem'
+              }}>
+                We believe in one God  Father, Son and Holy Spirit  who works in us and through us to bring healing, peace and renewal in our community. Through the grace of Christ, we are saved, sanctified and sent forth.
+              </p>
+              <div className="belief-number" style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                fontSize: '3.5rem',
+                fontWeight: '800',
+                color: 'rgba(99, 102, 241, 0.05)',
+                lineHeight: 1,
+                userSelect: 'none'
+              }}>02</div>
+            </motion.div>
+
+            {/* Belief Card 3 */}
+            <motion.div 
+              className="belief-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                padding: '2.5rem 2rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                border: '1px solid rgba(226, 232, 240, 0.8)'
+              }}
+              whileHover={{
+                transform: 'translateY(-5px)',
+                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <div className="belief-icon" style={{
+                width: '60px',
+                height: '60px',
+                backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <FaHandsHelping style={{ color: '#ec4899', fontSize: '1.75rem' }} />
+              </div>
+              <h3 style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                color: '#1e293b',
+                marginBottom: '1rem',
+                lineHeight: '1.3'
+              }}>Faith in Action</h3>
+              <p style={{
+                color: '#475569',
+                lineHeight: '1.7',
+                marginBottom: '1.5rem',
+                fontSize: '1.05rem'
+              }}>
+                We believe that true faith is expressed in acts of love and service. We're committed to building a caring, prayerful community where every person can experience God's presence.
+              </p>
+              <div className="belief-number" style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                fontSize: '3.5rem',
+                fontWeight: '800',
+                color: 'rgba(236, 72, 153, 0.05)',
+                lineHeight: 1,
+                userSelect: 'none'
+              }}>03</div>
+            </motion.div>
+          </div>
+
+          {/* Full Width CTA */}
+          <motion.div 
+            className="beliefs-cta"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            style={{
+              marginTop: '4rem',
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '3rem',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              border: '1px solid rgba(226, 232, 240, 0.8)'
+            }}
+          >
+            <h3 style={{
+              fontSize: '1.75rem',
+              fontWeight: '700',
+              color: '#1e293b',
+              marginBottom: '1.5rem',
+              lineHeight: '1.3',
+              maxWidth: '800px',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}>
+              Join Us in Our Mission
+            </h3>
+            <p style={{
+              color: '#475569',
+              lineHeight: '1.8',
+              marginBottom: '2rem',
+              fontSize: '1.1rem',
+              maxWidth: '800px',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}>
+              Our ongoing church development projects are expressions of our shared vision to make God's house a place of excellence, outreach and impact. We invite you to be part of this divine mission through your thanksgiving, tithes, offerings, and development donations.
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}>
+              <Link 
+                to="/give" 
+                className="btn"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.75rem 1.75rem',
+                  backgroundColor: '#2563eb',
+                  color: 'white',
+                  borderRadius: '8px',
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  ':hover': {
+                    backgroundColor: '#1d4ed8',
+                    transform: 'translateY(-2px)'
+                  }
+                }}
+              >
+                Give Now <FaArrowRight style={{ marginLeft: '0.5rem' }} />
+              </Link>
+              <button 
+                onClick={() => setIsBeliefsModalOpen(true)}
+                className="btn btn-outline"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.75rem 1.75rem',
+                  backgroundColor: 'transparent',
+                  color: '#2563eb',
+                  border: '2px solid #2563eb',
+                  borderRadius: '8px',
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  ':hover': {
+                    backgroundColor: 'rgba(37, 99, 235, 0.05)',
+                    transform: 'translateY(-2px)'
+                  }
+                }}
+              >
+                Learn More About Our Beliefs
+              </button>
+              <BeliefsModal 
+                isOpen={isBeliefsModalOpen} 
+                onClose={() => setIsBeliefsModalOpen(false)} 
+              />
+            </div>
+            <div style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '4px',
+              background: 'linear-gradient(90deg, #2563eb, #6366f1, #ec4899)'
+            }}></div>
           </motion.div>
         </div>
       </section>
@@ -686,48 +1307,61 @@ const Home = () => {
             <p className="section-description">Be part of our growing community through these upcoming gatherings</p>
           </div>
           
-          <motion.div 
-            className="events-grid"
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {upcomingEvents.slice(0, 3).map((event, index) => (
-              <motion.article 
-                key={event.id} 
-                className="event-card"
-                variants={item}
-                whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
-              >
-                <div className="event-image" style={{ backgroundImage: `url(${event.image || '/images/events/default.jpg'})` }}>
-                  <div className="event-date">
-                    <span className="event-day">{getDayOfMonth(event.date)}</span>
-                    <span className="event-month">{getMonthName(event.date)}</span>
+          <div className="events-grid">
+            <motion.div 
+              className="events-container"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              style={{ width: '100%' }}
+            >
+              {upcomingEvents.length === 0 ? (
+                <div className="no-events-message">
+                  <div className="no-events-content">
+                    <h3 className="no-events-title">No Upcoming Events</h3>
+                    <p className="no-events-text">
+                      We have no upcoming events right now, but our team is joyfully preparing new opportunities for worship, fellowship and community growth. Stay tuned for updates in the upcoming events section on this page.
+                    </p>
                   </div>
                 </div>
-                <div className="event-content">
-                  <div className="event-meta">
-                    <span className="meta-item">
-                      <FaClock className="meta-icon" />
-                      {formatTime(event.time)}
-                    </span>
-                    <span className="meta-item">
-                      <FaMapMarkerAlt className="meta-icon" />
-                      {event.location}
-                    </span>
-                  </div>
-                  <h3 className="event-title">
-                    <Link to={`/events/${event.id}`}>{event.title}</Link>
-                  </h3>
-                  <p className="event-excerpt">{event.excerpt}</p>
-                  <Link to={`/events/${event.id}`} className="event-link">
-                    Learn More <FaArrowRight className="link-arrow" />
-                  </Link>
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
+              ) : (
+                upcomingEvents.slice(0, 3).map((event, index) => (
+                  <motion.article 
+                    key={event.id} 
+                    className="event-card"
+                    variants={fadeIn('up', 'spring', index * 0.1, 0.75)}
+                  >
+                    <div className="event-image" style={{ backgroundImage: `url(${event.image || '/images/events/default.jpg'})` }}>
+                      <div className="event-date">
+                        <span className="event-day">{getDayOfMonth(event.date)}</span>
+                        <span className="event-month">{getMonthName(event.date)}</span>
+                      </div>
+                    </div>
+                    <div className="event-content">
+                      <div className="event-meta">
+                        <span className="meta-item">
+                          <FaClock className="meta-icon" />
+                          {formatTime(event.time)}
+                        </span>
+                        <span className="meta-item">
+                          <FaMapMarkerAlt className="meta-icon" />
+                          {event.location}
+                        </span>
+                      </div>
+                      <h3 className="event-title">
+                        <Link to={`/events/${event.id}`}>{event.title}</Link>
+                      </h3>
+                      <p className="event-excerpt">{event.excerpt}</p>
+                      <Link to={`/events/${event.id}`} className="event-link">
+                        Learn More <FaArrowRight className="link-arrow" />
+                      </Link>
+                    </div>
+                  </motion.article>
+                ))
+              )}
+            </motion.div>
+          </div>
           
           <div className="text-center mt-5">
             <Link to="/events" className="btn btn-outline">

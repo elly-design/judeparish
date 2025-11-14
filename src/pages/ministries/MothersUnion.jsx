@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ErrorBoundary from '../../components/ErrorBoundary';
 import { FaCalendarAlt, FaMapMarkerAlt, FaPray, FaHandsHelping, FaUsers, FaCross, FaHeart, FaChild, FaChurch, FaUsersCog, FaHandHoldingHeart, FaArrowRight, FaQuoteLeft } from 'react-icons/fa';
 import { BsCalendarCheck } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +38,7 @@ const MothersUnion = () => {
 
   const objectives = [
     {
-      icon: <FaCross />,
+      icon: <FaChurch />,
       title: 'Scriptural Foundation',
       description: 'I can do all things through him (Christ) who strengthens me'
     },
@@ -102,15 +103,28 @@ const MothersUnion = () => {
     }
   };
 
-  const navigateToDetail = (title) => {
-    // Convert title to URL-friendly format
-    const slug = title.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/ministries/mothers-union/${slug}`);
+
+  // Cleanup function for any event listeners or subscriptions
+  useEffect(() => {
+    return () => {
+      // Cleanup any event listeners or subscriptions here
+      // This helps prevent the "Node cannot be found" warning
+    };
+  }, []);
+
+  // Safe navigation function
+  const safeNavigate = (path) => {
+    try {
+      navigate(path);
+    } catch (error) {
+      console.error('Navigation error:', error);
+    }
   };
 
   return (
-    <MinistryLayout {...ministryData}>
-      <div className="ministry-content">
+    <ErrorBoundary>
+      <MinistryLayout {...ministryData}>
+        <div className="ministry-content">
         <section className="about-section">
           <div className="ministry-motto">
             <FaQuoteLeft className="quote-icon" />
@@ -125,7 +139,7 @@ const MothersUnion = () => {
                 <p>{item.description}</p>
                 <button 
                   className="learn-more-btn"
-                  onClick={() => navigateToDetail(item.title)}
+                  onClick={() => safeNavigate(`/ministries/mothers-union/${item.title.toLowerCase().replace(/\s+/g, '-')}`)}
                 >
                   Learn More <FaArrowRight className="arrow-icon" />
                 </button>
@@ -148,8 +162,9 @@ const MothersUnion = () => {
             ))}
           </div>
         </section>
-      </div>
-    </MinistryLayout>
+        </div>
+      </MinistryLayout>
+    </ErrorBoundary>
   );
 };
 

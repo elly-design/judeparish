@@ -115,23 +115,6 @@ const MinistryLayout = ({
               </div>
             </div>
 
-            <div className="sidebar-card gallery-preview">
-              <h3>Gallery</h3>
-              <div className="gallery-grid">
-                {[1, 2, 3, 4].map((item) => (
-                  <div key={item} className="gallery-item" style={{ 
-                    backgroundImage: `url(/images/ministries/${title.toLowerCase().replace(/\s+/g, '-')}-${item}.jpg)` 
-                  }}>
-                    <div className="gallery-overlay">
-                      <span>View</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Link to={`/ministries/${title.toLowerCase().replace(/\s+/g, '-')}/gallery`} className="view-more">
-                View Full Gallery <FaArrowRight />
-              </Link>
-            </div>
           </aside>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { IoMdTime } from 'react-icons/io';
 import { GiChurch } from 'react-icons/gi';
 import { BsCalendarCheck } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import PccLeaders from '../components/PccLeaders';
 import '../styles/About.css';
 
 const About = () => {
@@ -18,24 +19,118 @@ const About = () => {
     },
     {
       id: 2,
-      name: 'Elder Sarah Wanjiku',
-      role: 'Church Warden',
-      image: 'images/team/elder1.jpg',
-      bio: 'Elder Sarah has been a dedicated member of our church for over 20 years, serving in various leadership capacities.'
+      name: 'Rev. Canon George Kuza',
+      role: 'Attached Clergy',
+      image: '/images/george kuza.jpg',
+      bio: 'Rev. Canon George Kuza has been a dedicated attached clergy of our church for decades, serving in various leadership capacities.'
     },
     {
       id: 3,
-      name: 'Deacon Peter Kamau',
-      role: 'Youth Leader',
-      image: 'images/team/youth-leader.jpg',
-      bio: 'Deacon Peter leads our vibrant youth ministry, helping young people grow in their faith and relationship with Christ.'
+      name: 'Eng. Javan Wanga',
+      role: 'Vicar\'s Warden',
+      image: '/images/javan.png',
+      bio: 'Eng. Javan Wanga serves as the Vicar’s Warden, supporting the vicar in parish administration, coordinating church activities, and ensuring smooth communication between the clergy and congregation.'
     },
     {
       id: 4,
-      name: 'Mrs. Grace Achieng',
-      role: 'Women\'s Ministry',
-      image: 'images/team/women-leader.jpg',
-      bio: 'Mrs. Grace coordinates the women\'s fellowship and various outreach programs to support women in our community.'
+      name: 'Mr. Felton Mwatore',
+      role: 'People\'s  Warden',
+      image: '/images/mwatore.png',
+      bio: 'Mr. Felton Mwatore serves as the People’s Warden, assisting in the administration of parish affairs, supporting church leadership and fostering unity among congregants'
+    }
+  ];
+
+  // PCC Leaders data
+  const pccLeaders = [
+    {
+      id: 1,
+      name: 'Henry Mwaura',
+      role: 'Human Resource Chairperson',
+      image: '/images/mwaura.png',
+    },
+    {
+      id: 2,
+      name: 'Mrs. Betty Mwachilwa',
+      role: 'Treasurer',
+      image: '/images/mwachilwa.png',
+    },
+    {
+      id: 3,
+      name: 'Mr. Fredrick Wasonga',
+      role: 'Honorary Secretary',
+      image: '/images/wasonga.png',
+    },
+    {
+      id: 4,
+      name: 'Mr. Moses Obondo',
+      role: 'Finance Chairman',
+      image: '/images/moses.png',
+    },
+    {
+      id: 5,
+      name: 'Eng. Kenneth Njue',
+      role: 'Procerument Chairman',
+      image: '/images/njue.png',
+    },
+    {
+      id: 6,
+      name: 'Margaret Maina',
+      role: 'Mothers Union Chairlady',
+      image: '/images/maina.png',
+    },
+    {
+      id: 7,
+      name: 'Allan Odongo',
+      role: 'Youth Chairman',
+      image: '/images/allan.png',
+    },
+    {
+      id: 8,
+      name: 'Naomi Warui',
+      role: 'Health & Environment Chairperson',
+      image: '/images/warui.png',
+    },
+    {
+      id: 9,
+      name: 'Mr. Silvernus Muchilwa',
+      role: 'Property & Investment Chair',
+      image: '/images/muchilwa.png',
+    },
+    {
+      id: 10,
+      name: 'William Keah',
+      role: 'Evangelism Coordinator',
+      image: '/images/keah.png',
+    },
+    {
+      id: 11,
+      name: 'Benard Righa',
+      role: 'K.A.M.A. Chairman',
+      image: '/images/benard.png',
+    },
+    {
+      id: 12,
+      name: 'Elizabeth Mbogho',
+      role: 'Boys Brigade & Girls Brigade Chairman',
+      image: '/images/mbogho.png',
+    },
+    {
+      id: 13,
+      name: 'Lydia Mwavita',
+      role: 'Education Representative',
+      image: '/images/lydia.png',
+    },
+    {
+      id: 14,
+      name: 'Betty Wasonga',
+      role: 'Worship Representative',
+      image: '/images/betty.png',
+    },
+    {
+      id: 15,
+      name: 'Paul Mbugua',
+      role: 'Council Member',
+      image: '/images/paul.png',
     }
   ];
 
@@ -93,7 +188,22 @@ const About = () => {
   ];
 
   const [activeTab, setActiveTab] = useState('our-story');
+  const [showPccLeaders, setShowPccLeaders] = useState(false);
   const location = useLocation();
+  
+  // Handle PCC leaders modal close
+  const handleClosePccLeaders = () => {
+    setShowPccLeaders(false);
+    // Restore body scroll when modal is closed
+    document.body.style.overflow = 'auto';
+  };
+  
+  // Handle PCC leaders modal open
+  const handleOpenPccLeaders = () => {
+    setShowPccLeaders(true);
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+  };
 
   // Sync active tab with URL
   useEffect(() => {
@@ -139,18 +249,20 @@ const About = () => {
   const navigate = useNavigate();
 
   const TabButton = ({ id, label, icon: Icon }) => {
-    const getPath = (tabId) => {
-      switch(tabId) {
-        case 'our-beliefs': return '/about/beliefs';
-        case 'leadership': return '/about/leadership';
-        case 'our-journey': return '/about/journey';
-        default: return '/about';
-      }
+    const handleTabChange = (tabId) => {
+      setActiveTab(tabId);
+      // Update URL without page reload
+      let path = '/about';
+      if (tabId === 'our-beliefs') path = '/about/beliefs';
+      else if (tabId === 'leadership') path = '/about/leadership';
+      else if (tabId === 'our-journey') path = '/about/journey';
+      
+      window.history.pushState({}, '', path);
     };
 
     return (
       <Link
-        to={getPath(id)}
+        to={handleTabChange(id)}
         className={`tab-button ${activeTab === id ? 'active' : ''}`}
         role="tab"
         aria-selected={activeTab === id}
@@ -325,7 +437,7 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               </Link>
             </div>
             <div className="statement-image">
-              <img src="images/bible-study.jpg" alt="Bible Study" />
+              <img src="/images/stjude.jpg" alt="Bible Study" />
             </div>
           </div>
         </div>
@@ -362,8 +474,27 @@ In Christ, we live by faith, walk in power and shine His light to the world.
           <div className="leadership-grid">
             {leadershipTeam.map(member => (
               <div key={member.id} className="leader-card">
-                <div className="leader-image">
-                  <img src={member.image} alt={member.name} />
+                <div className="leader-image" style={member.id === 2 ? { 
+                  position: 'relative', 
+                  overflow: 'hidden', 
+                  height: '250px',
+                  backgroundColor: '#f8f9fa'
+                } : {}}>
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    style={member.id === 2 ? {
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      objectPosition: 'center',
+                      display: 'block'
+                    } : {}}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/images/placeholder-user.jpg';
+                    }}
+                  />
                   <div className="leader-overlay">
                     <div className="social-links">
                       <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
@@ -381,6 +512,141 @@ In Christ, we live by faith, walk in power and shine His light to the world.
             ))}
           </div>
           
+          {/* Parish Staff Section */}
+          <div className="parish-staff">
+            <h3>Parish Staff</h3>
+            <p>
+              Our dedicated parish staff work tirelessly to ensure the smooth operation of our church ministries 
+              and provide support to our congregation. They are committed to serving with excellence and love.
+            </p>
+            
+            <div className="staff-grid">
+              <div className="staff-card">
+                <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
+                  <img 
+                    src="/images/vicar.jpeg" 
+                    alt="Rev. Canon Richard Otieno"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center 30%',
+                      display: 'block'
+                    }}
+                  />
+                </div>
+                <div className="staff-details">
+                  <h4>Rev. Canon Richard Otieno</h4>
+                  <span className="staff-role">Parish Vicar</span>
+                  <p className="staff-bio">
+                    Provides spiritual leadership, conducts worship services, and offers pastoral care to the congregation.
+                    Leads the church in its mission and vision, and provides guidance on spiritual matters.
+                  </p>
+                  <div className="staff-social">
+                    <a href="mailto:vicar@ackstjude.org" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                    <a href="tel:+254700000000" aria-label="Phone"><i className="fas fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="staff-card">
+                <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
+                  <img 
+                    src="/images/diana.jpeg" 
+                    alt="Ms. Diana Dawa"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      backgroundColor: '#f8f9fa',
+                      objectPosition: 'center',
+                      display: 'block'
+                    }}
+                  />
+                </div>
+                <div className="staff-details">
+                  <h4>Ms. Diana Dawa</h4>
+                  <span className="staff-role">Ofiice Administrator</span>
+                  <p className="staff-bio">
+                    Oversees parish administration, manages records and communication, coordinates office operations and ensures smooth daily functioning of the church.
+                  </p>
+                  <div className="staff-social">
+                    <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="staff-card">
+                <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
+                  <img 
+                    src="/images/verger.jpeg" 
+                    alt="Mr. Ronald Katana - Verger/Driver"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      backgroundColor: '#f8f9fa',
+                      objectPosition: 'center',
+                      display: 'block'
+                    }}
+                  />
+                </div>
+                <div className="staff-details">
+                  <h4>Mr. Ronald Katana</h4>
+                  <span className="staff-role">Verger / Driver</span>
+                  <p className="staff-bio">
+                   Assists in preparing the church for services and events, supports clergy during worship, ensures cleanliness and order and provides reliable transport for parish activities.
+                  </p>
+                  <div className="staff-social">
+                    <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="staff-card">
+                <div className="staff-image">
+                  <img 
+                    src="/images/staff-placeholder.jpg" 
+                    alt="Assistant Office Administrator/Music Trainer"
+                  />
+                </div>
+                <div className="staff-details">
+                  <h4>Mr. Nick Lewa</h4>
+                  <span className="staff-role">Assistant Office Administrator / Music Trainer</span>
+                  <p className="staff-bio">
+                    Assists with office administration, coordinates music programs, trains choir members and supports the music ministry. Ensures smooth operation of the church office and enhances worship through music.
+                  </p>
+                  <div className="staff-social">
+                    <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="staff-card">
+                <div className="staff-image">
+                  <img 
+                    src="/images/staff-placeholder.jpg" 
+                    alt="Evangelist"
+                  />
+                </div>
+                <div className="staff-details">
+                  <h4>Ev. Rophus Ngala</h4>
+                  <span className="staff-role">Evangelist</span>
+                  <p className="staff-bio">
+                    Leads evangelism efforts, conducts outreach programs, and provides spiritual guidance. Spreads the Gospel, nurtures new believers, and supports the spiritual growth of the congregation through teaching and discipleship.
+                  </p>
+                  <div className="staff-social">
+                    <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="elders-deacons">
             <h3>Church Council & Elders</h3>
             <p>
@@ -388,9 +654,22 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               leadership, guidance, and care for our congregation. They work alongside our pastoral staff 
               to ensure the spiritual health and growth of our church family.
             </p>
-            <Link to="/leadership" className="btn btn-outline">
+            <button 
+              onClick={handleOpenPccLeaders}
+              className="btn btn-outline"
+              aria-expanded={showPccLeaders}
+              aria-controls="pcc-leaders-section"
+            >
               Meet the Full Team <FaArrowRight />
-            </Link>
+            </button>
+            
+            {/* PCC Leaders Modal */}
+            {showPccLeaders && (
+              <PccLeaders 
+                leaders={pccLeaders}
+                onClose={handleClosePccLeaders}
+              />
+            )}
           </div>
         </div>
           </div>
