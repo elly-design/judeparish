@@ -274,15 +274,24 @@ const Ministries = () => {
       <section className="ministries-section">
         <div className="container">
           <motion.div 
-            className="section-header"
+            className="section-header text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ delay: 0.2 }}
           >
-            <h2>Our Ministries</h2>
-            <p className="section-subtitle">Find your place to serve and grow in faith</p>
-            <div className="divider"></div>
+            <div style={{
+              display: 'block',
+              color: '#1a4d8f',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              margin: '0 auto 0.5rem',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              position: 'relative',
+              padding: 0
+            }}>Our Ministries</div>
+            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Find your place to serve and grow in faith</h2>
           </motion.div>
 
           {filteredMinistries.length === 0 ? (
@@ -415,15 +424,24 @@ const Ministries = () => {
       <section className="why-join">
         <div className="container">
           <motion.div 
-            className="section-header"
+            className="section-header text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ delay: 0.2 }}
           >
-            <h2>Why Join a Ministry?</h2>
-            <p className="section-subtitle">Grow in faith and make a difference</p>
-            <div className="divider"></div>
+            <div style={{
+              display: 'block',
+              color: '#1a4d8f',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              margin: '0 auto 0.5rem',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              position: 'relative',
+              padding: 0
+            }}>Why Join a Ministry?</div>
+            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Grow in faith and make a difference</h2>
           </motion.div>
           
           <motion.div 

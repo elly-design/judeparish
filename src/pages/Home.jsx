@@ -730,29 +730,20 @@ const Home = () => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6 }}
           >
-            <span className="section-subtitle" style={{
-              display: 'inline-block',
-              color: '#2563eb',
-              fontSize: '1rem',
-              fontWeight: '600',
+            <div className="section-header" style={{ textAlign: 'center' }}>
+            <div style={{
+              display: 'block',
+              color: '#1a4d8f',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              margin: '0 auto 0.5rem',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              marginBottom: '1rem'
-            }}>Our Foundation</span>
-            <h2 className="section-title" style={{
-              fontSize: '2.25rem',
-              fontWeight: '800',
-              color: '#1e293b',
-              marginBottom: '1.5rem',
-              lineHeight: '1.2'
-            }}>Our Beliefs</h2>
-            <div className="divider" style={{
-              width: '80px',
-              height: '4px',
-              backgroundColor: '#2563eb',
-              margin: '0 auto 2rem',
-              borderRadius: '2px'
-            }}></div>
+              letterSpacing: '3px',
+              position: 'relative',
+              padding: 0
+            }}>Our Foundation</div>
+            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Our Beliefs</h2>
+            </div>
           </motion.div>
 
           <div className="beliefs-grid" style={{
@@ -1280,8 +1271,18 @@ const Home = () => {
       <section className="quick-links section-padding bg-light">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-subtitle">How to Connect</span>
-            <h2 className="section-title">Get Involved</h2>
+            <div style={{
+              display: 'block',
+              color: '#1a4d8f',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              margin: '0 auto 0.5rem',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              position: 'relative',
+              padding: 0
+            }}>How to Connect</div>
+            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Get Involved</h2>
             <p className="section-description">Discover ways to grow in faith and serve our community</p>
           </div>
           
@@ -1325,8 +1326,18 @@ const Home = () => {
       <section className="upcoming-events section-padding">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-subtitle">Join Us</span>
-            <h2 className="section-title">Upcoming Events</h2>
+            <div style={{
+              display: 'block',
+              color: '#1a4d8f',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              margin: '0 auto 0.5rem',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              position: 'relative',
+              padding: 0
+            }}>Join Us</div>
+            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Upcoming Events</h2>
             <p className="section-description">Be part of our growing community through these upcoming gatherings</p>
           </div>
           

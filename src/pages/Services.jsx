@@ -39,31 +39,48 @@ const Services = () => {
     {
       day: 'Sunday',
       services: [
-        { name: 'Early Morning Service', time: '7:00 AM - 8:30 AM' },
-        { name: 'Main Service', time: '9:00 AM - 11:30 AM' },
-        { name: 'Evening Service', time: '4:00 PM - 6:00 PM' }
+        { name: 'Early Morning Service', time: '6.00am-7.30am' },
+        { name: 'Second Service', time: '8.00am-9.30am' },
+        { name: 'Youth Service', time: '10.00am-11.00am' },
+        { name: 'Main service', time: '11.00am-12.30pm' }
+      ]
+    },
+    {
+      day: 'Monday',
+      services: [
+        { name: 'Prayers', time: '5.30pm-6.30pm' }
+      ]
+    },
+    {
+      day: 'Tuesday',
+      services: [
+        { name: 'Home Based Fellowships', time: '5.00pm - 6.30pm' }
       ]
     },
     {
       day: 'Wednesday',
       services: [
-        { name: 'Bible Study', time: '5:30 PM - 7:00 PM' },
-        { name: 'Prayer Meeting', time: '7:00 PM - 8:00 PM' }
+        { name: 'Bible Study', time: '5:30 PM - 7:00 PM' }
+      ]
+    },
+    {
+      day: 'Thursday',
+      services: [
+        { name: 'choir practice', time: '5.00pm-6.30pm' },
+        { name: 'Praise and Worship', time: '5.30pm-6.00pm' }
       ]
     },
     {
       day: 'Friday',
       services: [
-        { name: 'Youth Service', time: '5:00 PM - 7:00 PM' },
-        { name: 'Overnight Prayer', time: '10:00 PM - 6:00 AM', note: 'First Friday of the month' }
+        { name: 'Thanksgiving Service', time: '5.30pm-6.30pm' }
       ]
     },
     {
       day: 'Saturday',
       services: [
-        { name: 'Choir Practice', time: '10:00 AM - 12:00 PM' },
-        { name: 'Men\'s Fellowship', time: '8:00 AM - 10:00 AM', note: '1st Saturday' },
-        { name: 'Women\'s Fellowship', time: '9:00 AM - 11:00 AM', note: '2nd Saturday' }
+        { name: 'Praise & worship', time: '5.30pm - 6.30pm' },
+        { name: 'Choir practice', time: '5.30pm- 7.00pm' }
       ]
     }
   ];
