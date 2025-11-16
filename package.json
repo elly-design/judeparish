@@ -10,11 +10,13 @@
     "preview": "vite preview",
     "server": "node scripts/copy-fonts.js",
     "server-dev": "nodemon scripts/copy-fonts.js",
+    "contact-server": "node scripts/server.js",
+    "contact-server-dev": "nodemon scripts/server.js",
     "postinstall": "node scripts/copy-slick-fonts.js",
     "copy-fonts": "node scripts/copy-fonts.js",
     "predev": "npm run copy-fonts",
     "prebuild": "npm run copy-fonts",
-    "push-to-github": "node -e \"const { execSync } = require('child_process'); try { console.log('Adding changes...'); execSync('git add .', { encoding: 'utf8' }); console.log('Committing changes...'); execSync('git commit -m \"Make membership modal mobile-responsive\"', { encoding: 'utf8' }); console.log('Pushing to GitHub...'); execSync('git push origin main', { encoding: 'utf8' }); console.log('Successfully pushed changes to GitHub!'); } catch (error) { console.error('Error:', error.message); if (error.message.includes('nothing to commit')) console.log('No changes to commit.'); else if (error.message.includes('Authentication failed')) console.log('Please check your GitHub credentials.'); else console.log('Please check the error above and try again.'); }\""
+    "push-to-github": "node -e 'const { execSync } = require(\"child_process\"); try { console.log(\"Adding changes...\"); execSync(\"git add .\", { encoding: \"utf8\" }); console.log(\"Committing changes...\"); execSync(\"git commit -m \\\"Add contact form backend with email notifications\\\"\", { encoding: \"utf8\" }); console.log(\"Pushing to GitHub...\"); execSync(\"git push origin main\", { encoding: \"utf8\" }); console.log(\"Successfully pushed changes to GitHub!\"); } catch (error) { console.error(\"Error:\", error.message); if (error.message.includes(\"nothing to commit\")) console.log(\"No changes to commit.\"); else if (error.message.includes(\"Authentication failed\")) console.log(\"Please check your GitHub credentials.\"); else console.log(\"Please check the error above and try again.\"); }'"
   },
   "dependencies": {
     "fontfaceobserver": "^2.3.0",
