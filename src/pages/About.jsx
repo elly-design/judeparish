@@ -15,28 +15,24 @@ const About = () => {
       name: 'Rev. Canon Richard Otieno',
       role: 'Vicar',
       image: '/images/richard.jpg',
-      bio: 'Rev. Canon Richard has been serving as our Vicar. He is passionate about preaching the Gospel and shepherding the flock.'
     },
     {
       id: 2,
       name: 'Rev. Canon George Kuza',
       role: 'Attached Clergy',
       image: '/images/george kuza.jpg',
-      bio: 'Rev. Canon George Kuza has been a dedicated attached clergy of our church for decades, serving in various leadership capacities.'
     },
     {
       id: 3,
       name: 'Eng. Javan Wanga',
       role: 'Vicar\'s Warden',
       image: '/images/javan.png',
-      bio: 'Eng. Javan Wanga serves as the Vicar’s Warden, supporting the vicar in parish administration, coordinating church activities, and ensuring smooth communication between the clergy and congregation.'
     },
     {
       id: 4,
       name: 'Mr. Felton Mwatore',
       role: 'People\'s  Warden',
       image: '/images/mwatore.png',
-      bio: 'Mr. Felton Mwatore serves as the People’s Warden, assisting in the administration of parish affairs, supporting church leadership and fostering unity among congregants'
     }
   ];
 
@@ -731,10 +727,6 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-details">
                   <h4>Rev. Canon Richard Otieno</h4>
                   <span className="staff-role">Parish Vicar</span>
-                  <p className="staff-bio">
-                    Provides spiritual leadership, conducts worship services, and offers pastoral care to the congregation.
-                    Leads the church in its mission and vision, and provides guidance on spiritual matters.
-                  </p>
                   <div className="staff-social">
                     <a href="mailto:vicar@ackstjude.org" aria-label="Email"><i className="fas fa-envelope"></i></a>
                     <a href="tel:+254700000000" aria-label="Phone"><i className="fas fa-phone"></i></a>
@@ -760,9 +752,6 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-details">
                   <h4>Ms. Diana Dawa</h4>
                   <span className="staff-role">Ofiice Administrator</span>
-                  <p className="staff-bio">
-                    Oversees parish administration, manages records and communication, coordinates office operations and ensures smooth daily functioning of the church.
-                  </p>
                   <div className="staff-social">
                     <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
                     <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
@@ -788,9 +777,6 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-details">
                   <h4>Mr. Ronald Katana</h4>
                   <span className="staff-role">Verger / Driver</span>
-                  <p className="staff-bio">
-                   Assists in preparing the church for services and events, supports clergy during worship, ensures cleanliness and order and provides reliable transport for parish activities.
-                  </p>
                   <div className="staff-social">
                     <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
                     <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
@@ -808,9 +794,6 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-details">
                   <h4>Mr. Nick Lewa</h4>
                   <span className="staff-role">Assistant Office Administrator / Music Trainer</span>
-                  <p className="staff-bio">
-                    Assists with office administration, coordinates music programs, trains choir members and supports the music ministry. Ensures smooth operation of the church office and enhances worship through music.
-                  </p>
                   <div className="staff-social">
                     <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
                     <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
@@ -828,9 +811,6 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-details">
                   <h4>Ev. Rophus Ngala</h4>
                   <span className="staff-role">Evangelist</span>
-                  <p className="staff-bio">
-                    Leads evangelism efforts, conducts outreach programs, and provides spiritual guidance. Spreads the Gospel, nurtures new believers, and supports the spiritual growth of the congregation through teaching and discipleship.
-                  </p>
                   <div className="staff-social">
                     <a href="#" aria-label="Email"><i className="fas fa-envelope"></i></a>
                     <a href="#" aria-label="Phone"><i className="fas fa-phone"></i></a>
@@ -843,8 +823,8 @@ In Christ, we live by faith, walk in power and shine His light to the world.
           <div className="elders-deacons">
             <h3>Church Council & Elders</h3>
             <p>
-              Our church is also served by a dedicated team of elders and deacons who provide spiritual 
-              leadership, guidance, and care for our congregation. They work alongside our pastoral staff 
+              Our church is also served by a dedicated team of elders who provide spiritual 
+              leadership, guidance and care for our congregation. They work alongside our pastoral staff 
               to ensure the spiritual health and growth of our church family.
             </p>
             <button 
