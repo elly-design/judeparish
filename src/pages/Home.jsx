@@ -2019,7 +2019,9 @@ const Home = () => {
               fontWeight: '700',
               position: 'relative',
               zIndex: 2
-            }}>Experience God's Love With Us</h2>
+            }}>
+              "When God speaks, hope is restored, faith is ignited and destinies are rewritten by His power."
+            </h2>
             <p className="cta-text" style={{
               fontSize: '1.1rem',
               lineHeight: '1.6',
@@ -2027,38 +2029,11 @@ const Home = () => {
               padding: '0 0.5rem',
               maxWidth: '600px',
               position: 'relative',
-              zIndex: 2
+              zIndex: 2,
+              fontStyle: 'italic'
             }}>
-              No matter where you are on your spiritual journey, you are welcome here. 
-              Join us this Sunday and experience the joy of worshiping God in community.
+              "The grass withers, the flower fades, but the word of our God stands forever." Isaiah 40:8
             </p>
-            <div className="cta-buttons" style={mobileStyles.ctaButtons}>
-              <Link 
-                to="/services" 
-                className="btn btn-light btn-lg"
-                style={{ 
-                  ...mobileStyles.button, 
-                  ...mobileStyles.primaryButton,
-                  backgroundColor: '#ffffff',
-                  color: '#1a4d8f'
-                }}
-              >
-                Service Times
-              </Link>
-              <Link 
-                to="/new-here" 
-                className="btn btn-outline-light btn-lg"
-                style={{ 
-                  ...mobileStyles.button, 
-                  ...mobileStyles.secondaryButton,
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: '#ffffff',
-                  border: '2px solid rgba(255, 255, 255, 0.8)'
-                }}
-              >
-                I'm New Here
-              </Link>
-            </div>
           </div>
         </div>
       </section>
