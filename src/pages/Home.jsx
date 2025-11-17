@@ -1203,7 +1203,7 @@ const Home = () => {
 
                 {/* Mothers Image */}
                 <motion.img
-                  src="/images/mothers.jpeg"
+                  src="/images/mu.jpeg"
                   alt="Church mothers group"
                   style={{
                     position: 'absolute',

@@ -5,7 +5,7 @@ import Typewriter from '../components/Typewriter';
 import './Give.css';
 
 const Give = () => {
-  const [activeTab, setActiveTab] = useState('mpesa'); // 'mpesa', 'bank', and 'development' tabs
+  const [activeTab, setActiveTab] = useState('mpesa'); // 'mpesa', 'bank' and 'development' tabs
 
   return (
     <div className="give-page">
