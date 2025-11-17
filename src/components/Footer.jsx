@@ -555,6 +555,17 @@ const Footer = () => {
                        onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
                       ackstjudemiritinichuch@gmail.com
                     </a>
+                    <br />
+                    <a href="mailto:revotieno4christ@gmail.com" style={{
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      textDecoration: 'none',
+                      fontSize: '0.75rem',
+                      wordBreak: 'break-word',
+                      transition: 'color 0.2s ease'
+                    }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
+                       onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
+                      revotieno4christ@gmail.com
+                    </a>
                   </p>
                 </div>
               </li>
