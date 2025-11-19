@@ -1824,7 +1824,7 @@ const Home = () => {
                   color: '#1e293b',
                   fontSize: '0.95rem'
                 }}>
-                  Schedule a Meeting with Rev. Richard
+                  Schedule a Meeting with Rev. Canon Richard Otieno
                 </span>
               </div>
               
