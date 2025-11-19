@@ -341,6 +341,23 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
           &times;
         </button>
         
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '1.5rem'
+        }}>
+          <img 
+            src="/cropped-LOGOmsa.png" 
+            alt="Church Logo" 
+            style={{
+              maxWidth: '80px',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+          />
+        </div>
+        
         <h2 style={{
           fontSize: '2rem',
           fontWeight: '800',
@@ -366,7 +383,7 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
         <p style={{
           textAlign: 'center',
           color: '#475569',
-          marginBottom: '2rem',
+          marginBottom: '1.5rem',
           fontSize: '1.1rem'
         }}>
           Request an appointment with Rev. Richard

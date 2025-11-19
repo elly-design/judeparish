@@ -108,7 +108,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
     lastName: '',
     email: '',
     phone: '',
-    address: '',
+    placeofresidence: '',
     membershipType: 'regular',
     previousChurch: '',
     baptismStatus: 'not-baptized',
@@ -148,11 +148,11 @@ const SimpleSlider = ({ onBeliefsClick }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: `${membershipForm.firstName} ${membershipForm.lastName}`,
+          name: membershipForm.names,
           email: membershipForm.email,
           phone: membershipForm.phone,
           subject: 'Membership Application - ACK St. Jude Miritini',
-          message: `Address: ${membershipForm.address}\nMembership Type: ${membershipForm.membershipType}\nPrevious Church: ${membershipForm.previousChurch}\nBaptism Status: ${membershipForm.baptismStatus}\nInterests: ${membershipForm.interests.join(', ')}`
+          message: `Place of Residence: ${membershipForm.placeofresidence}\nMembership Type: ${membershipForm.membershipType}\nPrevious Church: ${membershipForm.previousChurch}\nBaptism Status: ${membershipForm.baptismStatus}\nInterests: ${membershipForm.interests.join(', ')}`
         })
       });
       
@@ -161,11 +161,10 @@ const SimpleSlider = ({ onBeliefsClick }) => {
       if (data.success) {
         // Reset form on successful submission
         setMembershipForm({
-          firstName: '',
-          lastName: '',
+          names: '',
           email: '',
           phone: '',
-          address: '',
+          placeofresidence: '',
           membershipType: 'regular',
           previousChurch: '',
           baptismStatus: 'not-baptized',
@@ -557,7 +556,7 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
         bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
-        alignItems: isMobile ? 'flex-end' : 'center',
+        alignItems: isMobile ? 'flex-start' : 'center',
         justifyContent: 'center',
         zIndex: 1000,
         padding: isMobile ? '1rem' : '1rem'
@@ -571,10 +570,13 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
           borderRadius: isMobile ? '8px' : '12px',
           maxWidth: '600px',
           width: '100%',
-          maxHeight: isMobile ? '95vh' : '90vh',
-          overflow: 'auto',
+          height: isMobile ? '70vh' : 'auto',
+          maxHeight: isMobile ? '70vh' : '85vh',
+          overflowY: 'auto',
+          overflowX: 'hidden',
           position: 'relative',
           transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
+          marginTop: isMobile ? '1rem' : '0',
           transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
           opacity: isOpen ? 1 : 0,
           padding: isMobile ? '0' : '0'
@@ -631,61 +633,31 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
         </p>
         
         <form onSubmit={onSubmit} style={{ 
-          padding: isMobile ? '0 1rem 1rem 1rem' : '0 2rem 2rem 2rem'
+          padding: isMobile ? '0 1rem 2rem 1rem' : '0 2rem 2rem 2rem'
         }}>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-            gap: isMobile ? '0.75rem' : '1rem', 
-            marginBottom: '1rem'
-          }}>
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '600' }}>
-                First Name *
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={onChange}
-                required
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '2px solid #e5e7eb',
-                  borderRadius: '8px',
-                  fontSize: '1rem',
-                  ':focus': {
-                    outline: 'none',
-                    borderColor: '#2563eb'
-                  }
-                }}
-              />
-            </div>
-            
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '600' }}>
-                Last Name *
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={onChange}
-                required
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  border: '2px solid #e5e7eb',
-                  borderRadius: '8px',
-                  fontSize: '1rem',
-                  ':focus': {
-                    outline: 'none',
-                    borderColor: '#2563eb'
-                  }
-                }}
-              />
-            </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '600' }}>
+              Names *
+            </label>
+            <input
+              type="text"
+              name="names"
+              value={formData.names || ''}
+              onChange={onChange}
+              required
+              placeholder="Enter your full name"
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e5e7eb',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                ':focus': {
+                  outline: 'none',
+                  borderColor: '#2563eb'
+                }
+              }}
+            />
           </div>
           
           <div style={{ marginBottom: '1rem' }}>
@@ -738,11 +710,11 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
           
           <div style={{ marginBottom: '1rem' }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '600' }}>
-              Address
+              Place of Residence
             </label>
             <textarea
-              name="address"
-              value={formData.address}
+              name="placeofresidence"
+              value={formData.placeofresidence}
               onChange={onChange}
               rows={3}
               style={{
@@ -880,9 +852,15 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
           <div style={{
             display: 'flex',
             gap: isMobile ? '0.75rem' : '1rem',
-            justifyContent: 'flex-end',
+            justifyContent: 'center',
             flexDirection: isMobile ? 'column' : 'row',
-            marginBottom: isMobile ? '1rem' : '0'
+            marginTop: '1rem',
+            marginBottom: '0',
+            position: 'sticky',
+            bottom: '0',
+            backgroundColor: 'white',
+            padding: '1rem 0',
+            zIndex: 10
           }}>
             <button 
               type="button"

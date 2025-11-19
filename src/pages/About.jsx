@@ -713,8 +713,8 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               <div className="staff-card">
                 <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
                   <img 
-                    src="/images/vicar.jpeg" 
-                    alt="Rev. Canon Richard Otieno"
+                    src="/images/canonrev.jpg" 
+                    alt=""
                     style={{
                       width: '100%',
                       height: '100%',
@@ -738,7 +738,7 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
                   <img 
                     src="/images/diana.jpeg" 
-                    alt="Ms. Diana Dawa"
+                    alt=""
                     style={{
                       width: '100%',
                       height: '100%',
@@ -763,7 +763,7 @@ In Christ, we live by faith, walk in power and shine His light to the world.
                 <div className="staff-image" style={{ position: 'relative', overflow: 'hidden', height: '350px' }}>
                   <img 
                     src="/images/verger.jpeg" 
-                    alt="Mr. Ronald Katana - Verger/Driver"
+                    alt=""
                     style={{
                       width: '100%',
                       height: '100%',
@@ -787,8 +787,8 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               <div className="staff-card">
                 <div className="staff-image">
                   <img 
-                    src="/images/staff-placeholder.jpg" 
-                    alt="Assistant Office Administrator/Music Trainer"
+                    src="/images/nick.png" 
+                    alt=""
                   />
                 </div>
                 <div className="staff-details">
