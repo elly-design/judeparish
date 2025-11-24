@@ -1802,7 +1802,7 @@ const Home = () => {
                   paddingLeft: '0',
                   textIndent: '0'
                 }}>
-                  This is a place where hope is renewed, lives are transformed and every person is valued. I warmly invite you to worship with us, join a home fellowship cell group and be part of what God is doing in our community.
+                  This is a place where hope is renewed, lives are transformed and every person is valued. I warmly invite you to worship with us, join a home fellowship zones group and be part of what God is doing in our community.
                 </p>
                 
                 <p style={{

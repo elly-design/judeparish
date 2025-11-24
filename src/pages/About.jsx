@@ -787,7 +787,7 @@ In Christ, we live by faith, walk in power and shine His light to the world.
               <div className="staff-card">
                 <div className="staff-image">
                   <img 
-                    src="/images/nick.png" 
+                    src="/images/lewa.png" 
                     alt=""
                   />
                 </div>
