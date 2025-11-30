@@ -26,20 +26,9 @@ const Chatbot = () => {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = '254745002529';
-    const displayName = 'Support Team ACK St. Jude Miritini Parish';
     const message = 'Hello, I have a question about ACK St. Jude Miritini Parish';
-    
-    // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
-    // Create a temporary link to open
-    const link = document.createElement('a');
-    link.href = whatsappUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   const botResponses = {
