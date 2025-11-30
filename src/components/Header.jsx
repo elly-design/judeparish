@@ -18,6 +18,8 @@ import './Header.css';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [ministriesDropdownOpen, setMinistriesDropdownOpen] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
 
@@ -36,7 +38,6 @@ const Header = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 992) {
-        // Reset mobile menu state when resizing to desktop
         setIsMobileMenuOpen(false);
         setAboutDropdownOpen(false);
         setMinistriesDropdownOpen(false);
@@ -44,8 +45,7 @@ const Header = () => {
         document.body.style.overflow = 'auto';
       }
     };
-    
-    // Close menu when clicking outside
+
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         setIsMobileMenuOpen(false);
@@ -53,24 +53,12 @@ const Header = () => {
         document.body.style.overflow = 'auto';
       }
     };
-    
+
     document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    };
-
-    // Close menus on route change
-    setIsMobileMenuOpen(false);
-    setAboutDropdownOpen(false);
-    setMinistriesDropdownOpen(false);
-    document.body.classList.remove('menu-open');
-    document.body.style.overflow = 'auto';
-
-    // Add resize event listener
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup
-    return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [location]);
@@ -79,7 +67,6 @@ const Header = () => {
     const newState = !isMobileMenuOpen;
     setIsMobileMenuOpen(newState);
     
-    // Toggle body class and overflow
     if (newState) {
       document.body.classList.add('menu-open');
       document.body.style.overflow = 'hidden';
@@ -89,9 +76,28 @@ const Header = () => {
     }
   };
 
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const toggleDropdown = (e, type) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (type === 'about') {
+      const newState = !aboutDropdownOpen;
+      setAboutDropdownOpen(newState);
+      setMinistriesDropdownOpen(false);
+    } else if (type === 'ministries') {
+      const newState = !ministriesDropdownOpen;
+      setMinistriesDropdownOpen(newState);
+      setAboutDropdownOpen(false);
+    }
+  };
 
-  const [ministriesDropdownOpen, setMinistriesDropdownOpen] = useState(false);
+  const closeAllMenus = () => {
+    setAboutDropdownOpen(false);
+    setMinistriesDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = 'auto';
+  };
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -99,7 +105,7 @@ const Header = () => {
       label: 'About Us',
       subItems: [
         { path: '/about', label: 'Our Story', icon: <FaBookOpen className="submenu-icon" /> },
-        { path: '/about/beliefs', label: 'What We Believe', icon: <FaCross className="submenu-icon" /> },
+        { path: '/about/beliefs', label: 'What We Believe', icon: <FaTimes className="submenu-icon" /> },
         { path: '/about/leadership', label: 'Leadership Team', icon: <FaUsers className="submenu-icon" /> },
         { path: '/about/journey', label: 'Our Journey', icon: <FaRoad className="submenu-icon" /> }
       ]
@@ -118,62 +124,8 @@ const Header = () => {
     { path: '/services', label: 'Services' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/contact', label: 'Contact' },
+    { path: '/give', label: 'Give Online' },
   ];
-
-  const toggleDropdown = (e, type) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    if (type === 'about') {
-      const newState = !aboutDropdownOpen;
-      setAboutDropdownOpen(newState);
-      setMinistriesDropdownOpen(false);
-      
-      // Scroll to show the dropdown on mobile
-      if (window.innerWidth <= 992 && newState) {
-        const dropdownButton = e.currentTarget.closest('.nav-item');
-        setTimeout(() => {
-          dropdownButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          
-          // Ensure the dropdown content is visible
-          const dropdownContent = dropdownButton.querySelector('.dropdown-menu');
-          if (dropdownContent) {
-            dropdownContent.style.display = 'block';
-            dropdownContent.style.visibility = 'visible';
-            dropdownContent.style.opacity = '1';
-          }
-        }, 50);
-      }
-    } else if (type === 'ministries') {
-      const newState = !ministriesDropdownOpen;
-      setMinistriesDropdownOpen(newState);
-      setAboutDropdownOpen(false);
-      
-      // Scroll to show the dropdown on mobile
-      if (window.innerWidth <= 992 && newState) {
-        const dropdownButton = e.currentTarget.closest('.nav-item');
-        setTimeout(() => {
-          dropdownButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          
-          // Ensure the dropdown content is visible
-          const dropdownContent = dropdownButton.querySelector('.dropdown-menu');
-          if (dropdownContent) {
-            dropdownContent.style.display = 'block';
-            dropdownContent.style.visibility = 'visible';
-            dropdownContent.style.opacity = '1';
-          }
-        }, 50);
-      }
-    }
-  };
-
-  const closeAllMenus = () => {
-    setAboutDropdownOpen(false);
-    setMinistriesDropdownOpen(false);
-    setIsMobileMenuOpen(false);
-    document.body.classList.remove('menu-open');
-    document.body.style.overflow = 'auto';
-  };
 
   return (
     <header 
@@ -181,39 +133,30 @@ const Header = () => {
       className={`header ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}
       role="banner"
     >
-      <div className="container">
+      <div className="header-container">
         <div className="header-content">
-          <Link to="/" className="logo" onClick={() => {
-            setIsMobileMenuOpen(false);
-            document.body.classList.remove('menu-open');
-            document.body.style.overflow = 'auto';
-          }}>
-            <img src="/images/logo.png" alt="Logo" className="logo-image" />
-            <div className="logo-content">
-              <h1>St. Jude</h1>
-              <span>Catholic Church - Miritini</span>
+          <Link to="/" className="logo" onClick={closeAllMenus}>
+            <img 
+              src="/images/cropped-LOGOmsa.png" 
+              alt="ACK St. Jude Miritini Parish" 
+              className="logo-image" 
+            />
+            <div className="logo-text">
+              <h1>ACK St. Jude Miritini Parish</h1>
             </div>
           </Link>
 
-          <nav className="nav-container">
-            <button 
-              className="mobile-menu-toggle" 
-              onClick={toggleMobileMenu}
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="main-navigation"
-            >
-              <span className="hamburger"></span>
-            </button>
+          <button 
+            className="mobile-menu-toggle" 
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
 
-            <div className="mobile-menu-backdrop" onClick={toggleMobileMenu}></div>
-
-            <ul 
-              id="main-navigation"
-              className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}
-              role="navigation"
-              aria-label="Main navigation"
-            >
+          <nav className={`nav-container ${isMobileMenuOpen ? 'show' : ''}`}>
+            <ul className="nav-links">
               {navLinks.map((link, index) => (
                 <li 
                   key={link.path || `nav-${index}`}
@@ -245,7 +188,6 @@ const Header = () => {
                               to={subItem.path}
                               className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
                               onClick={closeAllMenus}
-                              aria-current={location.pathname === subItem.path ? 'page' : undefined}
                             >
                               {subItem.icon}
                               <span>{subItem.label}</span>
@@ -259,53 +201,25 @@ const Header = () => {
                       to={link.path} 
                       className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
                       onClick={closeAllMenus}
-                      aria-current={location.pathname === link.path ? 'page' : undefined}
                     >
                       {link.label}
                     </Link>
                   )}
                 </li>
               ))}
-              <li>
+              <li className="nav-cta">
                 <Link 
                   to="/contact" 
                   className="contact-btn"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    document.body.classList.remove('menu-open');
-                    document.body.style.overflow = 'auto';
-                  }}
-                  style={{
-                    display: 'inline-block',
-                    marginTop: '1rem',
-                    padding: '0.75rem 1.5rem',
-                    backgroundColor: 'var(--color-primary)',
-                    color: 'white',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontWeight: '600',
-                    transition: 'all 0.2s ease'
-                  }}
+                  onClick={closeAllMenus}
                 >
                   Contact Us
                 </Link>
               </li>
             </ul>
           </nav>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          <div className="cta-buttons">
-            <Link to="/give" className="btn btn-primary" onClick={closeAllMenus}>
-              Give Online
-            </Link>
-          </div>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };

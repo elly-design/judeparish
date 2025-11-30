@@ -348,7 +348,7 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
           marginBottom: '1.5rem'
         }}>
           <img 
-            src="/cropped-LOGOmsa.png" 
+            src="/images/cropped-LOGOmsa.png" 
             alt="Church Logo" 
             style={{
               maxWidth: '80px',
