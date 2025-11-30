@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
+import { FaRobot, FaTimes, FaPaperPlane, FaWhatsapp } from 'react-icons/fa';
 import './Chatbot.css';
 
 const Chatbot = () => {
@@ -20,8 +20,16 @@ const Chatbot = () => {
     "Contact Info",
     "Ministries",
     "Prayer Request",
-    "Giving"
+    "Giving",
+    "Chat on WhatsApp"
   ];
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '+254745002529';
+    const message = 'Hello, I have a question about ACK St. Jude Miritini Parish';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   const botResponses = {
     greeting: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events, or contact information.",
@@ -86,6 +94,10 @@ const Chatbot = () => {
       else if (userMessageLower.includes('bible') || userMessageLower.includes('verse') || userMessageLower.includes('scripture')) {
         response = botResponses.bibleVerse;
       }
+      else if (userMessageLower.includes('whatsapp') || userMessageLower.includes('chat with us') || userMessageLower.includes('talk to someone')) {
+        handleWhatsAppClick();
+        response = "I've opened WhatsApp for you. You can chat with our support team directly. If WhatsApp didn't open, you can reach us at +254 745 002 529";
+      }
       else if (userMessageLower.includes('hello') || userMessageLower.includes('hi') || userMessageLower.includes('hey')) {
         response = botResponses.greeting;
       }
@@ -123,9 +135,18 @@ const Chatbot = () => {
               />
               <h3>ACK St. Jude Miritini</h3>
             </div>
+            <div className="chat-header-actions">
+              <button 
+                className="whatsapp-button" 
+                onClick={handleWhatsAppClick}
+                title="Chat with us on WhatsApp"
+              >
+                <FaWhatsapp className="whatsapp-icon" />
+              </button>
             <button className="close-btn" onClick={toggleChat}>
               <FaTimes />
             </button>
+            </div>
           </div>
           <div className="messages-container">
             {messages.map((message, index) => (

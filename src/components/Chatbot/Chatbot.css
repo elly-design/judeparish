@@ -50,18 +50,29 @@
   align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  position: relative;
 }
 
 .close-btn {
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-  padding: 5px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  padding: 0;
+  margin: 0;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg) scale(1.1);
 }
 
 .messages-container {
@@ -179,6 +190,38 @@ button[disabled] .spinner {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1;
+}
+
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whatsapp-button {
+  background: #25D366;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  margin: 0;
+}
+
+.whatsapp-button:hover {
+  background: #128C7E;
+  transform: scale(1.1);
+}
+
+.whatsapp-icon {
+  color: white;
+  font-size: 18px;
 }
 
 .header-logo {
