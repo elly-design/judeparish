@@ -24,6 +24,7 @@ import './Footer.css';
 // Logo is in the public folder, so we can reference it directly
 const churchLogo = '/images/cropped-LOGOmsa.png';
 import { Link as ScrollLink } from 'react-scroll';
+import Chatbot from './Chatbot/Chatbot';
 import './Footer.css';
 
 const Footer = () => {
@@ -72,11 +73,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer" style={{ 
-      overflow: 'visible',
-      position: 'relative',
-      zIndex: 1000
-    }}>
+    <>
+      <Chatbot />
+      <footer className="footer" style={{ 
+        overflow: 'visible',
+        position: 'relative',
+        zIndex: 1000
+      }}>
       <div className="footer-content" style={{ 
         width: '100%',
         maxWidth: '100%',
@@ -604,7 +607,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 
