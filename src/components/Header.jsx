@@ -5,7 +5,6 @@ import {
   FaTimes,
   FaMapMarkerAlt,
   FaBookOpen,
-  FaCross,
   FaUsers,
   FaRoad,
   FaChurch,
