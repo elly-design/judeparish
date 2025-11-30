@@ -22,7 +22,7 @@ import {
 import './Footer.css';
 
 // Logo is in the public folder, so we can reference it directly
-const churchLogo = '/cropped-LOGOmsa.png';
+const churchLogo = '/images/cropped-LOGOmsa.png';
 import { Link as ScrollLink } from 'react-scroll';
 import './Footer.css';
 
