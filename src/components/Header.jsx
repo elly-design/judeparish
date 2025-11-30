@@ -44,6 +44,20 @@ const Header = () => {
         document.body.style.overflow = 'auto';
       }
     };
+    
+    // Close menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+        document.body.classList.remove('menu-open');
+        document.body.style.overflow = 'auto';
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
 
     // Close menus on route change
     setIsMobileMenuOpen(false);
@@ -73,13 +87,6 @@ const Header = () => {
       document.body.classList.remove('menu-open');
       document.body.style.overflow = 'auto';
     }
-  };
-  
-  // Close menu when clicking on a link
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    document.body.classList.remove('menu-open');
-    document.body.style.overflow = 'auto';
   };
 
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -174,100 +181,117 @@ const Header = () => {
       className={`header ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}
       role="banner"
     >
-      {/* Mobile Menu Backdrop */}
-      <div 
-        className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'active' : ''}`}
-        onClick={toggleMobileMenu}
-        role="button"
-        aria-label="Close menu"
-        tabIndex={isMobileMenuOpen ? 0 : -1}
-        onKeyDown={(e) => e.key === 'Enter' && toggleMobileMenu()}
-      />
-      
-      <nav className="navbar">
-        <div className="container">
-          <Link to="/" className="logo" aria-label="Home" onClick={closeAllMenus}>
-            <img 
-              src="/cropped-LOGOmsa.png" 
-              alt="Church Logo" 
-              className="logo-image"
-            />
-            <div className="logo-text">
-              <h1>ACK St. Jude</h1>
-              <p>Miritini Parish</p>
+      <div className="container">
+        <div className="header-content">
+          <Link to="/" className="logo" onClick={() => {
+            setIsMobileMenuOpen(false);
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = 'auto';
+          }}>
+            <img src="/images/logo.png" alt="Logo" className="logo-image" />
+            <div className="logo-content">
+              <h1>St. Jude</h1>
+              <span>Catholic Church - Miritini</span>
             </div>
           </Link>
 
-          <button 
-            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`} 
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="main-navigation"
-          >
-            <div className="hamburger">
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </div>
-            <span className="sr-only">Menu</span>
-          </button>
+          <nav className="nav-container">
+            <button 
+              className="mobile-menu-toggle" 
+              onClick={toggleMobileMenu}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="main-navigation"
+            >
+              <span className="hamburger"></span>
+            </button>
 
-          <div 
-            id="main-navigation"
-            className={`nav-container ${isMobileMenuOpen ? 'mobile-visible' : ''}`}
-          >
-            <div className="nav-content">
-              <ul className="nav-links">
-                {navLinks.map((link, index) => (
-                  <li 
-                    key={link.path || `nav-${index}`}
-                    className={`nav-item ${link.subItems ? 'has-dropdown' : ''}`}
-                  >
-                    {link.subItems ? (
-                      <div className="dropdown-wrapper">
-                        <button 
-                          className={`nav-link ${link.subItems.some(item => item.path === location.pathname) ? 'active' : ''}`}
-                          onClick={(e) => toggleDropdown(e, link.label === 'About Us' ? 'about' : 'ministries')}
-                          onMouseEnter={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(true) : setMinistriesDropdownOpen(true))}
-                          aria-expanded={link.label === 'About Us' ? aboutDropdownOpen : ministriesDropdownOpen}
-                          aria-haspopup="true"
-                        >
-                          {link.label}
-                          <span className="dropdown-arrow">
-                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </span>
-                        </button>
-                        <ul 
-                          className={`dropdown-menu ${link.label === 'About Us' ? (aboutDropdownOpen ? 'open' : '') : (ministriesDropdownOpen ? 'open' : '')}`}
-                          onMouseLeave={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(false) : setMinistriesDropdownOpen(false))}
-                        >
-                          {link.subItems.map((subItem) => (
-                            <li key={subItem.path}>
-                              <Link
-                                to={subItem.path}
-                                className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
-                                onClick={closeAllMenus}
-                                aria-current={location.pathname === subItem.path ? 'page' : undefined}
-                              >
-                                {subItem.icon}
-                                <span>{subItem.label}</span>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <Link 
-                        to={link.path} 
-                        className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                        onClick={closeAllMenus}
-                        aria-current={location.pathname === link.path ? 'page' : undefined}
+            <div className="mobile-menu-backdrop" onClick={toggleMobileMenu}></div>
+
+            <ul 
+              id="main-navigation"
+              className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}
+              role="navigation"
+              aria-label="Main navigation"
+            >
+              {navLinks.map((link, index) => (
+                <li 
+                  key={link.path || `nav-${index}`}
+                  className={`nav-item ${link.subItems ? 'has-dropdown' : ''}`}
+                >
+                  {link.subItems ? (
+                    <div className="dropdown-wrapper">
+                      <button 
+                        className={`nav-link ${link.subItems.some(item => item.path === location.pathname) ? 'active' : ''}`}
+                        onClick={(e) => toggleDropdown(e, link.label === 'About Us' ? 'about' : 'ministries')}
+                        onMouseEnter={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(true) : setMinistriesDropdownOpen(true))}
+                        aria-expanded={link.label === 'About Us' ? aboutDropdownOpen : ministriesDropdownOpen}
+                        aria-haspopup="true"
                       >
                         {link.label}
-                      </Link>
+                        <span className="dropdown-arrow">
+                          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </button>
+                      <ul 
+                        className={`dropdown-menu ${link.label === 'About Us' ? (aboutDropdownOpen ? 'open' : '') : (ministriesDropdownOpen ? 'open' : '')}`}
+                        onMouseLeave={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(false) : setMinistriesDropdownOpen(false))}
+                      >
+                        {link.subItems.map((subItem) => (
+                          <li key={subItem.path}>
+                            <Link
+                              to={subItem.path}
+                              className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
+                              onClick={closeAllMenus}
+                              aria-current={location.pathname === subItem.path ? 'page' : undefined}
+                            >
+                              {subItem.icon}
+                              <span>{subItem.label}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <Link 
+                      to={link.path} 
+                      className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                      onClick={closeAllMenus}
+                      aria-current={location.pathname === link.path ? 'page' : undefined}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+              <li>
+                <Link 
+                  to="/contact" 
+                  className="contact-btn"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    document.body.classList.remove('menu-open');
+                    document.body.style.overflow = 'auto';
+                  }}
+                  style={{
+                    display: 'inline-block',
+                    marginTop: '1rem',
+                    padding: '0.75rem 1.5rem',
+                    backgroundColor: 'var(--color-primary)',
+                    color: 'white',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </nav>
                     )}
                   </li>
                 ))}
