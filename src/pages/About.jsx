@@ -500,13 +500,11 @@ const About = () => {
               color: '#1a4d8f',
               fontSize: '1.1rem',
               fontWeight: 600,
-              margin: '0 auto 0.5rem',
               textTransform: 'uppercase',
-              letterSpacing: '3px',
               position: 'relative',
               padding: 0
             }}>Our Story</div>
-            <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Welcome to ACK St. Jude</h2>
+            <h2 className="section-title"></h2>
           </div>
           
           <div className="welcome-content">
@@ -588,10 +586,10 @@ const About = () => {
               <h3>Our Statement of Faith</h3>
               <p>
                We believe in the one true God Father, Son and Holy Spirit  who loves, restores and transforms.
-Our faith is rooted in Jesus Christ who saves, heals, redeems and will return in glory.
-His Word is our truth, His Spirit is our strength and His Kingdom is our calling.
+               Our faith is rooted in Jesus Christ who saves, heals, redeems and will return in glory.
+               His Word is our truth, His Spirit is our strength and His Kingdom is our calling.
 
-In Christ, we live by faith, walk in power and shine His light to the world.
+               In Christ, we live by faith, walk in power and shine His light to the world.
               </p>
               <button 
                 onClick={handleOpenConstructionMission}
