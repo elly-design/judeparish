@@ -10,6 +10,7 @@ import Gallery from './pages/Gallery.jsx';
 import Contact from './pages/Contact.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import Chatbot from './components/Chatbot/Chatbot';
 
 // Import ministry pages
 import KAMA from './pages/ministries/KAMA';
@@ -25,6 +26,7 @@ function App() {
     <div className="app">
       <Header />
       <main>
+        <Chatbot />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />}>
