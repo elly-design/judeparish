@@ -25,10 +25,21 @@ const Chatbot = () => {
   ];
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = '+254745002529';
+    const phoneNumber = '254745002529';
+    const displayName = 'Support Team ACK St. Jude Miritini Parish';
     const message = 'Hello, I have a question about ACK St. Jude Miritini Parish';
+    
+    // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    
+    // Create a temporary link to open
+    const link = document.createElement('a');
+    link.href = whatsappUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const botResponses = {
@@ -96,7 +107,7 @@ const Chatbot = () => {
       }
       else if (userMessageLower.includes('whatsapp') || userMessageLower.includes('chat with us') || userMessageLower.includes('talk to someone')) {
         handleWhatsAppClick();
-        response = "I've opened WhatsApp for you. You can chat with our support team directly. If WhatsApp didn't open, you can reach us at +254 745 002 529";
+        response = "I've opened WhatsApp for you. You can chat with our support team directly. If WhatsApp didn't open, you can reach us at +254 745 002 529 (Support Team ACK St. Jude Miritini Parish)";
       }
       else if (userMessageLower.includes('hello') || userMessageLower.includes('hi') || userMessageLower.includes('hey')) {
         response = botResponses.greeting;

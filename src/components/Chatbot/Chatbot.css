@@ -6,6 +6,17 @@
   font-family: 'Arial', sans-serif;
 }
 
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0); 
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  50% { 
+    transform: translateY(-4px); 
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
 .chatbot-button {
   width: 60px;
   height: 60px;
@@ -17,13 +28,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  animation: float 5s ease-in-out infinite;
+  position: relative;
+  z-index: 1000;
 }
 
 .chatbot-button:hover {
   background-color: #3a5a8c;
-  transform: scale(1.1);
+  transform: scale(1.05) translateY(-2px);
+  animation: none;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .chatbot-icon {
@@ -303,7 +320,9 @@ button[disabled] .spinner {
 }
 
 .chat-window {
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.3s ease-out, float 6s ease-in-out infinite 0.3s;
+  transform-origin: bottom right;
+  will-change: transform;
 }
 
 /* Responsive design */
