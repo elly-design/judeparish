@@ -122,7 +122,6 @@ const Header = () => {
     },
     { path: '/services', label: 'Services' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/contact', label: 'Contact' },
     { path: '/give', label: 'Give Online' },
   ];
 
