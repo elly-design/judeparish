@@ -7,7 +7,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     { 
-      text: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events, or contact information.", 
+      text: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events or contact information.", 
       isUser: false 
     }
   ]);
@@ -32,7 +32,7 @@ const Chatbot = () => {
   };
 
   const botResponses = {
-    greeting: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events, or contact information.",
+    greeting: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events or contact information.",
     
     schedule: `📅 **Weekly Service Schedule**\n\n**Sunday Services**\n⛪ Early Morning Service: 6:00 AM – 7:30 AM\n⛪ Second Service: 8:00 AM – 9:30 AM\n👥 Youth Service: 10:00 AM – 11:00 AM\n🙏 Main Service: 11:00 AM – 12:30 PM\n\n**Monday**\n🙏 Prayers: 5:30 PM – 6:30 PM\n\n**Tuesday**\n🏠 Home-Based Fellowships: 5:00 PM – 6:30 PM\n\n**Wednesday**\n📖 Bible Study: 5:30 PM – 7:00 PM\n\n**Thursday**\n🎵 Choir Practice: 5:00 PM – 6:30 PM\n🎶 Praise & Worship: 5:30 PM – 6:00 PM\n\n**Friday**\n🙌 Thanksgiving Service: 5:30 PM – 6:30 PM\n\n**Saturday**\n🎶 Praise & Worship: 5:30 PM – 6:30 PM\n🎵 Choir Practice: 5:30 PM – 7:00 PM\n\nWould you like me to remind you of any particular day or service?`,
 
@@ -40,15 +40,15 @@ const Chatbot = () => {
 
     ministries: `**Ministries & Fellowships**\n\nACK St. Jude Miritini Parish hosts vibrant ministries including:\n\n• KAMA (Men's Fellowship)\n• Mother's Union\n• KAYO (Youth Ministry)\n• Children's Ministry\n• Choir\n• Praise & Worship Team\n\nWould you like more details about any of these ministries or their meeting schedules?`,
 
-    prayer: `**Prayer Requests** 🙏\n\nWe would be honored to pray with you. Please share your prayer request, and our church leadership will include it in our prayers.\n\nYou can also submit prayer requests during our services or contact our prayer team directly.`,
+    prayer: `**Prayer Requests** 🙏\n\nWe would be honored to pray with you. Please share your prayer request and our church leadership will include it in our prayers.\n\nYou can also submit prayer requests during our services or contact our prayer team directly.`,
 
     giving: `**Giving & Donations** 💝\n\nYour generous support helps our church continue its mission and ministries. Here are the ways you can give:\n\n1. **M-Pesa Paybill:** \n   • Business No: 123456\n   • Account: Donation\n\n2. **Bank Transfer:**\n   • Bank: [Bank Name]\n   • Account Name: ACK St. Jude Miritini\n   • Account Number: [Account Number]\n   • Branch: [Branch Name]\n\nThank you for your generosity and support!`,
 
-    pastoral: `**Pastoral Support** ✝️\n\nOur pastoral team is here to provide spiritual guidance, counseling, and support.\n\nFor pastoral care, please contact:\n📞 +254 745 002 529\n📧 revotieno4christ@gmail.com\n\nOffice hours: Monday-Friday, 8:00 AM - 5:00 PM`,
+    pastoral: `**Pastoral Support** ✝️\n\nOur pastoral team is here to provide spiritual guidance, counseling and support.\n\nFor pastoral care, please contact:\n📞 +254 745 002 529\n📧 revotieno4christ@gmail.com\n\nOffice hours: Monday-Friday, 8:00 AM - 5:00 PM`,
 
     bibleVerse: `**Bible Verse of the Day** 📖\n\n*"The Lord is my light and my salvation—whom shall I fear?"*\n– **Psalm 27:1**\n\nWould you like another scripture or have any questions about this verse?`,
 
-    default: "I'm here to help! You can ask about our services, ministries, events, or contact information. How may I assist you today?"
+    default: "I'm here to help! You can ask about our services, ministries, events or contact information. How may I assist you today?"
   };
 
   const toggleChat = () => {
@@ -183,7 +183,7 @@ const Chatbot = () => {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about services, ministries, or contact info..."
+              placeholder="Ask about services, ministries or contact info..."
               required
               disabled={isLoading}
             />

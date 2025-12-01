@@ -134,23 +134,23 @@ const About = () => {
   const coreValues = [
     {
       icon: <FaChurch />,
-      title: 'Biblical Teaching',
-      description: 'We are committed to the faithful teaching of God\'s Word as the foundation for all we do.'
+      title: 'Servant leadership',
+      description: 'Servant leaders strengthen the weak and empower those entrusted to their care, and also show compassion towards the disadvantaged and the lost like it is in the bible. By doing so leaders will earn respect from employees, worshippers and the community at large. Servant leadership improves innovative efforts; and individuals develop skills and can advance professionally in a supportive spiritual environment.'
     },
     {
       icon: <FaUsers />,
-      title: 'Community',
-      description: 'We believe in doing life together, supporting and encouraging one another in faith.'
+      title: ' Integrity',
+      description: 'We are committed to personal integrity and holiness by pursuing Christ-likeness in the ministry. We are committed to teaching and practicing sound Biblical doctrine, pursuing excellence and encouraging servant hood . We are committed to a culture of transparency and accountability to God, His Word, to one another and to the government.'
     },
     {
       icon: <FaHandsHelping />,
-      title: 'Service',
-      description: 'We are called to serve others with love, following the example of Jesus Christ.'
+      title: 'Transformation',
+      description: 'We are committed to facilitating deliberate discipleship and stewardship, encouraging servant leadership in all areas of ministry and advocating for sustained social action. We are called to preaching and teaching the word of God to the lost and to the lost. Our love for God and His calling shall be our driving force. The power and influence of the Holy Spirit is the key agent of transformation. We value, appreciate and recognize the diversity of gifts in the body of Christ.'
     },
     {
       icon: <FaCross />,
-      title: 'Worship',
-      description: 'We exist to glorify God through heartfelt worship in spirit and in truth.'
+      title: ' Innovations and creativity',
+      description: 'The world is moving from the Information Age to an Age of Creativity. Today, we have easy access to an abundance of information and technology including Artificial Intelligence AI that are useful tools in communication and ministry.'
     }
   ];
 

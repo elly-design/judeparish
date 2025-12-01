@@ -153,8 +153,7 @@ const Footer = () => {
               textAlign: 'center',
               padding: '0 10px'
             }}>
-              A vibrant community of believers dedicated to worship, fellowship 
-              and service in the Anglican tradition.
+             Proclaiming the risen Christ; establishing and strengthening the church on the mission frontier.
             </p>
             
             <div className="footer-social" style={{
