@@ -335,7 +335,7 @@ const Ministries = () => {
                       }}>
                         <img 
                           src={
-                            ministry.id === 'kama' ? "images/KAMA_LOGO.bmp" :
+                            ministry.id === 'kama' ? "images/men's association.jpeg" :
                             ministry.id === 'mothers-union' ? "images/union.jpeg" :
                             ministry.id === 'kayo' ? "images/KAYOLOGO.png" :
                             ministry.id === 'boys-brigade' ? "images/boysbrigade.jpg" :
