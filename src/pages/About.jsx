@@ -199,9 +199,6 @@ const About = () => {
     "We invite you to give with us.",
     "We invite you to build with us.",
     "Be part of this global mission.",
-    "Be part of God's unfolding story.",
-    "Be part of a sanctuary that will shine Christ to the world.",
-    "Your partnership matters. Your gift has impact. Your faith builds futures."
   ];
   
   // Handle modals
