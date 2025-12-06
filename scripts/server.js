@@ -113,9 +113,10 @@ app.post('/api/contact', async (req, res) => {
         We have received your request and our team will get back to you shortly.
       </p>
       
-      <div style="text-align: center; margin: 30px 0; padding: 20px 0; border-top: 1px solid #eee;">
-        <p style="margin: 0; font-weight: bold;">Support Team</p>
-        <p style="margin: 5px 0 0 0; color: #2c3e50;">ACK St. Jude Miritini Parish</p>
+      <div style="margin: 40px 0 20px 0; font-family: Arial, sans-serif; line-height: 1.6;">
+        <p style="margin: 30px 0 5px 0;">Yours sincerely,</p>
+        <p style="margin: 30px 0 5px 0; font-weight: bold;">Support Team</p>
+        <p style="margin: 5px 0; color: #333;">ACK St. Jude Miritini Parish</p>
         <p style="margin: 5px 0 0 0; color: #666;">Miritini, Mombasa, Kenya</p>
       </div>
       
