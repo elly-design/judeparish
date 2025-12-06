@@ -193,15 +193,21 @@ const Contact = () => {
                 
                 <div className="form-group">
                   <label htmlFor="subject">Subject *</label>
-                  <input
-                    type="text"
+                  <select
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    placeholder="What's this about?"
-                  />
+                    className="form-select"
+                  >
+                    <option value="">Select a subject...</option>
+                    <option value="I'm new here">I'm new here</option>
+                    <option value="Prayer Request">Prayer Request</option>
+                    <option value="Inquiry">Inquiry</option>
+                    <option value="Book Appointment with Rev. Canon Richard Otieno">Book Appointment with Rev. Canon Richard Otieno</option>
+                    <option value="Baptism">Baptism</option>
+                  </select>
                 </div>
                 
                 <div className="form-group">
