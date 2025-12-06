@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaChurch, FaCross, FaUsers, FaHandsHelping, FaQuoteLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
 import { IoMdTime } from 'react-icons/io';
 import { GiChurch } from 'react-icons/gi';
@@ -186,7 +186,108 @@ const About = () => {
   const [activeTab, setActiveTab] = useState('our-story');
   const [showPccLeaders, setShowPccLeaders] = useState(false);
   const [showConstructionMission, setShowConstructionMission] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const location = useLocation();
+  const scrollContainerRef = useRef(null);
+  const valueCardsRef = useRef([]);
+
+  // Handle scroll to center the active card
+  const scrollToCard = (index) => {
+    if (scrollContainerRef.current && valueCardsRef.current[index]) {
+      const container = scrollContainerRef.current;
+      const card = valueCardsRef.current[index];
+      const containerWidth = container.offsetWidth;
+      const cardWidth = card.offsetWidth;
+      const scrollPosition = card.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+      
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+      
+      setCurrentIndex(index);
+    }
+  };
+
+  // Handle touch/mouse events for swiping
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX || e.touches[0].pageX);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX || e.touches[0].pageX;
+    const walk = (x - startX) * 2; // Adjust sensitivity
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    // Find the nearest card and snap to it
+    const container = scrollContainerRef.current;
+    const containerCenter = container.scrollLeft + (container.offsetWidth / 2);
+    
+    let closestCard = null;
+    let minDistance = Infinity;
+    
+    valueCardsRef.current.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + (cardRect.width / 2) - container.getBoundingClientRect().left + container.scrollLeft;
+      const distance = Math.abs(cardCenter - containerCenter);
+      
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = index;
+      }
+    });
+    
+    if (closestCard !== null) {
+      scrollToCard(closestCard);
+    }
+  };
+
+  // Auto-scroll to next card
+  const nextCard = () => {
+    const nextIndex = (currentIndex + 1) % coreValues.length;
+    scrollToCard(nextIndex);
+  };
+
+  // Auto-scroll to previous card
+  const prevCard = () => {
+    const prevIndex = (currentIndex - 1 + coreValues.length) % coreValues.length;
+    scrollToCard(prevIndex);
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        nextCard();
+      } else if (e.key === 'ArrowLeft') {
+        prevCard();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentIndex]);
+
+  // Auto-advance cards every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextCard();
+    }, 5000);
+    
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   // Church construction mission content
   const constructionMissionContent = [
@@ -565,16 +666,68 @@ const About = () => {
             </p>
           </div>
           
-          <div className="values-grid">
-            {coreValues.map((value, index) => (
-              <div key={index} className="value-card">
-                <div className="value-icon">
-                  {value.icon}
-                </div>
-                <h3>{value.title}</h3>
-                <p>{value.description}</p>
+          <div className="values-carousel-container">
+            <button 
+              className="carousel-arrow prev" 
+              onClick={prevCard}
+              aria-label="Previous value"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            
+            <div 
+              className="values-carousel" 
+              ref={scrollContainerRef}
+              onMouseDown={handleDragStart}
+              onTouchStart={handleDragStart}
+              onMouseMove={handleDragMove}
+              onTouchMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+              onTouchEnd={handleDragEnd}
+              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            >
+              <div className="values-track">
+                {coreValues.map((value, index) => (
+                  <div 
+                    key={index}
+                    ref={el => valueCardsRef.current[index] = el}
+                    className={`value-card ${index === currentIndex ? 'active' : ''}`}
+                    onClick={() => scrollToCard(index)}
+                    aria-current={index === currentIndex ? 'true' : 'false'}
+                  >
+                    <div className="value-icon">
+                      {value.icon}
+                    </div>
+                    <h3>{value.title}</h3>
+                    <p>{value.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            <button 
+              className="carousel-arrow next" 
+              onClick={nextCard}
+              aria-label="Next value"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+            
+            <div className="carousel-dots">
+              {coreValues.map((_, index) => (
+                <button
+                  key={index}
+                  className={`dot ${index === currentIndex ? 'active' : ''}`}
+                  onClick={() => scrollToCard(index)}
+                  aria-label={`Go to value ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
           
           <div className="statement-of-faith">
