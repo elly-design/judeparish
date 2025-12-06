@@ -102,31 +102,29 @@ app.post('/api/contact', async (req, res) => {
 
     // Send confirmation email to user
     const userMailOptions = {
-      from: `"ACK St. Jude Miritini" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Thank you for contacting ACK St. Jude Miritini`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2c3e50;">Thank you for contacting us!</h2>
-          <p>We have received your message and will get back to you as soon as possible.</p>
-          
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Subject:</strong> ${subject}</p>
-            <p><strong>Your Message:</strong></p>
-            <div style="background-color: #fff; padding: 15px; border-radius: 4px; border-left: 4px solid #2c3e50; margin-top: 10px;">
-              <p style="white-space: pre-line;">${message}</p>
-            </div>
-          </div>
-          
-          <p>If you have any further questions, feel free to reply to this email.</p>
-          
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #7f8c8d;">
-            <p>This is an automated message. Please do not reply to this email.</p>
-            <p>Support Team<br>ACK St. Jude Miritini Parish<br>Miritini, Mombasa, Kenya</p>
-          </div>
-        </div>
-      `
-    };
+  from: `"ACK St. Jude Miritini" <${process.env.EMAIL_USER}>`,
+  to: email,
+  subject: `Thank you for contacting ACK St. Jude Miritini`,
+  html: `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #333; padding: 20px;">
+      <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">Thank You for Your Request</h2>
+      
+      <p style="margin: 30px 0; text-align: center; font-style: italic; color: #555;">
+        We have received your request and our team will get back to you shortly.
+      </p>
+      
+      <div style="text-align: center; margin: 30px 0; padding: 20px 0; border-top: 1px solid #eee;">
+        <p style="margin: 0; font-weight: bold;">Support Team</p>
+        <p style="margin: 5px 0 0 0; color: #2c3e50;">ACK St. Jude Miritini Parish</p>
+        <p style="margin: 5px 0 0 0; color: #666;">Miritini, Mombasa, Kenya</p>
+      </div>
+      
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #7f8c8d; text-align: center;">
+        <p style="margin: 0;">This is an automated message. Please do not reply to this email.</p>
+      </div>
+    </div>
+  `
+};
 
     // Send both emails in parallel
     await Promise.all([
