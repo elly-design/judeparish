@@ -1,0 +1,38 @@
+/* Slick Carousel font path fix */
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../../../node_modules/slick-carousel/slick/fonts/slick.eot');
+  src: url('../../../node_modules/slick-carousel/slick/fonts/slick.eot?#iefix') format('embedded-opentype'),
+       url('../../../node_modules/slick-carousel/slick/fonts/slick.woff') format('woff'),
+       url('../../../node_modules/slick-carousel/slick/fonts/slick.ttf') format('truetype'),
+       url('../../../node_modules/slick-carousel/slick/fonts/slick.svg#slick') format('svg');
+  font-display: swap;
+}
+
+/* Optional: Preload the font to prevent FOUT (Flash of Unstyled Text) */
+/* Uncomment if you want to preload the font */
+/*
+.link-preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.link-preload::before {
+  content: url('../../../node_modules/slick-carousel/slick/fonts/slick.woff');
+  display: none;
+}
+*/
+
+/* Ensure the slider arrows and dots use the correct font */
+.slick-prev:before,
+.slick-next:before,
+.slick-dots li button:before {
+  font-family: 'slick';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

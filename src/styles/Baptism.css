@@ -1,0 +1,276 @@
+/* Baptism Page Styles */
+.baptism-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem 1rem;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.baptism-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* Animation keyframes for background */
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+/* Animation keyframes for content */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.baptism-header {
+  text-align: center;
+  margin: -2rem -2rem 2rem -2rem;
+  padding: 5rem 2rem;
+  border-radius: 12px 12px 0 0;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+    url('/images/baptism.jpeg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  opacity: 0;
+  animation: fadeInZoom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  
+  /* Smooth scaling on mobile */
+  @media (max-width: 768px) {
+    animation: fadeInZoom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+    background-attachment: scroll;
+  }
+}
+
+/* Add animation to header content */
+.baptism-header > * {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Stagger animations for child elements */
+.baptism-header .pre-title {
+  animation-delay: 0.5s;
+}
+
+.baptism-header h1 {
+  animation-delay: 0.7s;
+}
+
+.pre-title {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f8f9fa;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  backdrop-filter: blur(4px);
+}
+
+.baptism-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 1rem 0;
+  color: #ffffff;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  padding: 0 1rem;
+  background: linear-gradient(90deg, rgba(26, 95, 122, 0.3), rgba(26, 95, 122, 0.6), rgba(26, 95, 122, 0.3));
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.baptism-content {
+  padding: 0 1.5rem;
+}
+
+.baptism-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 3rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.baptism-key-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.key-point {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-point:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.key-point h3 {
+  color: #1a5f7a;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.key-point p {
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.baptism-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  border: 2px solid transparent;
+}
+
+.cta-button.primary {
+  background-color: #1a5f7a;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background-color: #144d63;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: #1a5f7a;
+  border-color: #1a5f7a;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(26, 95, 122, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .baptism-header {
+    min-height: 350px;
+    padding: 4rem 1.5rem;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .baptism-container {
+    padding: 1rem;
+  }
+  
+  .baptism-header {
+    padding: 3rem 1rem;
+    min-height: 300px;
+    background-attachment: scroll;
+  }
+  
+  .baptism-header h1 {
+    font-size: 2.2rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    color: #f8f9fa;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .pre-title {
+    font-size: 1rem;
+    padding: 0.4rem 1.2rem;
+    color: #f8f9fa;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .baptism-content {
+    padding: 0 0.5rem;
+  }
+  
+  .baptism-key-points {
+    grid-template-columns: 1fr;
+  }
+  
+  .baptism-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+}

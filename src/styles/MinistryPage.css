@@ -1,0 +1,513 @@
+/* Ministry Page Layout */
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: brightness(0.9) contrast(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1) contrast(1.15);
+  }
+}
+
+.ministry-page {
+  padding-bottom: 4rem;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  margin: 1.5rem 0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+/* Hero Section */
+/* Hero Section with Smooth Animation */
+.ministry-hero {
+  --animation-duration: 20s;
+  --zoom-scale: 1.03;
+  
+  position: relative;
+  padding: 12rem 0 10rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 4rem;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  background-image: var(--hero-bg-image, none);
+  background-color: #f8f9fa;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+  overflow: hidden;
+  
+  /* Image Quality Enhancement */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Animation */
+  animation: fadeInZoom var(--animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  
+  /* Smooth out the animation */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.ministry-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.3) 30%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 1;
+  backdrop-filter: blur(0.5px) brightness(1.05) contrast(1.1);
+  -webkit-backdrop-filter: blur(0.5px) brightness(1.05) contrast(1.1);
+}
+
+.ministry-hero .container {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ministry-hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ministry-hero .full-name {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 1rem 0 0.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+.ministry-hero p {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 1.5rem auto 0;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  padding: 0 1rem;
+}
+
+.ministry-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
+}
+
+.ministry-description:hover {
+  background: rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+}
+
+.ministry-description p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.ministry-description p::first-line {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific styles for KAMA page */
+.ministry-page[data-ministry="kama"] .ministry-hero {
+  background-image: url('images/bible-scripture.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.ministry-page[data-ministry="kama"] .ministry-hero .overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.ministry-page[data-ministry="kama"] .ministry-hero h1 {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ministry-page[data-ministry="kama"] .ministry-hero p {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
+}
+
+/* Main Content Layout */
+.ministry-content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+/* Sidebar */
+.ministry-sidebar {
+  position: relative;
+}
+
+.sidebar-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.sidebar-card h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--light-gray);
+  font-size: 1.25rem;
+}
+
+.detail-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.detail-icon {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+  min-width: 1.5rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--dark-gray);
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-actions .btn {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Gallery Preview */
+.gallery-preview .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #f5f7fa;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.view-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.view-more:hover {
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+
+/* Main Content */
+.ministry-main h2 {
+  color: var(--primary-color);
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.ministry-main h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.ministry-main p {
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Activities List */
+.activities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.activities-list li {
+  padding: 0.75rem 0 0.75rem 2rem;
+  position: relative;
+  border-bottom: 1px solid var(--light-gray);
+  color: var(--text-color);
+}
+
+.activities-list li:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 0.7rem;
+}
+
+/* Events */
+.event-list {
+  margin-top: 2rem;
+}
+
+.event-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.event-date {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.event-date .day {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.event-date .month {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.event-details h3 {
+  margin: 0 0 0.5rem;
+  color: var(--dark-color);
+  font-size: 1.25rem;
+}
+
+.event-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.event-meta svg {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .ministry-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .ministry-sidebar {
+    order: -1;
+  }
+  
+  .sidebar-card {
+    position: static;
+  }
+  
+  .ministry-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ministry-hero {
+    padding: 6rem 0 4rem;
+  }
+  
+  .ministry-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .ministry-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .event-card {
+    flex-direction: column;
+  }
+  
+  .event-date {
+    align-self: flex-start;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ministry-main > * {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.ministry-main > *:nth-child(1) { animation-delay: 0.1s; }
+.ministry-main > *:nth-child(2) { animation-delay: 0.2s; }
+.ministry-main > *:nth-child(3) { animation-delay: 0.3s; }
+.ministry-main > *:nth-child(4) { animation-delay: 0.4s; }

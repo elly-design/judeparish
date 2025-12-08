@@ -1,0 +1,16 @@
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  background-color: currentColor;
+  animation: blink 1s step-end infinite;
+  vertical-align: baseline;
+  height: 1em;
+  position: relative;
+  top: 0.1em;
+}

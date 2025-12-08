@@ -1,0 +1,69 @@
+/* Custom Slick Carousel font fix */
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+  src: url('slick/fonts/slick.eot');
+  src: 
+    url('slick/fonts/slick.eot?#iefix') format('embedded-opentype'),
+    url('slick/fonts/slick.woff') format('woff'),
+    url('slick/fonts/slick.ttf') format('truetype'),
+    url('slick/fonts/slick.svg#slick') format('svg');
+  font-display: swap;
+}
+
+/* Ensure the slider arrows use the correct font */
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick' !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+/* Fix for font loading flicker */
+.slick-prev,
+.slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.slick-prev:before {
+  content: '←';
+}
+
+.slick-next:before {
+  content: '→';
+}
+
+/* Ensure proper display of the slider arrows */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  opacity: 1;
+}

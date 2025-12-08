@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1a365d" />
+    <meta name="description" content="Ack St. Faith Anglican Church - Transforming Lives in Christ" />
+    <title>Ack St. Faith Anglican Church</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+    
+    <!-- Preconnect to external domains with resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    
+    <!-- Critical font preload -->
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Non-critical font loading -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Preload Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /></noscript>
+    
+    <!-- Preload slick fonts if using slick carousel -->
+    <link rel="preload" href="%PUBLIC_URL%/fonts/slick.woff" as="font" type="font/woff" crossorigin="anonymous" />
+    
+    <!-- Critical CSS for font display -->
+    <style>
+      /* System font stack as fallback */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      /* Apply custom fonts when loaded */
+      .fonts-loaded body {
+        --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      /* Font face definitions with font-display: swap */
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: local('Roboto Light'), local('Roboto-Light'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-300.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-300.woff') format('woff');
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Roboto'), local('Roboto-Regular'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-regular.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-regular.woff') format('woff');
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: local('Roboto Medium'), local('Roboto-Medium'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-500.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-500.woff') format('woff');
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Roboto Bold'), local('Roboto-Bold'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-700.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/roboto/roboto-v30-latin-700.woff') format('woff');
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Font Loading State Handler -->
+    <script>
+      // Add fonts-loading class to show system fonts first
+      document.documentElement.classList.add('fonts-loading');
+      
+      // Check if Font Loading API is supported
+      if ('fonts' in document) {
+        // Load both Roboto and Montserrat fonts
+        Promise.all([
+          document.fonts.load('1em Roboto'),
+          document.fonts.load('1em Montserrat')
+        ]).then(function() {
+          // Fonts are loaded, update the class
+          document.documentElement.classList.add('fonts-loaded');
+          document.documentElement.classList.remove('fonts-loading');
+        }).catch(function(error) {
+          // If there's an error, still show the content with system fonts
+          console.warn('Font loading failed:', error);
+          document.documentElement.classList.add('fonts-loaded');
+          document.documentElement.classList.remove('fonts-loading');
+        });
+      } else {
+        // Fallback for browsers that don't support Font Loading API
+        document.documentElement.classList.add('fonts-loaded');
+        document.documentElement.classList.remove('fonts-loading');
+      }
+      
+      // Fallback in case the above doesn't work
+      setTimeout(function() {
+        document.documentElement.classList.remove('font-loading');
+        document.documentElement.classList.add('font-loaded');
+      }, 3000);
+    </script>
+  </body>
+</html>
