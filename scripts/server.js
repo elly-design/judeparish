@@ -115,7 +115,7 @@ app.post('/api/contact', async (req, res) => {
       
       <div style="margin: 40px 0 20px 0; font-family: Arial, sans-serif; line-height: 1.6;">
         <p style="margin: 30px 0 5px 0;">Yours sincerely,</p>
-        <p style="margin: 30px 0 5px 0; font-weight: bold;">Support Team</p>
+        <p style="margin: 30px 0 5px 0; font-weight: bold;">Vicar</p>
         <p style="margin: 5px 0; color: #333;">ACK St. Jude Miritini Parish</p>
         <p style="margin: 5px 0 0 0; color: #666;">Miritini, Mombasa, Kenya</p>
       </div>
