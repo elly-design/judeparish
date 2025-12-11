@@ -79,7 +79,7 @@ app.post('/api/contact', async (req, res) => {
       from: `"${name}" <${process.env.EMAIL_USER}>`,
       to: 'ellyman2021@gmail.com',
       replyTo: email,
-      subject: `[Contact Form] ${subject}`,
+      subject: `${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2c3e50;">New Contact Form Submission</h2>
