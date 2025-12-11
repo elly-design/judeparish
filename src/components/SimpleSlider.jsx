@@ -151,7 +151,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
           name: membershipForm.names,
           email: membershipForm.email,
           phone: membershipForm.phone,
-          subject: 'Membership Application - ACK St. Jude Miritini',
+          subject: 'I\'m new here',
           message: `Place of Residence: ${membershipForm.placeofresidence}\nMembership Type: ${membershipForm.membershipType}\nPrevious Church: ${membershipForm.previousChurch}\nBaptism Status: ${membershipForm.baptismStatus}\nInterests: ${membershipForm.interests.join(', ')}`
         })
       });
