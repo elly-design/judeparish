@@ -600,7 +600,7 @@ const Footer = () => {
               fontWeight: 400,
               lineHeight: '1.5'
             }}>
-              &copy; {currentYear} St. Jude Miritini Anglican Church. All Rights Reserved.
+              Copyright &copy;  St. Jude Miritini Anglican Church. All Rights Reserved.
             </p>
             {/* Credits section removed */}
           </div>
