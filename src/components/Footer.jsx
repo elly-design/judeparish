@@ -451,7 +451,7 @@ const Footer = () => {
                     lineHeight: '1.6',
                     color: 'rgba(255, 255, 255, 0.9)',
                     wordBreak: 'break-word'
-                  }}>Mombasa,Kenya</p>
+                  }}>Miritini, Kenya</p>
                   <p style={{
                     fontSize: '0.75rem',
                     margin: '0.2rem 0 0',
