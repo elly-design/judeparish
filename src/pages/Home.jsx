@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
 
+// Slides data
+const slides = [
+  {
+    quote: "In God's hands, shattered lives find healing, weary souls find strength and every dawn carries the promise of His glory.",
+    verse: "Those who hope in the Lord will renew their strength. Isaiah 40:31"
+  },
+  {
+    quote: "Every wilderness you survive becomes proof that God walks with you. And every storm that failed to drown you becomes evidence that grace fights harder than hell.",
+    verse: "When you pass through the waters, I will be with you.”  Isaiah 43:2"
+  },
+  {
+    quote: "Every pain surrendered to Christ becomes a seed. And in the soil of His mercy, even the deepest wounds bloom into testimonies that hell cannot silence.",
+    verse: "He heals the brokenhearted and binds up their wounds.”  Psalm 147:3"
+  }
+];
+
 // Animation variants
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -666,6 +682,16 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
 };
 
 const Home = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-rotate slides
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 8000);
+    
+    return () => clearInterval(timer);
+  }, [slides.length]);
   const [isBeliefsModalOpen, setIsBeliefsModalOpen] = useState(false);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [appointmentForm, setAppointmentForm] = useState({
@@ -868,8 +894,8 @@ const Home = () => {
     );
   });
 
-  // Track active slide state
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // Track active slide state for the hero slider
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const sliderRef = useRef(null);
 
   // Slider settings with proper accessibility
@@ -895,12 +921,12 @@ const Home = () => {
     edgeFriction: 0.35,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
-    beforeChange: (current, next) => setCurrentSlide(next),
+    beforeChange: (current, next) => setCurrentHeroSlide(next),
     afterChange: (current) => {
       // Focus for accessibility
-      const slides = document.querySelectorAll('.slick-slide');
-      if (slides[current]) {
-        slides[current].focus({ preventScroll: true });
+      const sliderSlides = document.querySelectorAll('.slick-slide');
+      if (sliderSlides[current]) {
+        sliderSlides[current].focus({ preventScroll: true });
       }
     },
     customPaging: (i) => (
@@ -2012,9 +2038,31 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="cta-section section-padding bg-primary text-white" style={mobileStyles.ctaSection}>
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="cta-content text-center" style={mobileStyles.ctaContent}>
+      <section className="cta-section section-padding bg-primary text-white" style={{ 
+        position: 'relative', 
+        minHeight: '500px', 
+        overflow: 'hidden',
+        padding: '3rem 1rem',
+        zIndex: 1
+      }}>
+        <div className="container" style={{ 
+          position: 'relative', 
+          zIndex: 2, 
+          maxWidth: '800px', 
+          padding: '2rem 1rem',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <div className="cta-content text-center" style={{
+            position: 'relative',
+            zIndex: 2,
+            width: '100%',
+            maxWidth: '100%',
+            margin: '0 auto',
+            padding: 0
+          }}>
             <div className="cta-icon" style={{
               width: '80px',
               height: '80px',
@@ -2024,33 +2072,96 @@ const Home = () => {
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: '50%',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              color: 'white'
             }}>
-              <FaCross />
+              <FaCross style={{ color: 'white' }} />
             </div>
-            <h2 className="cta-title" style={{
-              fontSize: '1.75rem',
-              margin: '0 auto 1.25rem',
-              padding: '0 0.5rem',
-              lineHeight: '1.3',
-              fontWeight: '700',
-              position: 'relative',
-              zIndex: 2
-            }}>
-              "In God's hands, shattered lives find healing, weary souls find strength and every dawn carries the promise of His glory."
-            </h2>
-            <p className="cta-text" style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.6',
-              margin: '0 auto 2rem',
-              padding: '0 0.5rem',
-              maxWidth: '600px',
-              position: 'relative',
-              zIndex: 2,
-              fontStyle: 'italic'
-            }}>
-              "Those who hope in the Lord will renew their strength.”  Isaiah 40:31
-            </p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              style={{ width: '100%', margin: '0 auto' }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  style={{
+                    padding: '2rem',
+                    background: 'rgba(0, 0, 0, 0.3)',
+                    borderRadius: '10px',
+                    margin: '0 10px',
+                    minHeight: '300px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <h2 className="cta-title" style={{
+                    fontSize: '1.75rem',
+                    margin: '0 auto 1.25rem',
+                    padding: '1rem',
+                    lineHeight: '1.4',
+                    fontWeight: '700',
+                    position: 'relative',
+                    zIndex: 2,
+                    color: 'white',
+                    textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
+                  }}>
+                    {slides[currentSlide].quote}
+                  </h2>
+                  <p className="cta-text" style={{
+                    fontSize: '1.2rem',
+                    lineHeight: '1.6',
+                    margin: '1rem auto 0',
+                    padding: '0.8rem 1.5rem',
+                    maxWidth: '600px',
+                    position: 'relative',
+                    zIndex: 2,
+                    fontStyle: 'italic',
+                    color: 'white',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    borderRadius: '5px',
+                    display: 'inline-block',
+                    borderLeft: '3px solid white',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                  }}>
+                    {slides[currentSlide].verse}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '1.5rem',
+                gap: '0.5rem'
+              }}>
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    style={{
+                      width: '12px',
+                      height: '12px',
+                      borderRadius: '50%',
+                      border: 'none',
+                      backgroundColor: currentSlide === index ? 'white' : 'rgba(255,255,255,0.3)',
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'all 0.3s ease'
+                    }}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
