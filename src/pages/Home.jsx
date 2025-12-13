@@ -2,6 +2,46 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import SimpleSlider from '../components/SimpleSlider';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import "../styles/slick-overrides.css";
+import "./Home.css";
+import '../styles/hero-buttons.css';
+
+// Icons
+import { 
+  FaHandsHelping, 
+  FaChurch, 
+  FaHandHoldingHeart, 
+  FaUsers, 
+  FaPrayingHands, 
+  FaBible, 
+  FaCross, 
+  FaPray, 
+  FaHandHoldingUsd, 
+  FaCalendarAlt, 
+  FaMapMarkerAlt, 
+  FaPhone, 
+  FaEnvelope, 
+  FaFacebook, 
+  FaTwitter, 
+  FaInstagram, 
+  FaYoutube, 
+  FaArrowRight, 
+  FaTimes, 
+  FaCheck, 
+  FaSpinner, 
+  FaInfoCircle, 
+  FaExclamationTriangle,
+  FaBook,
+  FaClock,
+  FaUser,
+  FaImages,
+  FaHeadphones,
+  FaDownload,
+  FaHeart
+} from 'react-icons/fa';
 
 // Slides data
 const slides = [
@@ -49,32 +89,6 @@ const fadeIn = (direction, type, delay, duration) => ({
     }
   }
 });
-import SimpleSlider from '../components/SimpleSlider';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import "../styles/slick-overrides.css";
-import "./Home.css";
-import { 
-  FaArrowRight, 
-  FaBook, 
-  FaCalendarAlt, 
-  FaClock,
-  FaUser,
-  FaMapMarkerAlt, 
-  FaUsers,
-  FaChurch,
-  FaImages,
-  FaPhone,
-  FaPrayingHands,
-  FaHandsHelping,
-  FaHeadphones,
-  FaDownload,
-  FaCross,
-  FaHeart
-} from 'react-icons/fa';
-import { FaBible } from 'react-icons/fa';
-import './Home.css';
-import '../styles/hero-buttons.css';
 
 // Beliefs Modal Component
 const BeliefsModal = ({ isOpen, onClose }) => {
@@ -1677,7 +1691,10 @@ const Home = () => {
 
       {/* Vicar's Welcome - Redesigned */}
       <section className="vicar-welcome" style={{
-        background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url("images/sunset.jpeg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
         position: 'relative',
         overflow: 'hidden',
         padding: '6rem 0',
@@ -1795,7 +1812,6 @@ const Home = () => {
                 }}
                 viewport={{ once: true }}
               >
-                Welcome to St. Jude Miritini Anglican Church
               </motion.h2>
               
               <div style={{
@@ -1805,13 +1821,16 @@ const Home = () => {
                 <p style={{
                   fontSize: '1.1rem',
                   lineHeight: '1.8',
-                  color: '#475569',
+                  color: '#1e3a8a',
                   marginBottom: '1.5rem',
                   position: 'relative',
                   zIndex: 1,
-                  paddingLeft: '1.5rem',
-                  borderLeft: '2px solid #e2e8f0',
-                  fontStyle: 'italic'
+                  padding: '1.5rem',
+                  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  fontStyle: 'italic',
+                  borderLeft: '4px solid #1a4d8f'
                 }}>
                   "Beloved in Christ, welcome to our church family. Here, we are committed to growing in faith, walking in love and standing together in unity."
                 </p>
@@ -1820,27 +1839,35 @@ const Home = () => {
               <div style={{
                 marginBottom: '2rem'
               }}>
-                <p style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: '#475569',
+                <div style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '8px',
+                  padding: '1.5rem',
                   marginBottom: '1.5rem',
-                  paddingLeft: '0',
-                  textIndent: '0'
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                 }}>
-                  This is a place where hope is renewed, lives are transformed and every person is valued. I warmly invite you to worship with us, join a home fellowship zones group and be part of what God is doing in our community.
-                </p>
-                
-                <p style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                  color: '#475569',
-                  marginBottom: '1.5rem',
-                  paddingLeft: '0',
-                  textIndent: '0'
-                }}>
-                  Through our shared prayers, service, tithes, thanksgiving and support for church projects, we build a stronger, caring and generous church that reflects Christ's heart. May you find belonging, purpose and encouragement as we journey together in God's love.
-                </p>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.8',
+                    color: '#1e3a8a',
+                    marginBottom: '1rem',
+                    paddingLeft: '0',
+                    textIndent: '0'
+                  }}>
+                    This is a place where hope is renewed, lives are transformed and every person is valued. I warmly invite you to worship with us, join a home fellowship zones group and be part of what God is doing in our community.
+                  </p>
+                  
+                  <p style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.8',
+                    color: '#1e3a8a',
+                    marginBottom: '0',
+                    paddingLeft: '0',
+                    textIndent: '0'
+                  }}>
+                    Through our shared prayers, service, tithes, thanksgiving and support for church projects, we build a stronger, caring and generous church that reflects Christ's heart. May you find belonging, purpose and encouragement as we journey together in God's love.
+                  </p>
+                </div>
               </div>
               
               <div 
@@ -1851,20 +1878,21 @@ const Home = () => {
                   gap: '1rem',
                   marginTop: '1rem',
                   padding: '0.75rem 1.5rem',
-                  backgroundColor: '#f1f5f9',
-                  borderRadius: '50px',
+                  backgroundColor: '#1a4d8f',
+                  borderRadius: '8px',
                   transition: 'all 0.3s ease',
-                  border: '1px solid #e2e8f0',
+                  border: 'none',
                   cursor: 'pointer',
                   ':hover': {
-                    backgroundColor: '#e2e8f0',
-                    transform: 'translateY(-2px)'
+                    backgroundColor: '#0f3a6a',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                   }
                 }}>
-                <FaHandsHelping style={{ color: '#2563eb' }} />
+                <FaHandsHelping style={{ color: 'white' }} />
                 <span style={{
                   fontWeight: '600',
-                  color: '#1e293b',
+                  color: 'white',
                   fontSize: '0.95rem'
                 }}>
                   Schedule a Meeting with Rev. Canon Richard Otieno
@@ -1873,22 +1901,25 @@ const Home = () => {
               
               <div style={{
                 marginTop: '2.5rem',
-                paddingTop: '2rem',
+                padding: '1.5rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '8px',
+                display: 'inline-block',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
               }}>
-                <div style={{
-                  marginTop: '1rem'
-                }}>
+                <div>
                   <div style={{
-                    color: '#2563eb',
-                    fontWeight: '600',
-                    fontSize: '1rem',
+                    color: '#1a4d8f',
+                    fontWeight: '700',
+                    fontSize: '1.1rem',
                     marginBottom: '0.25rem'
                   }}>
-                    Rev. Canon Richard Otieno
+                  Rev. Canon Richard Otieno
                   </div>
                   <div style={{
-                    color: '#64748b',
-                    fontSize: '0.9rem'
+                    color: '#4b5563',
+                    fontSize: '0.95rem',
+                    fontWeight: '500'
                   }}>
                     Vicar
                   </div>
