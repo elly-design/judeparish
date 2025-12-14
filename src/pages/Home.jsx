@@ -1832,7 +1832,7 @@ const Home = () => {
                   fontStyle: 'italic',
                   borderLeft: '4px solid #1a4d8f'
                 }}>
-                  "Beloved in Christ, welcome to our church family. Here, we are committed to growing in faith, walking in love and standing together in unity."
+                  "Grace and peace to you in Jesus Christ."
                 </p>
               </div>
               
@@ -1854,7 +1854,7 @@ const Home = () => {
                     paddingLeft: '0',
                     textIndent: '0'
                   }}>
-                    This is a place where hope is renewed, lives are transformed and every person is valued. I warmly invite you to worship with us, join a home fellowship zones group and be part of what God is doing in our community.
+                    You have not come here by chance. This is a house of prayer, truth, and transformation. Here, lives are shaped by the Word, faith is strengthened and hope is restored through Christ. Our calling is clear: to raise believers who live the Gospel with conviction, compassion and purpose.
                   </p>
                   
                   <p style={{
@@ -1865,7 +1865,9 @@ const Home = () => {
                     paddingLeft: '0',
                     textIndent: '0'
                   }}>
-                    Through our shared prayers, service, tithes, thanksgiving and support for church projects, we build a stronger, caring and generous church that reflects Christ's heart. May you find belonging, purpose and encouragement as we journey together in God's love.
+                    As you explore this space, may your heart be stirred, your faith awakened and your journey with God renewed. We invite you to walk with us, worship with us and be transformed with us.
+                    
+                    Welcome home.
                   </p>
                 </div>
               </div>
