@@ -254,20 +254,14 @@ const Services = () => {
                         {service.image && (
                           <div className="service-image" style={{
                             margin: '0 -15px 15px',
-                            borderTop: '1px solid rgba(0,0,0,0.05)',
-                            borderBottom: '1px solid rgba(0,0,0,0.05)',
                             padding: '10px 0',
-                            backgroundColor: 'rgba(0,0,0,0.02)'
                           }}>
                             <div style={{
-                              position: 'relative',
                               width: '90%',
                               maxWidth: '500px',
                               margin: '0 auto',
-                              borderRadius: '12px',
+                              borderRadius: '8px',
                               overflow: 'hidden',
-                              transition: 'all 0.3s ease-in-out',
-                              border: '1px solid rgba(0,0,0,0.1)'
                             }}>
                               <img 
                                 src={service.image} 
