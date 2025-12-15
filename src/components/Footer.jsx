@@ -600,7 +600,7 @@ const Footer = () => {
               fontWeight: 400,
               lineHeight: '1.5'
             }}>
-              Copyright &copy; {new Date().getFullYear()} St. Jude Miritini Anglican Church. All Rights Reserved.
+              Copyright &copy; St. Jude Miritini Anglican Church. All Rights Reserved.
               <span style={{ display: 'block', marginTop: '0.25rem' }}>Designed by Eliot Ivy Solutions™</span>
             </p>
           </div>
