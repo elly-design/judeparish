@@ -12,6 +12,7 @@ const slides = [
     id: 1,
     preTitle: 'Welcome to',
     title: "St. Jude Miritini Anglican Church",
+    subtitle: "Miritini Anglican Church",
     image: 'images/lay.jpeg',
     buttons: [
       { text: 'Our Story', to: '/about', variant: 'primary' },
@@ -21,7 +22,8 @@ const slides = [
   {
     id: 2,
     preTitle: 'Transforming Lives',
-    title: 'A Home of Faith, Love and Service',
+    title: 'A home of faith, love and service',
+    subtitle: "Where Love Meets Action",
     image: 'images/choir.jpeg',
     buttons: [
       { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
@@ -32,6 +34,7 @@ const slides = [
     id: 3,
     preTitle: 'Guided by the Holy Spirit',
     title: 'Rooted in Christ',
+    subtitle: "Join Our Faith Journey",
     image: 'images/sunday.jpeg',
     buttons: [
       { text: "I'm New Here", to: '/new-here', variant: 'primary' },
@@ -368,7 +371,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
             <div 
               className="slide-bg"
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(/${slide.image})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(/${slide.image}?v=1.0)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -380,13 +383,26 @@ const SimpleSlider = ({ onBeliefsClick }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                padding: '2rem'
+                padding: '2rem',
+                imageRendering: 'crisp-edges',
+                WebkitImageRendering: 'crisp-edges',
+                backfaceVisibility: 'hidden',
+                transform: 'translateZ(0)',
+                filter: 'blur(0)',
+                willChange: 'transform, opacity',
+                WebkitBackfaceVisibility: 'hidden',
+                WebkitTransform: 'translateZ(0)',
+                WebkitFilter: 'blur(0)',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale'
               }}
             >
               <div className="slide-content" style={slideContentStyle}>
                 {slide.preTitle && <span className="slide-pre-title">{slide.preTitle}</span>}
-                <h2>{slide.title}</h2>
-                {slide.description && <p>{slide.description}</p>}
+                <h2>
+                  {slide.title}
+                  {slide.subtitle && <span className="slide-subtitle">{slide.subtitle}</span>}
+                </h2>
                 <div className="slide-buttons">
                   {slide.buttons.map((button, btnIndex) => {
                     if (button.text === 'Our Beliefs') {
