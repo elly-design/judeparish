@@ -601,7 +601,6 @@ const Footer = () => {
               lineHeight: '1.5'
             }}>
               Copyright &copy; St. Jude Miritini Anglican Church. All Rights Reserved.
-              <span style={{ display: 'block', marginTop: '0.25rem' }}>Designed by Eliot Ivy Solutions™</span>
             </p>
           </div>
         </div>
