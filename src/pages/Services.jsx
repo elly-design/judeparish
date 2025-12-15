@@ -30,7 +30,7 @@ const Typewriter = ({ text, speed = 50, delay = 0, className = '' }) => {
     <span className={`typewriter-text ${className}`}>
       {displayText}
     </span>
-  )
+  );
 };
 
 const Services = () => {
@@ -52,9 +52,7 @@ const Services = () => {
       day: 'Monday',
       services: [
         { 
-          name: 'Prayers', 
-          time: '5.30pm - 6.30pm',
-          image: 'images/praying.jpg'
+          image: 'images/weekly.jpg'
         }
       ]
     },
@@ -62,9 +60,7 @@ const Services = () => {
       day: 'Tuesday',
       services: [
         {  
-          name: 'Home Based Fellowships',
-          time: '5.00pm - 6.30pm',
-          image: 'images/home.jpeg'
+          image: 'images/zonal.jpg'
         }
       ]
     },
@@ -72,9 +68,7 @@ const Services = () => {
       day: 'Wednesday',
       services: [
         { 
-          name: 'Bible Study',
-          time: '5:30 PM - 7:00 PM',
-          image: 'images/bible study.jpeg'
+          image: 'images/Mid-week.jpg'
         }
       ]
     },
@@ -89,7 +83,6 @@ const Services = () => {
       day: 'Friday',
       services: [
         { 
-          name: 'Thanksgiving Service',
           time: '5.30pm - 6.30pm',
           image: 'images/thanksgiving.jpg'
         }
@@ -252,34 +245,72 @@ const Services = () => {
                     {day.services.map((service, i) => (
                       <li key={i} className="service-item">
                         {service.image && (
-                          <div className="service-image" style={{
-                            margin: '0 -15px 15px',
-                            padding: '10px 0',
+                          <div style={{
+                            margin: '0 -15px 20px',
+                            padding: '15px 0',
+                            backgroundColor: '#f8fafc',
+                            borderRadius: '12px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
                           }}>
                             <div style={{
                               width: '90%',
                               maxWidth: '500px',
                               margin: '0 auto',
-                              borderRadius: '8px',
+                              borderRadius: '10px',
                               overflow: 'hidden',
+                              transition: 'all 0.3s ease',
+                              position: 'relative',
+                              maxHeight: '300px', // Limit maximum height
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              backgroundColor: '#f5f5f5'
                             }}>
                               <img 
                                 src={service.image} 
-                                alt={service.name}
+                                alt={`${service.name} at ACK St. Jude Parish`}
                                 style={{
                                   width: '100%',
-                                  height: '220px',
-                                  objectFit: 'cover'
+                                  height: 'auto',
+                                  maxHeight: '300px',
+                                  objectFit: 'contain', // Changed from 'cover' to 'contain'
+                                  transition: 'transform 0.5s ease',
+                                  cursor: 'pointer',
+                                  display: 'block'
                                 }}
+                                onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
+                                onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                                loading="lazy"
                               />
+                              <div style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                padding: '12px 16px',
+                                background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                                color: 'white',
+                                fontSize: '0.9em',
+                                fontWeight: '500',
+                                textAlign: 'center',
+                                textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                              }}>
+                                {service.name}
+                              </div>
                             </div>
                           </div>
                         )}
-                        {service.name && (
-                          <div className="service-name" style={{ padding: '10px 0' }}>
+                        {!service.image && service.name && (
+                          <div className="service-name" style={{ 
+                            padding: '8px 0',
+                            marginBottom: '4px'
+                          }}>
                             <span style={{ 
                               fontWeight: '600',
-                              color: 'var(--color-primary)'
+                              color: 'var(--color-primary)',
+                              fontSize: '1.05em'
                             }}>
                               {service.name}
                             </span>
