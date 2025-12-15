@@ -47,6 +47,7 @@ function App() {
           <Route path="/give" element={<Give />} />
           <Route path="/visit" element={<Contact isVisitPage={true} />} />
           <Route path="/baptism" element={<Baptism />} />
+          <Route path="/connect" element={<Contact isConnectPage={true} />} />
           {/* Redirect /beliefs to /about/beliefs */}
           <Route path="/beliefs" element={<Navigate to="/about/beliefs" replace />} />
         </Routes>

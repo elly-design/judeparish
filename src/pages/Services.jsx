@@ -39,28 +39,43 @@ const Services = () => {
     {
       day: 'Sunday',
       services: [
-        { name: 'Early Morning Service', time: '6.00am-7.30am' },
-        { name: 'Second Service', time: '8.00am-9.30am' },
-        { name: 'Youth Service', time: '10.00am-11.00am' },
-        { name: 'Main service', time: '11.00am-12.30pm' }
+        {
+          image: 'images/worship.jpg'
+        },
+        { name: 'Early Morning Service', time: '6.00am - 7.30am' },
+        { name: 'Second Service', time: '8.00am - 9.30am' },
+        { name: 'Youth Service', time: '10.00am - 11.00am' },
+        { name: 'Main service', time: '11.00am - 12.30pm' }
       ]
     },
     {
       day: 'Monday',
       services: [
-        { name: 'Prayers', time: '5.30pm-6.30pm' }
+        { 
+          name: 'Prayers', 
+          time: '5.30pm - 6.30pm',
+          image: 'images/praying.jpg'
+        }
       ]
     },
     {
       day: 'Tuesday',
       services: [
-        { name: 'Home Based Fellowships', time: '5.00pm - 6.30pm' }
+        {  
+          name: 'Home Based Fellowships',
+          time: '5.00pm - 6.30pm',
+          image: 'images/home.jpeg'
+        }
       ]
     },
     {
       day: 'Wednesday',
       services: [
-        { name: 'Bible Study', time: '5:30 PM - 7:00 PM' }
+        { 
+          name: 'Bible Study',
+          time: '5:30 PM - 7:00 PM',
+          image: 'images/bible study.jpeg'
+        }
       ]
     },
     {
@@ -73,7 +88,11 @@ const Services = () => {
     {
       day: 'Friday',
       services: [
-        { name: 'Thanksgiving Service', time: '5.30pm-6.30pm' }
+        { 
+          name: 'Thanksgiving Service',
+          time: '5.30pm - 6.30pm',
+          image: 'images/thanksgiving.jpg'
+        }
       ]
     },
     {
@@ -232,14 +251,59 @@ const Services = () => {
                   <ul className="service-list">
                     {day.services.map((service, i) => (
                       <li key={i} className="service-item">
-                        <div className="service-name">
-                          <BiChurch className="service-icon" />
-                          <span>{service.name}</span>
-                        </div>
-                        <div className="service-time">
-                          <FaClock className="time-icon" />
-                          <span>{service.time}</span>
-                        </div>
+                        {service.image && (
+                          <div className="service-image" style={{
+                            margin: '0 -15px 15px',
+                            borderTop: '1px solid rgba(0,0,0,0.05)',
+                            borderBottom: '1px solid rgba(0,0,0,0.05)',
+                            padding: '10px 0',
+                            backgroundColor: 'rgba(0,0,0,0.02)'
+                          }}>
+                            <div style={{
+                              position: 'relative',
+                              width: '90%',
+                              maxWidth: '500px',
+                              margin: '0 auto',
+                              borderRadius: '12px',
+                              overflow: 'hidden',
+                              transition: 'all 0.3s ease-in-out',
+                              border: '1px solid rgba(0,0,0,0.1)'
+                            }}>
+                              <img 
+                                src={service.image} 
+                                alt={service.name}
+                                style={{
+                                  width: '100%',
+                                  height: '220px',
+                                  objectFit: 'cover'
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        {service.name && (
+                          <div className="service-name" style={{ padding: '10px 0' }}>
+                            <span style={{ 
+                              fontWeight: '600',
+                              color: 'var(--color-primary)'
+                            }}>
+                              {service.name}
+                            </span>
+                          </div>
+                        )}
+                        {service.time && (
+                          <div className="service-time" style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            color: '#666',
+                            fontSize: '0.9em',
+                            marginTop: '4px'
+                          }}>
+                            <FaClock style={{ color: 'var(--color-primary)' }} />
+                            <span>{service.time}</span>
+                          </div>
+                        )}
                         {service.note && <div className="service-note">{service.note}</div>}
                       </li>
                     ))}
