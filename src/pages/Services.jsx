@@ -40,7 +40,7 @@ const Services = () => {
       day: 'Sunday',
       services: [
         {
-          image: 'images/worship.jpg'
+          image: 'images/sunday.jpg'
         },
         { name: 'Early Morning Service', time: '6.00am - 7.30am' },
         { name: 'Second Service', time: '8.00am - 9.30am' },
