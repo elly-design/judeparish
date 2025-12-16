@@ -240,6 +240,8 @@ a:-moz-focusring {
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
+  list-style: none;
+  counter-reset: none;
 }
 
 .has-dropdown:hover .dropdown-menu {
@@ -261,6 +263,18 @@ a:-moz-focusring {
   color: var(--color-text);
   text-decoration: none;
   transition: all 0.2s ease;
+  list-style: none;
+  counter-increment: none;
+}
+
+.dropdown-menu li {
+  list-style: none;
+  counter-increment: none;
+}
+
+.dropdown-menu li::before {
+  display: none !important;
+  content: none !important;
 }
 
 .dropdown-link:hover {

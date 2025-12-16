@@ -10,7 +10,8 @@ import {
   FaChurch,
   FaMale,
   FaFemale,
-  FaUserFriends
+  FaUserFriends,
+  FaCross
 } from 'react-icons/fa';
 import './Header.css';
 
@@ -104,7 +105,7 @@ const Header = () => {
       label: 'About Us',
       subItems: [
         { path: '/about', label: 'Our Story', icon: <FaBookOpen className="submenu-icon" /> },
-        { path: '/about/beliefs', label: 'What We Believe', icon: <FaTimes className="submenu-icon" /> },
+        { path: '/about/beliefs', label: 'What We Believe', icon: <FaCross className="submenu-icon" /> },
         { path: '/about/leadership', label: 'Leadership Team', icon: <FaUsers className="submenu-icon" /> },
         { path: '/about/journey', label: 'Our Journey', icon: <FaRoad className="submenu-icon" /> }
       ]
