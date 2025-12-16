@@ -24,7 +24,7 @@ const slides = [
     preTitle: 'Transforming Lives',
     title: 'A home of faith, love and service',
     subtitle: "Where Love Meets Action",
-    image: 'images/choir.jpeg',
+    image: 'images/mu.jpeg',
     buttons: [
       { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
       { text: 'Connect With Us', to: '/contact', variant: 'outline' }
