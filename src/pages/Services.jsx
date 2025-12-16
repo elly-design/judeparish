@@ -60,7 +60,7 @@ const Services = () => {
       day: 'Tuesday',
       services: [
         {  
-          image: 'images/zonal.jpg'
+          image: 'images/home.jpg'
         }
       ]
     },
