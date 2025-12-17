@@ -21,8 +21,8 @@ const slides = [
   },
   {
     id: 2,
-    preTitle: 'Transforming Lives',
-    title: 'A home of faith, love and service',
+    preTitle: 'Rise in God’s Glory',
+    title: 'Embrace your calling, shine His light',
     subtitle: "Where Love Meets Action",
     image: 'images/mu.jpeg',
     buttons: [
@@ -32,8 +32,8 @@ const slides = [
   },
   {
     id: 3,
-    preTitle: 'Guided by the Holy Spirit',
-    title: 'Rooted in Christ',
+    preTitle: 'Faith That Moves',
+    title: 'Grow spiritually, live with impact',
     subtitle: "Join Our Faith Journey",
     image: 'images/sunday.jpeg',
     buttons: [
