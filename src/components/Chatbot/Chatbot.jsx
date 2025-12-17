@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaRobot, FaTimes, FaPaperPlane, FaWhatsapp } from 'react-icons/fa';
+import { FaEnvelope, FaTimes, FaPaperPlane, FaWhatsapp } from 'react-icons/fa';
 import './Chatbot.css';
 
 const Chatbot = () => {
@@ -198,7 +198,7 @@ const Chatbot = () => {
         </div>
       ) : (
         <button className="chatbot-button" onClick={toggleChat}>
-          <FaRobot className="chatbot-icon" />
+          <FaEnvelope className="chatbot-icon" />
         </button>
       )}
     </div>
