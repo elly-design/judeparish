@@ -3,17 +3,17 @@
    ========================================================================== */
 
 :root {
-  /* Color Scheme - St. Jude's Branding */
-  --footer-bg: #0A4B8C;  /* Deep blue background */
-  --footer-text: rgba(255, 255, 255, 0.9);
+  /* Color Scheme - St. Jude's Branding with grass background */
+  --footer-bg: transparent;  /* Transparent to show the background image */
+  --footer-text: #ffffff;  /* Pure white text */
   --footer-heading: #ffffff;
-  --footer-link: rgba(255, 255, 255, 0.95);
+  --footer-link: #ffffff;  /* Pure white links for better contrast */
   --footer-link-hover: #FFD700;  /* Gold for hover effects */
-  --footer-link-bg-hover: rgba(255, 215, 0, 0.1);
+  --footer-link-bg-hover: rgba(10, 75, 140, 0.3);  /* Semi-transparent blue on hover */
   --footer-accent: #FFD700;  /* Gold accent color */
-  --footer-accent-light: rgba(255, 215, 0, 0.15);
-  --footer-border: rgba(255, 255, 255, 0.15);
-  --footer-card-bg: rgba(255, 255, 255, 0.05);
+  --footer-accent-light: rgba(255, 215, 0, 0.2);
+  --footer-border: rgba(255, 255, 255, 0.2);
+  --footer-card-bg: transparent;  /* Fully transparent cards */
   --footer-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --footer-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
   --footer-radius: 8px;
@@ -63,26 +63,17 @@
 
 /* Base Footer Styles */
 .footer {
-  background: var(--footer-bg);
-  padding: 3rem 0 0;
-  width: 100%;
+  background-color: transparent;
   color: var(--footer-text);
+  padding: 4rem 0 0;
+  position: relative;
   font-size: var(--footer-text-size);
   line-height: var(--footer-line-height);
-  z-index: 1000;
-  box-shadow: var(--footer-shadow);
+  overflow: hidden;
+  margin-top: auto;
+  width: 100%;
   box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  overflow: visible;
-  
-  /* Smooth scrolling for anchor links */
-  scroll-behavior: smooth;
-  
-  /* Set up base typography */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  z-index: 1000;
 }
 
 /* Container */
@@ -105,15 +96,22 @@
 /* Footer Grid Layout - Full Width */
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--footer-column-gap) var(--footer-row-gap);
-  width: 100%;
-  max-width: 1440px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: var(--footer-max-width);
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 2rem 1.5rem 1.5rem;
   position: relative;
   z-index: 1;
-  box-sizing: border-box;
+  
+  /* No card effect, fully transparent */
+  & > * {
+    background: transparent;
+    padding: 1.75rem;
+    border: none;
+    transition: none;
+    backdrop-filter: none;
+  }
 }
 
 /* Responsive adjustments */
@@ -188,8 +186,7 @@
   
   .footer-contact {
     padding: 1.5rem !important;
-    background: rgba(0, 0, 0, 0.2) !important;
-    border-radius: 12px !important;
+    background: transparent !important;
     margin: 1rem 0 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -383,12 +380,6 @@
   }
   width: 100%;
   
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-    justify-items: center;
-  }
-  
   @media (max-width: 480px) {
     gap: var(--space-sm);
   }
@@ -496,7 +487,7 @@
   position: relative;
   overflow: hidden;
   
-  /* Add a subtle background on hover */
+  /* Remove hover background */
   &::before {
     content: '';
     position: absolute;
@@ -504,7 +495,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--footer-link-bg-hover);
+    background: transparent;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -909,19 +900,20 @@
 }
 
 .social-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--footer-link);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 1.1rem;
+  margin: 0 0.5rem 0.5rem 0;
 }
 
 .social-link:hover {
@@ -1042,14 +1034,25 @@
 
 .links-category {
   color: var(--footer-heading);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0 0 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1.75rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
   border: none !important;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--footer-accent);
+    border-radius: 2px;
+  }
 }
 
 .links-category::after,
@@ -1058,6 +1061,7 @@
   content: none !important;
 }
 
+/* Navigation styles */
 .footer-nav {
   list-style: none;
   padding: 0;
@@ -1076,9 +1080,9 @@
 .footer-link {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 1rem;
   color: var(--footer-text);
-  transition: var(--footer-transition);
+  transition: all 0.3s ease;
   font-size: 0.95rem;
   font-weight: 400;
   border-radius: 6px;
@@ -1087,6 +1091,7 @@
   background: transparent;
   border: 1px solid transparent;
   text-decoration: none;
+  margin-bottom: 0.25rem;
 }
 
 .footer-link .link-text {
@@ -1110,11 +1115,10 @@
 
 .footer-link:hover {
   color: var(--footer-link-hover);
-  transform: translateX(5px);
-  padding-left: 1rem;
-  border-color: rgba(93, 156, 236, 0.15);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateX(8px);
+  padding-left: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--footer-accent);
 }
 
 .footer-link:hover::before {
@@ -2026,9 +2030,9 @@
 }
 
 .social-link:hover {
-  color: var(--color-white);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+  transform: translateY(-3px) scale(1.1);
+  border-color: transparent;
 }
 
 .social-link:hover::before {
@@ -2585,7 +2589,6 @@
     text-align: center;
   }
 }
-}
 
 /* Ensure content above footer has proper spacing */
 body {
@@ -2597,4 +2600,5 @@ body {
 main {
   flex: 1 0 auto;
   width: 100%;
+}
 }

@@ -78,7 +78,12 @@ const Footer = () => {
       <footer className="footer" style={{ 
         overflow: 'visible',
         position: 'relative',
-        zIndex: 1000
+        zIndex: 1000,
+        backgroundImage: 'linear-gradient(rgba(10, 75, 140, 0.9), rgba(10, 75, 140, 0.95)), url("/images/grass.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat'
       }}>
       <div className="footer-content" style={{ 
         width: '100%',
