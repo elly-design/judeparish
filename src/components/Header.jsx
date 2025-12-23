@@ -141,7 +141,7 @@ const Header = () => {
               className="logo-image" 
             />
             <div className="logo-text">
-              <h1>ACK St. Jude Miritini Parish</h1>
+              <h1>ACK ST. JUDE MIRITINI PARISH</h1>
             </div>
           </Link>
 
