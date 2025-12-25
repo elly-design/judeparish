@@ -416,7 +416,6 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
           marginBottom: '1.5rem',
           fontSize: '1.1rem'
         }}>
-          Request an appointment with Rev. Canon Richard Otieno
         </p>
 
         {status && (
@@ -1897,7 +1896,7 @@ const Home = () => {
                   color: 'white',
                   fontSize: '0.95rem'
                 }}>
-                  Schedule Meeting with Rev. Canon Richard Otieno
+                  Book Appointment with Rev. Canon Richard Otieno
                 </span>
               </div>
               
