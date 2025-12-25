@@ -7,7 +7,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     { 
-      text: "Welcome to ACK St. Jude Miritini Parish Church! 🙏\n\nHow may I assist you today? You can ask about our service times, ministries, events or contact information.", 
+      text: "Welcome to ACK St. Jude Miritini Parish Church! \n\nHow may I assist you today?", 
       isUser: false 
     }
   ]);
@@ -177,7 +177,7 @@ const Chatbot = () => {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about services, ministries or contact info..."
+              placeholder=""
               required
               disabled={isLoading}
             />
