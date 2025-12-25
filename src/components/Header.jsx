@@ -113,12 +113,11 @@ const Header = () => {
     { 
       label: 'Ministries',
       subItems: [
-        { path: '/ministries', label: 'All Ministries', icon: <FaChurch className="submenu-icon" /> },
-        { path: '/ministries/kama', label: 'KAMA', icon: <FaMale className="submenu-icon" /> },
-        { path: '/ministries/mothers-union', label: 'Mothers Union', icon: <FaFemale className="submenu-icon" /> },
-        { path: '/ministries/kayo', label: 'KAYO', icon: <FaUsers className="submenu-icon" /> },
-        { path: '/ministries/boys-brigade', label: 'Boys Brigade', icon: <FaUsers className="submenu-icon" /> },
-        { path: '/ministries/gfs', label: 'Girls Friendly Society', icon: <FaFemale className="submenu-icon" /> }
+        { path: '/ministries/kama', label: 'KAMA'},
+        { path: '/ministries/mothers-union', label: 'Mothers Union'},
+        { path: '/ministries/kayo', label: 'KAYO'},
+        { path: '/ministries/boys-brigade', label: 'Boys Brigade'},
+        { path: '/ministries/gfs', label: 'Girls Friendly Society'}
       ]
     },
     { path: '/services', label: 'Services' },

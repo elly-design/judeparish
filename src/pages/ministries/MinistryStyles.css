@@ -281,7 +281,7 @@
   background: white;
   padding: 3rem;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   position: relative;
   z-index: 1;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -316,7 +316,7 @@
 }
 
 .activities-list li:before {
-  content: '✓';
+  content: '\2713';
   color: white;
   background-color: var(--accent);
   font-size: 0.9rem;
@@ -330,13 +330,11 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
   transition: var(--transition);
 }
 
 .activities-list li:hover:before {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
 }
 
 /* Events Section */

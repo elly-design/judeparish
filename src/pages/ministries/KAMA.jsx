@@ -17,7 +17,7 @@ const KAMA = () => {
     email: 'ackstjudemiritinichuch@gmail.com',
     image: '/images/bible-scripture.jpg',
     details: {
-      mission: 'To help men grow in spirit, mind, and body, and to nurture them in faith for every good work.',
+      mission: 'To help men grow in spirit, mind, and body and to nurture them in faith for every good work.',
       activities: [
         'Weekly Bible study and prayer meetings',
         'Community service and outreach programs',
@@ -133,7 +133,7 @@ const KAMA = () => {
             <h2>Our Activities</h2>
             <div className="divider"></div>
           </div>
-          <div className="activities-content">
+          <div className="activities-content" style={{ boxShadow: 'none' }}>
             <div className="activities-text">
               <p>KAMA is actively involved in various activities that help fulfill its mission and objectives:</p>
               <ul className="activities-list">
