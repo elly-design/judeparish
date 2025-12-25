@@ -177,7 +177,7 @@ const Chatbot = () => {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder=""
+              placeholder="Type your message..."
               required
               disabled={isLoading}
             />
