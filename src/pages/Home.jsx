@@ -605,7 +605,7 @@ const AppointmentModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSub
                 fontWeight: '600',
                 color: '#374151'
               }}>
-                Reason for Meeting *
+                Reason for meeting *
               </label>
               <textarea
                 name="reason"
