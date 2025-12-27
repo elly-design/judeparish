@@ -743,7 +743,7 @@ const Home = () => {
           name: appointmentForm.name,
           email: appointmentForm.email,
           phone: appointmentForm.phone,
-          subject: 'Book Appointment with Rev. Canon Richard Otieno',
+          subject: 'Book Session with Rev. Canon Richard Otieno',
           message: `Preferred Date: ${appointmentForm.preferredDate}\nPreferred Time: ${appointmentForm.preferredTime}\nReason: ${appointmentForm.reason}`
         })
       });
