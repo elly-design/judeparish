@@ -1896,7 +1896,7 @@ const Home = () => {
                   color: 'white',
                   fontSize: '0.95rem'
                 }}>
-                  Book Appointment with Rev. Canon Richard Otieno
+                  Book Session with Rev. Canon Richard Otieno
                 </span>
               </div>
               
