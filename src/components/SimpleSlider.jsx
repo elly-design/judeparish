@@ -770,10 +770,10 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
                 }
               }}
             >
-              <option value="regular">Regular Member</option>
+              <option value="full">Full Member</option>
               <option value="associate">Associate Member</option>
-              <option value="student">Student Member</option>
-              <option value="family">Family Membership</option>
+              <option value="visiting">Visiting Member</option>
+              <option value="youth">Youth Membership</option>
             </select>
           </div>
           
