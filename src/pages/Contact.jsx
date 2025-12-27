@@ -205,7 +205,7 @@ const Contact = () => {
                     <option value="I'm new here">I'm new here</option>
                     <option value="Prayer Request">Prayer Request</option>
                     <option value="Inquiry">Inquiry</option>
-                    <option value="Book Session with Rev. Canon Richard Otieno">Book Session with Rev. Canon Richard Otieno</option>
+                    <option value="Book Appointment with Rev. Canon Richard Otieno">Book Appointment with Rev. Canon Richard Otieno</option>
                     <option value="Baptism">Baptism</option>
                   </select>
                 </div>

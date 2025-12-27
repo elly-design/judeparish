@@ -37,7 +37,7 @@ const ALLOWED_SUBJECTS = [
   "I'm new here",
   "Prayer Request",
   "Inquiry",
-  "Book Session  with Rev. Canon Richard Otieno",
+  "Book Appointment with Rev. Canon Richard Otieno",
   "Baptism"
 ];
 
