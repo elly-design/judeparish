@@ -634,7 +634,6 @@ const MembershipModal = ({ isOpen, onClose, formData, onChange, onSubmit, isSubm
           textAlign: 'center',
           padding: isMobile ? '1.5rem 1rem 0 1rem' : '2rem 2rem 0 2rem'
         }}>
-          <FaUserFriends style={{ marginRight: '0.5rem', color: '#2563eb' }} />
           Join Our Church Family
         </h2>
         
