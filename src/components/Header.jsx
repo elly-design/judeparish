@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   FaBars, 
   FaTimes,
-  FaMapMarkerAlt,
   FaBookOpen,
   FaUsers,
   FaRoad,
-  FaChurch,
-  FaMale,
-  FaFemale,
-  FaUserFriends,
   FaCross
 } from 'react-icons/fa';
 import './Header.css';
+
+const SCROLL_THRESHOLD = 50;
+const DESKTOP_BREAKPOINT = 992;
+const MOBILE_MENU_WIDTH = 80;
+const MAX_MOBILE_MENU_WIDTH = 400;
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,39 +23,46 @@ const Header = () => {
   const headerRef = useRef(null);
   const location = useLocation();
 
-  // Handle scroll effect
+  // Handle scroll effect with throttling for performance
   useEffect(() => {
+    let timeoutId;
+    
     const handleScroll = () => {
       const offset = window.scrollY;
-      setIsScrolled(offset > 50);
+      setIsScrolled(offset > SCROLL_THRESHOLD);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const throttledHandleScroll = () => {
+      if (timeoutId) return;
+      timeoutId = setTimeout(() => {
+        handleScroll();
+        timeoutId = null;
+      }, 16); // ~60fps
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   // Close mobile menu and dropdowns when route changes or window is resized
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 992) {
-        setIsMobileMenuOpen(false);
-        setAboutDropdownOpen(false);
-        setMinistriesDropdownOpen(false);
-        document.body.classList.remove('menu-open');
-        document.body.style.overflow = 'auto';
+      if (window.innerWidth > DESKTOP_BREAKPOINT) {
+        closeAllMenus();
       }
     };
 
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
-        setIsMobileMenuOpen(false);
-        document.body.classList.remove('menu-open');
-        document.body.style.overflow = 'auto';
+        closeMobileMenu();
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -63,7 +70,19 @@ const Header = () => {
     };
   }, [location]);
 
-  const toggleMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = 'auto';
+  }, []);
+
+  const closeAllMenus = useCallback(() => {
+    setAboutDropdownOpen(false);
+    setMinistriesDropdownOpen(false);
+    closeMobileMenu();
+  }, [closeMobileMenu]);
+
+  const toggleMobileMenu = useCallback(() => {
     const newState = !isMobileMenuOpen;
     setIsMobileMenuOpen(newState);
     
@@ -71,43 +90,52 @@ const Header = () => {
       document.body.classList.add('menu-open');
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.classList.remove('menu-open');
-      document.body.style.overflow = 'auto';
+      closeMobileMenu();
     }
-  };
+  }, [isMobileMenuOpen, closeMobileMenu]);
 
-  const toggleDropdown = (e, type) => {
+  const toggleDropdown = useCallback((e, type) => {
     e.preventDefault();
     e.stopPropagation();
     
     if (type === 'about') {
-      const newState = !aboutDropdownOpen;
-      setAboutDropdownOpen(newState);
+      setAboutDropdownOpen(prev => !prev);
       setMinistriesDropdownOpen(false);
     } else if (type === 'ministries') {
-      const newState = !ministriesDropdownOpen;
-      setMinistriesDropdownOpen(newState);
+      setMinistriesDropdownOpen(prev => !prev);
       setAboutDropdownOpen(false);
     }
-  };
+  }, []);
 
-  const closeAllMenus = () => {
-    setAboutDropdownOpen(false);
-    setMinistriesDropdownOpen(false);
-    setIsMobileMenuOpen(false);
-    document.body.classList.remove('menu-open');
-    document.body.style.overflow = 'auto';
-  };
+  const handleDropdownMouseEnter = useCallback((type) => {
+    if (!isMobileMenuOpen) {
+      if (type === 'about') {
+        setAboutDropdownOpen(true);
+      } else if (type === 'ministries') {
+        setMinistriesDropdownOpen(true);
+      }
+    }
+  }, [isMobileMenuOpen]);
 
-  const navLinks = [
+  const handleDropdownMouseLeave = useCallback((type) => {
+    if (!isMobileMenuOpen) {
+      if (type === 'about') {
+        setAboutDropdownOpen(false);
+      } else if (type === 'ministries') {
+        setMinistriesDropdownOpen(false);
+      }
+    }
+  }, [isMobileMenuOpen]);
+
+  const navLinks = useMemo(() => [
     { path: '/', label: 'Home' },
     { 
       label: 'About Us',
       subItems: [
-        { path: '/about', label: 'Our Story', icon: <FaBookOpen className="submenu-icon" /> },
-        { path: '/about/beliefs', label: 'Core Values', icon: <FaCross className="submenu-icon" /> },
-        { path: '/about/leadership', label: 'Leadership Team', icon: <FaUsers className="submenu-icon" /> },
-        { path: '/about/journey', label: 'Our Journey', icon: <FaRoad className="submenu-icon" /> }
+        { path: '/about', label: 'Our Story', icon: <FaBookOpen className="submenu-icon" aria-hidden="true" /> },
+        { path: '/about/beliefs', label: 'Core Values', icon: <FaCross className="submenu-icon" aria-hidden="true" /> },
+        { path: '/about/leadership', label: 'Leadership Team', icon: <FaUsers className="submenu-icon" aria-hidden="true" /> },
+        { path: '/about/journey', label: 'Our Journey', icon: <FaRoad className="submenu-icon" aria-hidden="true" /> }
       ]
     },
     { 
@@ -122,7 +150,7 @@ const Header = () => {
     },
     { path: '/services', label: 'Services' },
     { path: '/gallery', label: 'Gallery' },
-  ];
+  ], []);
 
   return (
     <header 
@@ -164,12 +192,12 @@ const Header = () => {
                       <button 
                         className={`nav-link ${link.subItems.some(item => item.path === location.pathname) ? 'active' : ''}`}
                         onClick={(e) => toggleDropdown(e, link.label === 'About Us' ? 'about' : 'ministries')}
-                        onMouseEnter={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(true) : setMinistriesDropdownOpen(true))}
+                        onMouseEnter={() => handleDropdownMouseEnter(link.label === 'About Us' ? 'about' : 'ministries')}
                         aria-expanded={link.label === 'About Us' ? aboutDropdownOpen : ministriesDropdownOpen}
                         aria-haspopup="true"
                       >
                         {link.label}
-                        <span className="dropdown-arrow">
+                        <span className="dropdown-arrow" aria-hidden="true">
                           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
@@ -177,7 +205,7 @@ const Header = () => {
                       </button>
                       <ul 
                         className={`dropdown-menu ${link.label === 'About Us' ? (aboutDropdownOpen ? 'open' : '') : (ministriesDropdownOpen ? 'open' : '')}`}
-                        onMouseLeave={() => !isMobileMenuOpen && (link.label === 'About Us' ? setAboutDropdownOpen(false) : setMinistriesDropdownOpen(false))}
+                        onMouseLeave={() => handleDropdownMouseLeave(link.label === 'About Us' ? 'about' : 'ministries')}
                       >
                         {link.subItems.map((subItem) => (
                           <li key={subItem.path}>

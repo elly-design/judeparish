@@ -43,64 +43,6 @@ const slides = [
   }
 ];
 
-// Custom arrow components
-const SampleNextArrow = ({ className, style, onClick }) => {
-  return (
-    <button
-      type="button"
-      className={`${className} custom-arrow`}
-      style={{ 
-        ...style, 
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'rgba(0, 0, 0, 0.3)',
-        borderRadius: '50%',
-        width: '50px',
-        height: '50px',
-        zIndex: 10,
-        right: '20px',
-        transition: 'all 0.3s ease',
-        border: 'none',
-        outline: 'none',
-        cursor: 'pointer'
-      }}
-      onClick={onClick}
-      aria-label="Next slide"
-    >
-      <span style={{ color: 'white', fontSize: '24px' }}>→</span>
-    </button>
-  );
-};
-
-const SamplePrevArrow = ({ className, style, onClick }) => {
-  return (
-    <button
-      type="button"
-      className={`${className} custom-arrow`}
-      style={{ 
-        ...style, 
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'rgba(0, 0, 0, 0.3)',
-        borderRadius: '50%',
-        width: '50px',
-        height: '50px',
-        zIndex: 10,
-        left: '20px',
-        transition: 'all 0.3s ease',
-        border: 'none',
-        outline: 'none',
-        cursor: 'pointer'
-      }}
-      onClick={onClick}
-      aria-label="Previous slide"
-    >
-      <span style={{ color: 'white', fontSize: '24px' }}>←</span>
-    </button>
-  );
-};
 
 const SimpleSlider = ({ onBeliefsClick }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -242,7 +184,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
     pauseOnHover: false, // Disable hover pause for continuous flow
     fade: true,
     cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Natural easing
-    arrows: true,
+    arrows: false,
     accessibility: true,
     draggable: true,
     swipe: true,
@@ -252,8 +194,6 @@ const SimpleSlider = ({ onBeliefsClick }) => {
     edgeFriction: 0.25, // Smoother edge friction
     waitForAnimate: false, // Don't wait for animation to complete
     pauseOnFocus: false,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
     beforeChange: (_, next) => setCurrentSlide(next),
     // Add accessibility improvements
     adaptiveHeight: false,
@@ -334,13 +274,17 @@ const SimpleSlider = ({ onBeliefsClick }) => {
   
   const sliderStyle = {
     position: 'relative',
-    width: '100%',
+    width: '100vw',
     height: isMobile ? '70vh' : '100vh',
     minHeight: isMobile ? '350px' : '500px',
-    marginTop: '0',
+    marginTop: isMobile ? '60px' : '80px',
     paddingTop: '0',
     overflow: 'hidden',
-    willChange: 'transform' // Optimize for hardware acceleration
+    willChange: 'transform', // Optimize for hardware acceleration
+    marginLeft: 'calc(-50vw + 50%)',
+    marginRight: 'calc(-50vw + 50%)',
+    left: '0',
+    right: '0'
   };
 
   const slideContentStyle = {
@@ -377,13 +321,14 @@ const SimpleSlider = ({ onBeliefsClick }) => {
                 backgroundRepeat: 'no-repeat',
                 backgroundAttachment: 'fixed',
                 height: '100%',
-                width: '100%',
+                width: '100vw',
                 position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                padding: '2rem',
+                padding: '0',
+                margin: '0',
                 imageRendering: 'crisp-edges',
                 WebkitImageRendering: 'crisp-edges',
                 backfaceVisibility: 'hidden',
