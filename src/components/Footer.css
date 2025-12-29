@@ -203,7 +203,6 @@
     width: 100% !important;
     background: rgba(255, 255, 255, 0.05) !important;
     border-radius: 8px !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   }
   
   .footer-column {
@@ -817,7 +816,6 @@
 .footer-column:hover .footer-heading {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* About Section */
@@ -919,7 +917,6 @@
 .social-link:hover {
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border-color: transparent;
 }
 
@@ -1199,7 +1196,6 @@
 
 .service-time-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.05);
 }
@@ -1267,7 +1263,6 @@
   border-radius: 50%;
   padding: 0.5rem;
   transition: var(--footer-transition);
-  box-shadow: 0 2px 8px rgba(93, 156, 236, 0.3);
 }
 
 .contact-item:hover .contact-icon {
@@ -2174,7 +2169,6 @@
   background: var(--color-secondary);
   color: var(--color-white);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .contact-text h4 {
@@ -2402,7 +2396,6 @@
     background: var(--footer-accent);
     color: white;
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-color: transparent;
   }
   

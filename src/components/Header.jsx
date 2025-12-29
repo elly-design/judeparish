@@ -122,7 +122,6 @@ const Header = () => {
     },
     { path: '/services', label: 'Services' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/give', label: 'Give Online' },
   ];
 
   return (
@@ -206,6 +205,13 @@ const Header = () => {
                 </li>
               ))}
               <li className="nav-cta">
+                <Link 
+                  to="/give" 
+                  className="contact-btn"
+                  onClick={closeAllMenus}
+                >
+                  Give Online
+                </Link>
                 <Link 
                   to="/contact" 
                   className="contact-btn"

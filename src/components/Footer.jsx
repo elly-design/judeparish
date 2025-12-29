@@ -607,6 +607,15 @@ const Footer = () => {
             }}>
               Copyright &copy; St. Jude Miritini Anglican Church. All Rights Reserved.
             </p>
+            <p className="developer" style={{
+              margin: 0,
+              fontSize: '0.75rem',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontWeight: 400,
+              lineHeight: '1.5'
+            }}>
+              Developed by Eliot Owiti Tech Solutions
+            </p>
           </div>
         </div>
       </div>
