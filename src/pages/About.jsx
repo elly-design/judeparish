@@ -46,13 +46,13 @@ const About = () => {
     },
     {
       id: 2,
-      name: 'Mrs. Betty Mwachilwa',
+      name: 'Mrs. Betty Muchilwa',
       role: 'Treasurer',
       image: '/images/mwachilwa.png',
     },
     {
       id: 3,
-      name: 'Mr. Fredrick Wasonga',
+      name: 'Mr. Fredrick Wesonga',
       role: 'Honorary Secretary',
       image: '/images/wasonga.png',
     },
@@ -118,7 +118,7 @@ const About = () => {
     },
     {
       id: 14,
-      name: 'Betty Wasonga',
+      name: 'Betty Wesonga',
       role: 'Worship Representative',
       image: '/images/betty.png',
     },
