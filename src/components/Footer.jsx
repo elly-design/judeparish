@@ -614,7 +614,7 @@ const Footer = () => {
               fontWeight: 400,
               lineHeight: '1.5'
             }}>
-              Developed by Eliot Owiti Tech Solutions
+              Developed by Owiti TechAfrica Solutions
             </p>
           </div>
         </div>
