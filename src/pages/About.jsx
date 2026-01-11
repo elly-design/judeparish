@@ -127,6 +127,60 @@ const About = () => {
       name: 'Paul Mbugua',
       role: 'Council Member',
       image: '/images/paul.png',
+    },
+    {
+      id: 16,
+      name: 'Kennedy Masha',
+      role: 'Council Member',
+      image: '/images/kennedy.png',
+    },
+    {
+      id: 17,
+      name: 'Anne Karasha',
+      role: 'Council Member',
+      image: '/images/anne.jpeg',
+    },
+    {
+      id: 18,
+      name: 'David Njenga',
+      role: 'Council Member',
+      image: '/images/david.png',
+    },
+    {
+      id: 19,
+      name: 'Julia Mwase',
+      role: 'Council Member',
+      image: '/images/julia.png',
+    },
+    {
+      id: 20,
+      name: 'Grace Rawinyo',
+      role: 'Council Member',
+      image: '/images/grace.png',
+    },
+    {
+      id: 21,
+      name: 'Lydia Muthoni',
+      role: 'Council Member',
+      image: '/images/muthoni.png',
+    },
+    {
+      id: 22,
+      name: 'Jackson Gitau',
+      role: 'Council Member',
+      image: '/images/jackson.png',
+    },
+    {
+      id: 23,
+      name: 'Jane Kibuba',
+      role: 'Council Member',
+      image: '/images/jane.png',
+    },
+    {
+      id: 24,
+      name: 'Nicholas Mbogho',
+      role: 'Council Member',
+      image: '/images/nicholas.png',
     }
   ];
 
