@@ -81,50 +81,114 @@ app.post('/api/contact', async (req, res) => {
       replyTo: email,
       subject: `${subject}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2c3e50;">New Contact Form Submission</h2>
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
-            <p><strong>Subject:</strong> ${subject}</p>
-            <p><strong>From:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-            <div style="margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 4px; border-left: 4px solid #2c3e50;">
-              <h3 style="margin-top: 0; color: #2c3e50;">Message:</h3>
-              <p style="white-space: pre-line;">${message}</p>
+        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 74, 173, 0.1);">
+          <!-- Header -->
+          <div style="background: linear-gradient(135deg, #004aad 0%, #0066cc 100%); padding: 30px 20px; text-align: center; position: relative;">
+            <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: #ffd700; opacity: 0.2; border-radius: 50%; transform: translate(30px, -30px);"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 80px; height: 80px; background: #ffd700; opacity: 0.15; border-radius: 50%; transform: translate(-20px, 20px);"></div>
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; position: relative; z-index: 1;">ACK St. Jude Miritini</h1>
+            <p style="color: #ffd700; margin: 8px 0 0 0; font-size: 16px; font-weight: 500; position: relative; z-index: 1;">New Contact Form Submission</p>
+          </div>
+          
+          <!-- Content -->
+          <div style="padding: 30px 25px;">
+            <div style="background: #ffffff; padding: 25px; border-radius: 10px; border: 1px solid #e8f0fe; box-shadow: 0 2px 8px rgba(0, 74, 173, 0.08);">
+              <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div style="width: 4px; height: 24px; background: linear-gradient(180deg, #ffd700 0%, #ffb347 100%); border-radius: 2px; margin-right: 12px;"></div>
+                <h2 style="color: #004aad; margin: 0; font-size: 20px; font-weight: 600;">Contact Details</h2>
+              </div>
+              
+              <div style="background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="margin-bottom: 15px;">
+                  <span style="color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Subject:</span>
+                  <p style="color: #2c3e50; margin: 5px 0 0 0; font-size: 16px; font-weight: 500;">${subject}</p>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                  <span style="color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">From:</span>
+                  <p style="color: #2c3e50; margin: 5px 0 0 0; font-size: 16px; font-weight: 500;">${name}</p>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                  <span style="color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Email:</span>
+                  <p style="margin: 5px 0 0 0;">
+                    <a href="mailto:${email}" style="color: #004aad; text-decoration: none; font-weight: 500; transition: color 0.3s;">${email}</a>
+                  </p>
+                </div>
+                
+                ${phone ? `
+                <div style="margin-bottom: 15px;">
+                  <span style="color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Phone:</span>
+                  <p style="color: #2c3e50; margin: 5px 0 0 0; font-size: 16px; font-weight: 500;">${phone}</p>
+                </div>
+                ` : ''}
+              </div>
+              
+              <div style="background: linear-gradient(135deg, #fff9e6 0%, #fffef9 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #ffd700;">
+                <h3 style="margin: 0 0 15px 0; color: #004aad; font-size: 18px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="width: 8px; height: 8px; background: #ffd700; border-radius: 50%; margin-right: 10px;"></span>
+                  Message:
+                </h3>
+                <p style="white-space: pre-line; color: #2c3e50; margin: 0; line-height: 1.6; font-size: 15px;">${message}</p>
+              </div>
             </div>
           </div>
-          <p style="margin-top: 20px; font-size: 12px; color: #7f8c8d;">
-            This email was sent from the contact form on ACK St. Jude Miritini website.
-          </p>
+          
+          <!-- Footer -->
+          <div style="background: linear-gradient(135deg, #004aad 0%, #0066cc 100%); padding: 20px; text-align: center;">
+            <p style="margin: 0; color: #ffffff; font-size: 12px; opacity: 0.9;">
+              This email was sent from the contact form on ACK St. Jude Miritini website.
+            </p>
+            <div style="margin-top: 10px;">
+              <span style="color: #ffd700; font-size: 20px;">✟</span>
+            </div>
+          </div>
         </div>
       `
     };
 
     // Send confirmation email to user
     const userMailOptions = {
-  from: `"ACK St. Jude Miritini" <${process.env.EMAIL_USER}>`,
-  to: email,
-  subject: `Thank you for contacting ACK St. Jude Miritini`,
-  html: `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #333; padding: 20px;">
-      <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">Thank You for Your Request</h2>
-      
-      <p style="margin: 30px 0; text-align: center; font-style: italic; color: #555;">
-        We have received your request and our team will get back to you shortly.
-      </p>
-      
-      <div style="margin: 40px 0 20px 0; font-family: Arial, sans-serif; line-height: 1.6;">
-        <p style="margin: 30px 0 5px 0;">Yours sincerely,</p>
-        <p style="margin: 30px 0 5px 0; font-weight: bold;">Vicar</p>
-        <p style="margin: 5px 0; color: #333;">ACK St. Jude Miritini Parish</p>
-      </div>
-      
-      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #7f8c8d; text-align: center;">
-        <p style="margin: 0;">This is an automated message. Please do not reply to this email.</p>
-      </div>
-    </div>
-  `
-};
+      from: `"ACK St. Jude Miritini" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: `Thank you for contacting ACK St. Jude Miritini`,
+      html: `    
+          <!-- Content -->
+          <div style="padding: 40px 30px; text-align: center;">
+            <div style="background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #e8f0fe; box-shadow: 0 2px 8px rgba(0, 74, 173, 0.08); margin-bottom: 30px;">
+              <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%); border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center;">
+                <span style="color: #ffffff; font-size: 24px; font-weight: bold;">✓</span>
+              </div>
+              <h2 style="color: #004aad; margin: 0 0 20px 0; font-size: 24px; font-weight: 600;">We've Received Your Message</h2>
+              <p style="color: #2c3e50; margin: 0 0 25px 0; line-height: 1.6; font-size: 16px;">
+                Thank you for reaching out to us. Your message has been successfully received and our team will get back to you shortly.
+              </p>
+              <div style="background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #ffd700; text-align: left;">
+                <p style="margin: 0; color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Reference:</p>
+                <p style="margin: 5px 0 0 0; color: #2c3e50; font-size: 16px; font-weight: 500;">${subject}</p>
+              </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #fff9e6 0%, #fffef9 100%); padding: 25px; border-radius: 10px; border: 1px solid #ffe4b5;">
+              <h3 style="color: #004aad; margin: 0 0 15px 0; font-size: 18px; font-weight: 600;">What Happens Next?</h3>
+              <div style="color: #2c3e50; line-height: 1.6; font-size: 15px;">
+                <p style="margin: 0 0 10px 0;"> Our team reviews your message</p>
+                <p style="margin: 0;"> You'll receive a personalized response</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Signature -->
+          <div style="padding: 0 30px 30px 30px; text-align: center;">
+            <div style="margin-bottom: 20px;">
+              <p style="color: #0066cc; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 10px 0;">From the Vicar</p>
+              <p style="color: #2c3e50; margin: 5px 0; font-size: 16px; font-weight: 500;">Rev. Canon Richard Otieno</p>
+              <p style="color: #666; margin: 5px 0; font-size: 14px;">ACK St. Jude Miritini Parish</p>
+            </div>
+          </div>
+        </div>
+      `
+    };
 
     // Send both emails in parallel
     await Promise.all([
