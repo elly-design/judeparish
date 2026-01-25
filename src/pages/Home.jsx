@@ -2207,7 +2207,7 @@ const Home = () => {
                 <iframe 
                   width="100%" 
                   height="315" 
-                  src="https://www.youtube.com/embed/5Co3rY25pek" 
+                  src="https://www.youtube.com/embed/El7y9xY_QMY" 
                   title="Featured Sermon" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -2217,11 +2217,11 @@ const Home = () => {
             </div>
             <div className="sermon-details">
               <span className="section-subtitle">Featured Message</span>
-              <h2 className="section-title">Christ the Blue Print</h2>
+              <h2 className="section-title">THE MARKS OF A RENEWED CHURCH</h2>
               <div className="sermon-meta">
                 <span className="meta-item">
                   <FaCalendarAlt className="meta-icon" />
-                  23rd March, 2025
+                  18th January, 2026
                 </span>
                 <span className="meta-item">
                   <FaUser className="meta-icon" />
@@ -2233,10 +2233,10 @@ const Home = () => {
                 </span>
               </div>
               <p className="sermon-excerpt">
-                Principles & Practices for Christian Leadership
+                How can we have Renewed Churches?
               </p>
               <div className="sermon-actions">
-                <a href="https://youtu.be/5Co3rY25pek" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href="https://youtu.be/El7y9xY_QMY" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Watch on YouTube
                 </a>
                 <a href="#" className="btn btn-outline">

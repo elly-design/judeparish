@@ -22,7 +22,7 @@ const slides = [
   {
     id: 2,
     preTitle: 'Rise in God’s Glory',
-    title: 'Embrace your calling, shine His light',
+    title: 'Transformed Neighbourhoods',
     subtitle: "Where Love Meets Action",
     image: 'images/mu.jpeg',
     buttons: [
@@ -33,7 +33,7 @@ const slides = [
   {
     id: 3,
     preTitle: 'Faith That Moves',
-    title: 'Grow spiritually, live with impact',
+    title: 'Christ-Centered Community',
     subtitle: "Join Our Faith Journey",
     image: 'images/sunday.jpeg',
     buttons: [
