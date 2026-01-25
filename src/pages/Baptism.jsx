@@ -111,7 +111,6 @@ const Baptism = () => {
     <div className="baptism-page">
       <div className="baptism-container">
         <div className="baptism-header">
-          <span className="pre-title">Discover Baptism</span>
           <h1>Begin Your Journey of Faith in Christ</h1>
         </div>
         
