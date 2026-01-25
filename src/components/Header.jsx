@@ -149,6 +149,7 @@ const Header = () => {
       ]
     },
     { path: '/services', label: 'Services' },
+    { path: '/baptism', label: 'Baptism' },
     { path: '/gallery', label: 'Gallery' },
   ], []);
 
