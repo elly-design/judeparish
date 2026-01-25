@@ -676,12 +676,12 @@ const About = () => {
                 <div className="mission-box">
                   <GiChurch className="icon" />
                   <h3>Our Mission</h3>
-                  <p>To lead people into a growing relationship with Jesus Christ through worship, discipleship, and service.</p>
+                  <p>To lead people into a growing relationship with Jesus Christ through worship, discipleship and service.</p>
                 </div>
                 <div className="vision-box">
                   <FaCross className="icon" />
                   <h3>Our Vision</h3>
-                  <p>To be a thriving, multi-generational church that transforms lives and communities with the love of Christ.</p>
+                  <p>To empower God's people to transform society through Christ for holistic life.</p>
                 </div>
               </div>
             </div>
