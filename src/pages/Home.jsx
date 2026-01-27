@@ -1107,7 +1107,7 @@ const Home = () => {
           >
             <motion.div className="welcome-text" variants={item}>
               <h2 className="section-title">A Place to Belong, Believe and Become</h2>
-              <p className="lead">At St. Jude Miritini Anglican Church, we are a diverse community united by our faith in Jesus Christ. Our mission is to make disciples who love God, love others, and serve the world.</p>
+              <p className="lead">At St. Jude Miritini Anglican Church, we are a diverse community united by our faith in Jesus Christ. Our mission is to make disciples who love God, love others and serve the world.</p>
               
               <div className="welcome-features">
                 <div className="feature">
@@ -1305,11 +1305,40 @@ const Home = () => {
                   }}
                   initial={{ opacity: 0, scale: 1 }}
                   animate={{ 
-                    opacity: [0, 0, 0, 0, 0, 1],
-                    scale: [1, 1, 1, 1, 1, 1.1]
+                    opacity: [0, 0, 0, 0, 1, 1, 0],
+                    scale: [1, 1, 1, 1, 1, 1.1, 1.1]
                   }}
                   transition={{
                     duration: 20,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+
+                {/* Theme Image */}
+                <motion.img
+                  src="/images/theme.jpeg"
+                  alt="Church theme"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    boxShadow: 'none !important',
+                    WebkitBoxShadow: 'none !important',
+                    MozBoxShadow: 'none !important',
+                    filter: 'none'
+                  }}
+                  initial={{ opacity: 0, scale: 1 }}
+                  animate={{ 
+                    opacity: [0, 0, 0, 0, 0, 1, 1, 0],
+                    scale: [1, 1, 1, 1, 1, 1, 1.12, 1.12]
+                  }}
+                  transition={{
+                    duration: 25,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -2242,9 +2271,14 @@ const Home = () => {
                 <a href="#" className="btn btn-outline">
                   <FaHeadphones className="btn-icon" /> Listen
                 </a>
-                <a href="#" className="btn btn-text">
-                  Download Notes <FaDownload className="btn-icon" />
-                </a>
+                <div className="qr-code-container">
+                  <img 
+                    src="/images/renewed churches sermon.png" 
+                    alt="Scan QR code for sermon notes" 
+                    className="qr-code-image"
+                  />
+                  <p className="qr-code-text"></p>
+                </div>
               </div>
             </div>
           </div>
