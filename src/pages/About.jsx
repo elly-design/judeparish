@@ -181,7 +181,13 @@ const About = () => {
       name: 'Nicholas Mbogho',
       role: 'Council Member',
       image: '/images/nicholas.png',
-    }
+    },
+    {
+      id: 25,
+      name: 'Canon Erick Owiti',
+      role: 'Council Member',
+      image: '/images/owiti.png',
+    },
   ];
 
   // Core values
