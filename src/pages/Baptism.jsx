@@ -119,7 +119,7 @@ const Baptism = () => {
             <p>
               Baptism in the Anglican Church is the sacred rite of initiation into the Body of Christ. 
               It symbolizes cleansing from sin, new life in Jesus, and entry into God's family. 
-              Through water and the Holy Spirit, believers are called to live in faith, hope, and love, 
+              Through water and the Holy Spirit, believers are called to live in faith, hope and love, 
               guided by Christ.
             </p>
           </div>
@@ -132,7 +132,7 @@ const Baptism = () => {
             
             <div className="key-point">
               <h3>Who Can Be Baptized</h3>
-              <p>Infants, children, and adults are welcomed.</p>
+              <p>Infants, children and adults are welcomed.</p>
             </div>
             
             <div className="key-point">
@@ -323,10 +323,10 @@ const Baptism = () => {
                           required
                         >
                           <option value="">Select Time</option>
-                          <option value="8:00 AM">8:00 AM Service</option>
-                          <option value="10:00 AM">10:00 AM Service</option>
-                          <option value="12:00 PM">12:00 PM Service</option>
-                          <option value="2:00 PM">2:00 PM Service</option>
+                          <option value="8:00 AM">06:00 AM Service</option>
+                          <option value="10:00 AM">08:00 AM Service</option>
+                          <option value="12:00 PM">10:00 AM Service</option>
+                          <option value="2:00 PM">11:00 AM Service</option>
                         </select>
                       </div>
                     </div>
