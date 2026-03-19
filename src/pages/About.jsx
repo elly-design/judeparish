@@ -120,7 +120,7 @@ const About = () => {
       id: 14,
       name: 'Betty Wesonga',
       role: 'Worship Coordinator',
-      image: '/images/betty.png',
+      image: '/images/wesonga.png',
     },
     {
       id: 15,
