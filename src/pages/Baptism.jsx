@@ -323,10 +323,10 @@ const Baptism = () => {
                           required
                         >
                           <option value="">Select Time</option>
-                          <option value="8:00 AM">06:00 AM Service</option>
-                          <option value="10:00 AM">08:00 AM Service</option>
-                          <option value="12:00 PM">10:00 AM Service</option>
-                          <option value="2:00 PM">11:00 AM Service</option>
+                          <option value="06:00 AM">06:00 AM Service</option>
+                          <option value="08:00 AM">08:00 AM Service</option>
+                          <option value="10:00 AM">10:00 AM Service</option>
+                          <option value="11:00 AM">11:00 AM Service</option>
                         </select>
                       </div>
                     </div>
