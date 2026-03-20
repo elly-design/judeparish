@@ -1201,8 +1201,8 @@ const Home = () => {
               >
                 {/* Congregant Image */}
                 <motion.img
-                  src="/images/congregant.jpeg"
-                  alt="St. Jude's Anglican Church community"
+                  src="/images/union (2).jpeg"
+                  alt="Church women group"
                   style={{
                     position: 'absolute',
                     top: 0,
@@ -1259,8 +1259,8 @@ const Home = () => {
 
                 {/* Mothers Image */}
                 <motion.img
-                  src="/images/union (2).jpeg"
-                  alt="Church mothers group"
+                  src="/images/congregant.jpeg"
+                  alt="St. Jude's Anglican Church community"
                   style={{
                     position: 'absolute',
                     top: 0,
