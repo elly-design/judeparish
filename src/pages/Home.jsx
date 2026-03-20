@@ -1259,7 +1259,7 @@ const Home = () => {
 
                 {/* Mothers Image */}
                 <motion.img
-                  src="/images/purple.jpeg"
+                  src="/images/union (2).jpeg"
                   alt="Church mothers group"
                   style={{
                     position: 'absolute',
