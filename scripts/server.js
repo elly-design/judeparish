@@ -7,6 +7,9 @@ import 'dotenv/config';
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+// Trust Render's proxy (required for express-rate-limit behind a reverse proxy)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -15,9 +18,9 @@ app.use(express.json());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // Limit each IP to 10 requests per windowMs
-  message: { 
-    success: false, 
-    message: 'Too many requests, please try again later.' 
+  message: {
+    success: false,
+    message: 'Too many requests, please try again later.'
   }
 });
 
@@ -25,7 +28,9 @@ app.use('/api/', limiter);
 
 // Email transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST || 'smtp-relay.brevo.com',
+  port: process.env.SMTP_PORT || 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
