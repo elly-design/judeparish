@@ -10,7 +10,7 @@
   }
 }
 .gallery-page {
-  padding-top: 0;
+  padding-top: var(--header-height, 80px);
 }
 
 /* Hero Section */
@@ -25,7 +25,7 @@
   overflow: hidden;
   color: white;
   text-align: center;
-  padding: 120px 20px 80px;
+  padding: 60px 20px 80px;
   margin-bottom: 60px;
 }
 
@@ -349,7 +349,7 @@
 
 @media (max-width: 768px) {
   .gallery-hero {
-    padding: 100px 20px 60px;
+    padding: 40px 20px 60px;
   }
   
   .gallery-hero h1 {
@@ -376,8 +376,16 @@
 }
 
 @media (max-width: 576px) {
+  .gallery-hero {
+    padding: 30px 15px 50px;
+  }
+
   .gallery-hero h1 {
     font-size: 1.8rem;
+  }
+
+  .gallery-hero p {
+    font-size: 1rem;
   }
   
   .section-header h2 {

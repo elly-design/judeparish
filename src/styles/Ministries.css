@@ -1215,6 +1215,10 @@ p { margin: 0 0 15px; }
 }
 
 @media (max-width: 768px) {
+  .ministry-highlight {
+    background-attachment: scroll;
+  }
+
   .ministries-hero h1 {
     font-size: 2.5rem;
   }

@@ -478,12 +478,17 @@
 @media (max-width: 768px) {
   .ministry-hero {
     padding: 6rem 0 4rem;
+    background-attachment: scroll;
   }
-  
+
+  .ministry-page[data-ministry="kama"] .ministry-hero {
+    background-attachment: scroll;
+  }
+
   .ministry-hero h1 {
     font-size: 2rem;
   }
-  
+
   .ministry-hero p {
     font-size: 1.1rem;
   }

@@ -734,7 +734,7 @@ const Home = () => {
     
     try {
       // Send appointment request to backend API
-      const response = await fetch('http://localhost:5001/api/contact', {
+      const response = await fetch(import.meta.env.VITE_API_URL + '/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1759,13 +1759,7 @@ const Home = () => {
             zIndex: -1
           }}></div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1.2fr',
-            gap: '4rem',
-            alignItems: 'center',
-            position: 'relative'
-          }}>
+          <div className="vicar-grid">
             {/* Vicar's Image */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}

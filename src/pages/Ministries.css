@@ -31,7 +31,7 @@
 /* Ministries Grid */
 .ministries-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   margin: 50px 0;
 }
@@ -236,17 +236,22 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
   .featured-ministry {
     grid-template-columns: 1fr;
+    gap: 0;
   }
-  
+
   .featured-ministry-image {
     min-height: 300px;
   }
 }
 
 @media (max-width: 768px) {
+  .ministries-hero {
+    background-attachment: scroll;
+  }
+
   .ministries-hero h1 {
     font-size: 2.5rem;
   }
@@ -278,9 +283,23 @@
   .ministries-hero {
     padding: 100px 20px 60px;
   }
-  
+
   .ministries-hero h1 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ministries-hero {
+    padding: 80px 15px 50px;
+  }
+
+  .ministries-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .ministries-hero p {
+    font-size: 1rem;
   }
   
   .featured-ministry-content {

@@ -1222,8 +1222,8 @@ p, li, a, button, input, textarea, select, label {
 
 @media (max-width: 768px) {
   .hero-slider {
-    height: 80vh;
-    min-height: 500px;
+    height: 70vh;
+    min-height: 420px;
   }
   
   .slide-content h1 {
@@ -1692,11 +1692,17 @@ p, li, a, button, input, textarea, select, label {
 
 @media (max-width: 768px) {
   .welcome-section {
-    padding: 4rem 0;
+    padding: 2.5rem 0 !important;
   }
-  
+
+  /* Hide the image slideshow on mobile — text-only layout is cleaner */
+  .welcome-content > div:last-of-type {
+    display: none;
+  }
+
   .welcome-content {
     padding: 0 1.5rem;
+    gap: 1.5rem;
   }
   
   .welcome-text .section-title {
@@ -1760,7 +1766,7 @@ p, li, a, button, input, textarea, select, label {
 
 @media (max-width: 576px) {
   .welcome-section {
-    padding: 3.5rem 0;
+    padding: 2rem 0 !important;
   }
   
   .welcome-content {
@@ -2752,5 +2758,46 @@ p, li, a, button, input, textarea, select, label {
     width: 75px;
     height: 75px;
     font-size: 2rem;
+  }
+}
+
+/* Vicar welcome grid */
+.vicar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .vicar-welcome {
+    background-attachment: scroll !important;
+    padding: 3rem 0 !important;
+  }
+
+  .vicar-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .vicar-grid > *:first-child {
+    max-width: 280px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .vicar-welcome {
+    padding: 2.5rem 0 !important;
+  }
+
+  .vicar-grid {
+    gap: 1.5rem;
+  }
+
+  .vicar-grid > *:first-child {
+    max-width: 220px;
   }
 }

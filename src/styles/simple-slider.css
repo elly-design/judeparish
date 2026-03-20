@@ -409,6 +409,10 @@
 }
 
 @media (max-width: 767px) {
+  .slide-bg {
+    background-attachment: scroll;
+  }
+
   .slide h2 {
     font-size: 2rem;
     line-height: 1.2;
