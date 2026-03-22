@@ -1,11 +1,13 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import 'dotenv/config';
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+
+// Trust Render's proxy (required for express-rate-limit behind a reverse proxy)
+app.set('trust proxy', 1);
 
 // Middleware
 app.use(cors());
@@ -15,22 +17,37 @@ app.use(express.json());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // Limit each IP to 10 requests per windowMs
-  message: { 
-    success: false, 
-    message: 'Too many requests, please try again later.' 
+  message: {
+    success: false,
+    message: 'Too many requests, please try again later.'
   }
 });
 
 app.use('/api/', limiter);
 
-// Email transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+// Send email via Brevo HTTP API (avoids SMTP port blocking on Render free tier)
+const sendEmail = async ({ from, to, subject, html }) => {
+  const [fromName, fromEmail] = from.match(/^"(.+)" <(.+)>$/)?.slice(1) ?? ['', from];
+  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'accept': 'application/json',
+      'api-key': process.env.BREVO_API_KEY,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      sender: { name: fromName, email: process.env.EMAIL_USER },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html
+    })
+  });
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || 'Brevo API error');
   }
-});
+  return response.json();
+};
 
 // Allowed subjects
 const ALLOWED_SUBJECTS = [
@@ -306,8 +323,8 @@ app.post('/api/baptism', async (req, res) => {
 
     // Send both emails in parallel
     await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(userMailOptions)
+      sendEmail(adminMailOptions),
+      sendEmail(userMailOptions)
     ]);
 
     console.log('Baptism application emails sent successfully');
@@ -477,8 +494,8 @@ app.post('/api/contact', async (req, res) => {
 
     // Send both emails in parallel
     await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(userMailOptions)
+      sendEmail(adminMailOptions),
+      sendEmail(userMailOptions)
     ]);
 
     console.log('Emails sent successfully');
