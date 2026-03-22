@@ -2801,3 +2801,45 @@ p, li, a, button, input, textarea, select, label {
     max-width: 220px;
   }
 }
+
+/* Easter promo section */
+.easter-promo {
+  width: 100%;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.easter-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: var(--radius-lg);
+  border: 3px solid #ffffff;
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .easter-promo {
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+  
+  .easter-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .easter-promo {
+    padding: 1rem;
+  }
+  
+  .easter-image {
+    max-height: 300px;
+  }
+}

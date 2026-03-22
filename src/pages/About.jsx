@@ -186,7 +186,7 @@ const About = () => {
       id: 25,
       name: 'Canon Erick Owiti',
       role: 'Council Member',
-      image: '/images/owiti.png',
+      image: '/images/erick.jpeg',
     },
   ];
 

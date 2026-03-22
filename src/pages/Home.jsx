@@ -2038,13 +2038,12 @@ const Home = () => {
               style={{ width: '100%' }}
             >
               {upcomingEvents.length === 0 ? (
-                <div className="no-events-message">
-                  <div className="no-events-content">
-                    <h3 className="no-events-title">No Upcoming Events</h3>
-                    <p className="no-events-text">
-                      We have no upcoming events right now, but our team is joyfully preparing new opportunities for worship, fellowship and community growth. Stay tuned for updates in the upcoming events section on this page.
-                    </p>
-                  </div>
+                <div className="easter-promo">
+                  <img 
+                    src="/images/Easter.jpg" 
+                    alt="Easter Celebration" 
+                    className="easter-image"
+                  />
                 </div>
               ) : (
                 upcomingEvents.slice(0, 3).map((event, index) => (
