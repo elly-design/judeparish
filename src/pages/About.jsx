@@ -82,9 +82,9 @@ const About = () => {
     },
     {
       id: 8,
-      name: 'Naomi Warui',
-      role: 'Health & Environment Chairperson',
-      image: '/images/warui.png',
+      name: 'Janet Wanjiku',
+      role: 'Council Member',
+      image: '/images/janet.png',
     },
     {
       id: 9,
