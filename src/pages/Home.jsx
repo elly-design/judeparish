@@ -2229,7 +2229,7 @@ const Home = () => {
                 <iframe 
                   width="100%" 
                   height="315" 
-                  src="https://www.youtube.com/embed/El7y9xY_QMY" 
+                  src="https://www.youtube.com/watch?v=6uic_6nIxvs&pp=0gcJCdkKAYcqIYzv" 
                   title="Featured Sermon" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -2239,26 +2239,26 @@ const Home = () => {
             </div>
             <div className="sermon-details">
               <span className="section-subtitle">Featured Message</span>
-              <h2 className="section-title">THE MARKS OF A RENEWED CHURCH</h2>
+              <h2 className="section-title">Christ our risen hope</h2>
               <div className="sermon-meta">
                 <span className="meta-item">
                   <FaCalendarAlt className="meta-icon" />
-                  18th January, 2026
+                  28th March, 2026
                 </span>
                 <span className="meta-item">
                   <FaUser className="meta-icon" />
-                  Rev. Canon Richard Otieno
+                  Rt.Rev.Dr. Alphonce Mwaro Baya
                 </span>
                 <span className="meta-item">
                   <FaBook className="meta-icon" />
-                  John 13:12-17
+                  Matthew 21:1-11
                 </span>
               </div>
               <p className="sermon-excerpt">
-                How can we have Renewed Churches?
+                Diocesan Easter Carols
               </p>
               <div className="sermon-actions">
-                <a href="https://youtu.be/El7y9xY_QMY" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href="https://www.youtube.com/watch?v=6uic_6nIxvs&pp=0gcJCdkKAYcqIYzv" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Watch on YouTube
                 </a>
                 <a href="#" className="btn btn-outline">
