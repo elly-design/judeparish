@@ -1260,7 +1260,7 @@ const Home = () => {
                 {/* Mothers Image */}
                 <motion.img
                   src="/images/congregant.jpeg"
-                  alt="St. Jude's Anglican Church community"
+                  alt="St. Jude Miritini Anglican Church community"
                   style={{
                     position: 'absolute',
                     top: 0,

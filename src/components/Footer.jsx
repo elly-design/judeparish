@@ -123,7 +123,7 @@ const Footer = () => {
               }}>
                 <img 
                   src={churchLogo} 
-                  alt="St. Jude's Anglican Church Logo" 
+                  alt="St. Jude Miritin Anglican Church Logo" 
                   className="church-logo"
                   style={{
                     width: '32px',
