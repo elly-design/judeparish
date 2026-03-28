@@ -2229,7 +2229,7 @@ const Home = () => {
                 <iframe 
                   width="100%" 
                   height="315" 
-                  src="https://www.youtube.com/watch?v=6uic_6nIxvs&pp=0gcJCdkKAYcqIYzv" 
+                  src="https://www.youtube.com/watch?v=6uic_6nIxvs" 
                   title="Featured Sermon" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -2258,7 +2258,7 @@ const Home = () => {
                 Diocesan Easter Carols
               </p>
               <div className="sermon-actions">
-                <a href="https://www.youtube.com/watch?v=6uic_6nIxvs&pp=0gcJCdkKAYcqIYzv" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href="https://www.youtube.com/watch?v=6uic_6nIxvs" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Watch on YouTube
                 </a>
                 <a href="#" className="btn btn-outline">
