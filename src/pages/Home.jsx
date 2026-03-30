@@ -2040,7 +2040,7 @@ const Home = () => {
               {upcomingEvents.length === 0 ? (
                 <div className="easter-promo">
                   <img 
-                    src="/images/Easter.jpg" 
+                    src="/images/holy thursday easter.jpg" 
                     alt="Easter Celebration" 
                     className="easter-image"
                   />
