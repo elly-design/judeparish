@@ -4,6 +4,7 @@ import './App.css';
 import './styles/slick-fix.css'; // Slick Carousel font fix
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
+import NewsUpdates from './pages/NewsUpdates.jsx';
 import Ministries from './pages/Ministries.jsx';
 import Services from './pages/Services.jsx';
 import Gallery from './pages/Gallery.jsx';
@@ -41,6 +42,7 @@ function App() {
           <Route path="/ministries/kayo" element={<KAYO />} />
           <Route path="/ministries/boys-brigade" element={<BoysBrigade />} />
           <Route path="/ministries/gfs" element={<GFS />} />
+          <Route path="/news-updates" element={<NewsUpdates />} />
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />

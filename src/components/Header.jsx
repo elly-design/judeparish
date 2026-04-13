@@ -148,6 +148,7 @@ const Header = () => {
         { path: '/ministries/gfs', label: 'Girls Friendly Society'}
       ]
     },
+    { path: '/news-updates', label: 'News & Updates' },
     { path: '/services', label: 'Services' },
     { path: '/baptism', label: 'Baptism' },
     { path: '/gallery', label: 'Gallery' },
