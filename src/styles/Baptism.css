@@ -473,7 +473,151 @@
   animation: spin 1s linear infinite;
 }
 
+/* Baptism Fees Information */
+.baptism-fees-info {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 2px solid #e9ecef;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.baptism-fees-info h4 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.baptism-fees-info h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2c3e50);
+  border-radius: 2px;
+}
+
+.fees-content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fee-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #27ae60;
+  line-height: 1;
+}
+
+.currency {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.fee-description {
+  color: #5a6c7d;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.payment-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.payment-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.payment-link.primary {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border-color: #3498db;
+}
+
+.payment-link.primary:hover {
+  background: linear-gradient(135deg, #2980b9, #21618c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+
+.payment-link.secondary {
+  background: white;
+  color: #34495e;
+  border-color: #bdc3c7;
+}
+
+.payment-link.secondary:hover {
+  background: #f8f9fa;
+  border-color: #95a5a6;
+  transform: translateY(-2px);
+}
+
+.payment-divider {
+  color: #7f8c8d;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 /* Responsive Design */
+@media (max-width: 768px) {
+  .baptism-fees-info {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .baptism-fees-info h4 {
+    font-size: 1.3rem;
+  }
+  
+  .amount {
+    font-size: 2.5rem;
+  }
+  
+  .payment-options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .payment-link {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .payment-divider {
+    display: none;
+  }
+}
 @media (max-width: 992px) {
   .baptism-header {
     min-height: 350px;

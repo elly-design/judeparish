@@ -151,6 +151,31 @@ const Baptism = () => {
               <div className="cta-intro">
                 <h3>Ready to Begin This Sacred Journey?</h3>
                 <p>We welcome you to apply for baptism at ACK St. Jude Miritini Parish. Our team will guide you through every step of this meaningful sacrament.</p>
+                
+                {/* Baptism Fees Information */}
+                <div className="baptism-fees-info">
+                  <h4>Baptism Fees</h4>
+                  <div className="fees-content">
+                    <div className="fee-amount">
+                      <span className="amount">KES 500</span>
+                      <span className="currency">Kenya Shillings</span>
+                    </div>
+                    <p className="fee-description">
+                      This fee covers baptism certificate, administration costs and preparation materials.
+                    </p>
+                  </div>
+                  <div className="payment-options">
+                    <Link to="/give" className="payment-link primary">
+                      <FaUser style={{ marginRight: '0.5rem' }} />
+                      Pay Baptism Fee Online
+                    </Link>
+                    <span className="payment-divider">or</span>
+                    <button className="payment-link secondary">
+                      Pay at Church Office
+                    </button>
+                  </div>
+                </div>
+                
                 <div className="cta-buttons">
                   <button 
                     onClick={() => setShowForm(true)}
