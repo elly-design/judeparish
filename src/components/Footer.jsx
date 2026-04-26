@@ -560,7 +560,7 @@ const Footer = () => {
                       transition: 'color 0.2s ease'
                     }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--footer-accent)'}
                        onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)'}>
-                      ackstjudemiritinichuch@gmail.com
+                      ackstjudemiritinichurch@gmail.com
                     </a>
                     <br />
                     <a href="mailto:revotieno4christ@gmail.com" style={{
