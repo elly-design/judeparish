@@ -141,6 +141,144 @@ const NewsUpdates = () => {
         </div>
       </section>
 
+      {/* Evangelist Commissioning Section */}
+      <section className="evangelist-section section-padding bg-light">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Evangelists Commissioned</h2>
+            <p className="section-description">
+              Celebrating the commissioning of our new evangelists in Mombasa Diocese
+            </p>
+          </div>
+          
+          <div className="evangelist-card">
+            <div className="evangelist-content">
+              <div className="evangelist-header">
+                <div className="evangelist-date">
+                  <BsCalendarCheck className="date-icon" />
+                  <span>14th May 2026</span>
+                </div>
+                <div className="evangelist-category">
+                  <span className="category-badge">Ministry</span>
+                </div>
+              </div>
+              
+              <div className="evangelist-body">
+                <h3 className="evangelist-title">Evangelists Commissioned in Mombasa Diocese</h3>
+                <p className="evangelist-description">
+                  Our Lord Bishop commissioned and Licensed three of our own as evangelists in Mombasa Diocese namely Betty Wesonga, Rophus Ngala and Janet Mwangi. Congratulations to them on this significant milestone in their ministry journey.
+                </p>
+                
+                <div className="evangelist-scripture">
+                  <FaQuoteLeft className="quote-icon" />
+                  <div className="scripture-content">
+                    <h4 className="scripture-reference">Matthew 28:19-20</h4>
+                    <p className="scripture-text">"Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you."</p>
+                  </div>
+                </div>
+                
+                <div className="evangelist-theme">
+                  <GiChurch className="theme-icon" />
+                  <div className="theme-content">
+                    <h4>Diocesan Theme</h4>
+                    <p>Christ-Centered Families, Renewed Churches and Transformed Neighbourhood</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="evangelist-visual">
+              <div className="evangelist-image-container">
+                <img 
+                  src="/images/theme.jpeg" 
+                  alt="Evangelists Commissioned"
+                  className="evangelist-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/images/theme.jpeg';
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Business Forum Launch Section */}
+      <section className="business-forum-section section-padding">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Business Forum Launch</h2>
+            <p className="section-description">
+              Launching the Business Forum of Great Business Owners - Vision, Impact and Purpose
+            </p>
+          </div>
+          
+          <div className="business-forum-card">
+            <div className="business-forum-content">
+              <div className="business-forum-header">
+                <div className="business-forum-date">
+                  <BsCalendarCheck className="date-icon" />
+                  <span>14th May 2026</span>
+                </div>
+                <div className="business-forum-category">
+                  <span className="category-badge">Business & Ministry</span>
+                </div>
+              </div>
+              
+              <div className="business-forum-body">
+                <h3 className="business-forum-title">Business Forum of Great Business Owners Launch</h3>
+                <p className="business-forum-description">
+                  On this day, 14th May 2026, we officially launch the Business Forum of Great Business Owners a platform founded on vision, impact and purpose. As we mark this significant milestone, we affirm that business transcends the mere pursuit of profit. We are called to be solution providers to societal challenges, creators of employment opportunities and faithful witnesses to God's amazing grace within the marketplace. This forum stands as a commitment to excellence, responsibility and transformative leadership.
+                </p>
+                
+                <div className="business-forum-speakers">
+                  <h4>Distinguished Guest Speakers</h4>
+                  <ul className="speakers-list">
+                    <li>
+                      <strong>Mrs. Peninah Kilalo</strong> - Director of Joroben Insurance Agency
+                    </li>
+                    <li>
+                      <strong>Mr. Samuel Kilalo</strong> - Business Expert and Entrepreneur
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="business-forum-keynote">
+                  <h4>Keynote Address</h4>
+                  <p>
+                    <strong>Vicar Rev. Canon Richard Otieno</strong> will deliver the keynote address on the vital role of business owners in advancing God's Kingdom.
+                  </p>
+                </div>
+                
+                <div className="business-forum-scripture">
+                  <FaQuoteLeft className="quote-icon" />
+                  <div className="scripture-content">
+                    <h4 className="scripture-reference">Colossians 3:23</h4>
+                    <p className="scripture-text">"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."</p>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+            <div className="business-forum-visual">
+              <div className="business-forum-image-container">
+                <img 
+                  src="/images/business.jpg" 
+                  alt="Business Forum Launch"
+                  className="business-forum-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/images/business.jpg';
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Ministry Highlights */}
       <section className="ministry-highlights section-padding bg-light">
         <div className="container">
