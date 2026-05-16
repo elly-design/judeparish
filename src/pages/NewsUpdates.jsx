@@ -247,7 +247,7 @@ const NewsUpdates = () => {
                 <div className="business-forum-keynote">
                   <h4>Keynote Address</h4>
                   <p>
-                    <strong>Vicar Rev. Canon Richard Otieno</strong> will deliver the keynote address on the vital role of business owners in advancing God's Kingdom.
+                    <strong>Vicar Rev. Canon Richard Otieno</strong> who delivered the keynote address on the vital role of business owners in advancing God's Kingdom.
                   </p>
                 </div>
                 
