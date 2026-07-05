@@ -2229,7 +2229,7 @@ const Home = () => {
                 <iframe 
                   width="100%" 
                   height="315" 
-                  src="https://www.youtube.com/embed/6uic_6nIxvs?start=137" 
+                  src="https://www.youtube.com/embed/wD4XnFTCB1E" 
                   title="Featured Sermon" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -2239,26 +2239,26 @@ const Home = () => {
             </div>
             <div className="sermon-details">
               <span className="section-subtitle">Featured Message</span>
-              <h2 className="section-title">Christ our risen hope</h2>
+              <h2 className="section-title">Revive Us Oh Lord!</h2>
               <div className="sermon-meta">
                 <span className="meta-item">
                   <FaCalendarAlt className="meta-icon" />
-                  28th March, 2026
+                  05/07/2026
                 </span>
                 <span className="meta-item">
                   <FaUser className="meta-icon" />
-                  Rt.Rev.Dr. Alphonce Mwaro Baya
+                  Rev. Esther Mrenje
                 </span>
                 <span className="meta-item">
                   <FaBook className="meta-icon" />
-                  Matthew 21:1-11
+                  Psalms 85
                 </span>
               </div>
               <p className="sermon-excerpt">
-                Diocesan Easter Carols
+                Jumapili Ya Tano Baada ya Siku Ya Utatu
               </p>
               <div className="sermon-actions">
-                <a href="https://www.youtube.com/watch?v=6uic_6nIxvs&t=137s" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href="https://www.youtube.com/watch?v=wD4XnFTCB1E" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Watch on YouTube
                 </a>
                 <a href="#" className="btn btn-outline">
