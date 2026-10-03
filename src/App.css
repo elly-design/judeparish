@@ -10,6 +10,8 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  /* clip does not create a scroll container, so the viewport keeps scrolling */
+  overflow-x: clip;
 }
 
 #root {

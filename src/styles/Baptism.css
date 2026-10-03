@@ -1,693 +1,641 @@
-/* Baptism Page Styles */
+/* ===== Baptism Page — scoped under .baptism-page ===== */
+/* Design system: navy #1a4d8f / gold #e6af2e, Montserrat headings, Roboto body */
+
 .baptism-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 2rem 1rem;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-primary, 'Roboto', sans-serif);
+  color: var(--text-main, #333);
+  background: var(--light-bg, #f8f9fa);
 }
 
-.baptism-container {
-  max-width: 1200px;
+.bp-container {
+  max-width: 1140px;
   margin: 0 auto;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  padding: 2rem;
-}
-
-/* Animation keyframes for background */
-@keyframes fadeInZoom {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.03);
-  }
-}
-
-/* Animation keyframes for content */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Form animations */
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.baptism-header {
-  text-align: center;
-  margin: -2rem -2rem 2rem -2rem;
-  padding: 5rem 2rem;
-  border-radius: 12px 12px 0 0;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
-    url('/images/baptism.jpeg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-blend-mode: overlay;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  opacity: 0;
-  animation: fadeInZoom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-  will-change: transform, opacity;
-  transform-origin: center center;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  
-  /* Smooth scaling on mobile */
-  @media (max-width: 768px) {
-    animation: fadeInZoom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-    background-attachment: scroll;
-  }
-}
-
-/* Add animation to header content */
-.baptism-header > * {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Stagger animations for child elements */
-.baptism-header .pre-title {
-  animation-delay: 0.5s;
-}
-
-.baptism-header h1 {
-  animation-delay: 0.7s;
-}
-
-.pre-title {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-  background: linear-gradient(90deg, #8b5cf6, #a855f7, #8b5cf6);
-  padding: 0.5rem 1.5rem;
-  border-radius: 30px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
-}
-
-.baptism-header h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin: 1rem 0;
-  color: #ffffff;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  max-width: 900px;
-  padding: 0 1rem;
-  background: linear-gradient(90deg, rgba(26, 95, 122, 0.3), rgba(26, 95, 122, 0.6), rgba(26, 95, 122, 0.3));
-  padding: 1.5rem 2rem;
-  border-radius: 8px;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.baptism-content {
   padding: 0 1.5rem;
 }
 
-.baptism-description {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #333;
-  margin-bottom: 3rem;
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.baptism-key-points {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-}
-
-.key-point {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.key-point:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.key-point h3 {
-  color: #1a5f7a;
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-}
-
-.key-point p {
-  color: #4a5568;
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* CTA Section Styles */
-.baptism-cta {
-  margin-top: 3rem;
-}
-
-.cta-intro {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
-  border-radius: 12px;
-  border: 1px solid #e8f0fe;
-}
-
-.cta-intro h3 {
-  color: #1a5f7a;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.cta-intro p {
-  color: #4a5568;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-buttons {
+/* ---------- Hero ---------- */
+.bp-hero {
+  position: relative;
+  min-height: 62vh;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.cta-button {
-  display: inline-flex;
   align-items: center;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
+  justify-content: center;
   text-align: center;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-}
-
-.cta-button.primary {
-  background-color: #1a5f7a;
-  color: white;
-}
-
-.cta-button.primary:hover {
-  background-color: #144d63;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(26, 95, 122, 0.3);
-}
-
-.cta-button.secondary {
-  background-color: transparent;
-  color: #1a5f7a;
-  border-color: #1a5f7a;
-}
-
-.cta-button.secondary:hover {
-  background-color: rgba(26, 95, 122, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Baptism Form Styles */
-.baptism-form-container {
-  background: white;
-  border-radius: 12px;
   overflow: hidden;
-  animation: slideIn 0.5s ease-out;
+  color: #fff;
+  padding: 7rem 1.5rem 4.5rem;
 }
 
-.form-header {
-  background: linear-gradient(135deg, #1a5f7a 0%, #2c7da0 100%);
-  color: white;
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.form-header h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.form-header p {
-  margin: 0;
-  opacity: 0.9;
-  font-size: 1.1rem;
-}
-
-.close-form-btn {
+.bp-hero-img {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.close-form-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+.bp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.45) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
 }
 
-.baptism-form {
-  padding: 2rem;
-}
-
-.form-section {
-  margin-bottom: 2.5rem;
-}
-
-.form-section h4 {
-  color: #1a5f7a;
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e8f0fe;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.form-group {
+.bp-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
 }
 
-.form-group.full-width {
-  grid-column: 1 / -1;
-}
-
-.form-group label {
-  color: #374151;
+.bp-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 0.875rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #1a5f7a;
-  box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.1);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-/* Checkbox Styles */
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  cursor: pointer;
-  color: #374151;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.checkbox-label input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--secondary-color, #e6af2e);
   margin: 0;
-  accent-color: #1a5f7a;
 }
 
-/* Status Message Styles */
-.status-message {
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 500;
-}
-
-.status-message.success {
-  background-color: #dcfce7;
-  color: #166534;
-  border: 1px solid #bbf7d0;
-}
-
-.status-message.error {
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
-
-/* Submit Button Styles */
-.form-actions {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.submit-btn {
-  background: linear-gradient(135deg, #1a5f7a 0%, #2c7da0 100%);
-  color: white;
-  border: none;
-  padding: 1rem 2.5rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-width: 250px;
-  justify-content: center;
-}
-
-.submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(26, 95, 122, 0.3);
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.spinning {
-  animation: spin 1s linear infinite;
-}
-
-/* Baptism Fees Information */
-.baptism-fees-info {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  border: 2px solid #e9ecef;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.baptism-fees-info h4 {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  position: relative;
-}
-
-.baptism-fees-info h4::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #3498db, #2c3e50);
+.bp-eyebrow-line {
+  width: 38px;
+  height: 2px;
+  background: var(--secondary-color, #e6af2e);
   border-radius: 2px;
 }
 
-.fees-content {
-  text-align: center;
-  margin-bottom: 2rem;
+.bp-eyebrow-dark {
+  justify-content: center;
 }
 
-.fee-amount {
+.bp-title {
+  color: #ffffff;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.35);
+}
+
+.bp-lead {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  max-width: 620px;
+  text-wrap: pretty;
+}
+
+/* ---------- Sections ---------- */
+.bp-section {
+  padding: 4.5rem 0;
+}
+
+.bp-section-alt {
+  background: #fff;
+  border-top: 1px solid var(--border, #e0e0e0);
+}
+
+.bp-section-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+.bp-section-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--primary-dark, #0e2b57);
+  margin: 0.6rem 0 1rem;
+  text-wrap: balance;
+}
+
+.bp-section-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light, #666);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ---------- Key points ---------- */
+.bp-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.bp-point {
+  background: #fff;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 14px;
+  padding: 2rem 1.6rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm, 0 2px 6px rgba(0, 0, 0, 0.05));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bp-point:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md, 0 10px 24px rgba(14, 43, 87, 0.12));
+}
+
+.bp-point-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color, #1a4d8f), var(--primary-dark, #0e2b57));
+  color: var(--secondary-color, #e6af2e);
+  font-size: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.bp-point-title {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-dark, #0e2b57);
+  margin: 0 0 0.55rem;
+}
+
+.bp-point-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light, #666);
+  margin: 0;
+}
+
+/* ---------- Buttons ---------- */
+.bp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.bp-btn-lg {
+  padding: 1rem 2.1rem;
+  font-size: 1.02rem;
+}
+
+.bp-btn-gold {
+  background: var(--secondary-color, #e6af2e);
+  color: var(--primary-dark, #0e2b57);
+}
+
+.bp-btn-gold:hover {
+  background: var(--secondary-light, #ffdf8a);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(230, 175, 46, 0.35);
+}
+
+.bp-btn-navy {
+  background: var(--primary-color, #1a4d8f);
+  color: #fff;
+}
+
+.bp-btn-navy:hover {
+  background: var(--primary-dark, #0e2b57);
+  transform: translateY(-2px);
+}
+
+.bp-btn-outline {
+  background: transparent;
+  border-color: var(--primary-color, #1a4d8f);
+  color: var(--primary-color, #1a4d8f);
+}
+
+.bp-btn-outline:hover {
+  background: rgba(26, 77, 143, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ---------- Apply card ---------- */
+.bp-apply-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--light-bg, #f8f9fa);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 18px;
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-sm, 0 2px 6px rgba(0, 0, 0, 0.05));
+}
+
+.bp-apply-intro {
+  text-align: center;
+}
+
+/* ---------- Fee card ---------- */
+.bp-fee-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #fff;
+  border: 1px solid var(--border, #e0e0e0);
+  border-left: 5px solid var(--secondary-color, #e6af2e);
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+  margin: 2.2rem 0;
+  box-shadow: var(--shadow-sm, 0 2px 6px rgba(0, 0, 0, 0.05));
+}
+
+.bp-fee-amount {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  text-align: center;
+  padding-right: 2rem;
+  border-right: 1px dashed var(--border, #e0e0e0);
 }
 
-.amount {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #27ae60;
-  line-height: 1;
+.bp-fee-value {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary-color, #1a4d8f);
+  line-height: 1.1;
 }
 
-.currency {
-  font-size: 1rem;
-  color: #7f8c8d;
-  font-weight: 500;
-  margin-top: 0.5rem;
+.bp-fee-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-light, #666);
+  margin-top: 0.4rem;
 }
 
-.fee-description {
-  color: #5a6c7d;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
+.bp-fee-body {
+  flex: 1;
 }
 
-.payment-options {
+.bp-fee-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-light, #666);
+  margin: 0 0 1.1rem;
+}
+
+.bp-fee-actions {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bp-fee-or {
+  color: var(--text-light, #666);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+.bp-fee-office {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-light, #666);
+}
+
+.bp-apply-actions {
+  display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.payment-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+/* ---------- Form card ---------- */
+.bp-form-card {
+  max-width: 920px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md, 0 10px 30px rgba(14, 43, 87, 0.1));
+  animation: bpSlideIn 0.4s ease;
+}
+
+@keyframes bpSlideIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bp-form-head {
+  position: relative;
+  text-align: center;
+  padding: 2.2rem 3rem;
+  background: linear-gradient(135deg, var(--primary-color, #1a4d8f), var(--primary-dark, #0e2b57));
+  color: #fff;
+}
+
+.bp-form-head h2 {
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+}
+
+.bp-form-head p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.bp-form-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.bp-form-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+/* ---------- Status ---------- */
+.bp-status {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1.8rem 2.2rem 0;
+  padding: 1rem 1.3rem;
+  border-radius: 10px;
+  font-weight: 500;
   font-size: 0.95rem;
 }
 
-.payment-link.primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border-color: #3498db;
+.bp-status-success {
+  background: #e9f7ee;
+  color: #1e6b3a;
+  border: 1px solid #bfe6cb;
 }
 
-.payment-link.primary:hover {
-  background: linear-gradient(135deg, #2980b9, #21618c);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+.bp-status-error {
+  background: #fdecec;
+  color: #a12b2b;
+  border: 1px solid #f3c2c2;
 }
 
-.payment-link.secondary {
-  background: white;
-  color: #34495e;
-  border-color: #bdc3c7;
+/* ---------- Form ---------- */
+.bp-form {
+  padding: 2.2rem;
 }
 
-.payment-link.secondary:hover {
-  background: #f8f9fa;
-  border-color: #95a5a6;
-  transform: translateY(-2px);
+.bp-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 2.2rem;
 }
 
-.payment-divider {
-  color: #7f8c8d;
-  font-weight: 500;
+.bp-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-color, #1a4d8f);
+  padding-bottom: 0.7rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 2px solid rgba(26, 77, 143, 0.12);
+  width: 100%;
+}
+
+.bp-legend svg {
+  color: var(--secondary-color, #e6af2e);
+}
+
+.bp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.bp-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-field-wide {
+  grid-column: 1 / -1;
+}
+
+.bp-field label {
   font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main, #333);
+  margin-bottom: 0.45rem;
 }
 
-/* Responsive Design */
+.bp-field input,
+.bp-field select,
+.bp-field textarea {
+  font-family: inherit;
+  font-size: 0.98rem;
+  padding: 0.8rem 0.95rem;
+  border: 1.5px solid var(--border, #e0e0e0);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--text-main, #333);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bp-field input:focus,
+.bp-field select:focus,
+.bp-field textarea:focus {
+  outline: none;
+  border-color: var(--primary-color, #1a4d8f);
+  box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.12);
+}
+
+.bp-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ---------- Checkboxes ---------- */
+.bp-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.bp-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--text-light, #666);
+  cursor: pointer;
+}
+
+.bp-check input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--primary-color, #1a4d8f);
+  cursor: pointer;
+}
+
+/* ---------- Submit ---------- */
+.bp-form-actions {
+  text-align: center;
+}
+
+.bp-submit {
+  min-width: 280px;
+}
+
+.bp-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.bp-spin {
+  animation: bpSpin 1s linear infinite;
+}
+
+@keyframes bpSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .baptism-fees-info {
-    padding: 1.5rem;
-    margin: 1.5rem 0;
+  .bp-section {
+    padding: 3.2rem 0;
   }
-  
-  .baptism-fees-info h4 {
-    font-size: 1.3rem;
+
+  .bp-apply-card {
+    padding: 2rem 1.4rem;
   }
-  
-  .amount {
-    font-size: 2.5rem;
-  }
-  
-  .payment-options {
+
+  .bp-fee-card {
     flex-direction: column;
-    gap: 1rem;
+    text-align: center;
+    gap: 1.3rem;
+    padding: 1.8rem 1.4rem;
   }
-  
-  .payment-link {
+
+  .bp-fee-amount {
+    padding-right: 0;
+    padding-bottom: 1.2rem;
+    border-right: none;
+    border-bottom: 1px dashed var(--border, #e0e0e0);
     width: 100%;
+  }
+
+  .bp-fee-actions {
     justify-content: center;
   }
-  
-  .payment-divider {
-    display: none;
+
+  .bp-apply-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
-}
-@media (max-width: 992px) {
-  .baptism-header {
-    min-height: 350px;
-    padding: 4rem 1.5rem;
-    background-attachment: scroll;
+
+  .bp-form {
+    padding: 1.6rem 1.2rem;
   }
-  
-  .form-grid {
+
+  .bp-form-head {
+    padding: 1.8rem 2.6rem;
+  }
+
+  .bp-grid {
     grid-template-columns: 1fr;
   }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cta-button {
+
+  .bp-submit {
     width: 100%;
-    max-width: 300px;
+    min-width: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .baptism-container {
-    padding: 1rem;
+@media (max-width: 480px) {
+  .bp-hero {
+    min-height: 55vh;
+    padding: 6rem 1.2rem 3.5rem;
   }
-  
-  .baptism-header {
-    padding: 3rem 1rem;
-    min-height: 300px;
-    background-attachment: scroll;
+
+  .bp-eyebrow {
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
   }
-  
-  .baptism-header h1 {
-    font-size: 2.2rem;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    color: #f8f9fa;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  .bp-eyebrow-line {
+    width: 26px;
   }
-  
-  .pre-title {
+
+  .bp-lead {
     font-size: 1rem;
-    padding: 0.4rem 1.2rem;
-    color: #f8f9fa;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   }
-  
-  .baptism-content {
-    padding: 0 0.5rem;
-  }
-  
-  .baptism-key-points {
+
+  .bp-points-grid {
     grid-template-columns: 1fr;
   }
-  
-  .baptism-form {
-    padding: 1.5rem;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bp-form-card {
+    animation: none;
   }
-  
-  .form-header {
-    padding: 1.5rem;
+
+  .bp-point,
+  .bp-btn,
+  .bp-form-close {
+    transition: none;
   }
-  
-  .form-header h3 {
-    font-size: 1.5rem;
-  }
-  
-  .submit-btn {
-    width: 100%;
-    padding: 0.875rem 2rem;
+
+  .bp-point:hover,
+  .bp-btn:hover,
+  .bp-form-close:hover {
+    transform: none;
   }
 }

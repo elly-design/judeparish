@@ -11,7 +11,7 @@ import {
 import './Header.css';
 
 const SCROLL_THRESHOLD = 50;
-const DESKTOP_BREAKPOINT = 992;
+const DESKTOP_BREAKPOINT = 1200;
 const MOBILE_MENU_WIDTH = 80;
 const MAX_MOBILE_MENU_WIDTH = 400;
 

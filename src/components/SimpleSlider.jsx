@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaUserFriends } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/simple-slider.css';
@@ -43,14 +43,25 @@ const slides = [
   }
 ];
 
+const AUTOPLAY_MS = 6000;
+
+// Slide wrapper that mirrors the active state so content can animate in
+const Slide = ({ children, isActive, ...props }) => (
+  <div
+    {...props}
+    className={`hero-slide${isActive ? ' is-active' : ''}`}
+    aria-hidden={!isActive}
+  >
+    {children}
+  </div>
+);
 
 const SimpleSlider = ({ onBeliefsClick }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [isMembershipModalOpen, setIsMembershipModalOpen] = useState(false);
   const [membershipForm, setMembershipForm] = useState({
-    firstName: '',
-    lastName: '',
+    names: '',
     email: '',
     phone: '',
     placeofresidence: '',
@@ -162,144 +173,71 @@ const SimpleSlider = ({ onBeliefsClick }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Custom slide component to prevent aria-hidden on active slide
-  const Slide = ({ children, isActive, ...props }) => (
-    <div 
-      {...props}
-      className={`slide ${isActive ? 'slick-active' : ''}`}
-      aria-hidden={!isActive}
-    >
-      {children}
-    </div>
-  );
-
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 450, // Balanced transition speed
+    fade: true,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3500, // 3.5 seconds per slide
-    pauseOnHover: false, // Disable hover pause for continuous flow
-    fade: true,
-    cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Natural easing
+    autoplaySpeed: AUTOPLAY_MS,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    cssEase: 'ease',
     arrows: false,
     accessibility: true,
     draggable: true,
     swipe: true,
-    touchMove: true,
     swipeToSlide: true,
-    touchThreshold: 10, // More responsive touch
-    edgeFriction: 0.25, // Smoother edge friction
-    waitForAnimate: false, // Don't wait for animation to complete
-    pauseOnFocus: false,
-    beforeChange: (_, next) => setCurrentSlide(next),
-    // Add accessibility improvements
-    adaptiveHeight: false,
-    // Remove aria-hidden from slides with focusable elements
-    customPaging: i => (
-      <button
-        aria-label={`Go to slide ${i + 1}`}
-        style={{
-          width: '12px',
-          height: '12px',
-          padding: 0,
-          margin: '0 5px',
-          border: 'none',
-          borderRadius: '50%',
-          backgroundColor: currentSlide === i ? '#4a6cf7' : '#ccc',
-          cursor: 'pointer',
-          transition: 'background-color 0.3s ease',
-        }}
-      />
-    ),
-    responsive: [
-      {
-        breakpoint: 1199,
-        settings: {
-          dots: true,
-          arrows: true
-        }
-      },
-      {
-        breakpoint: 991,
-        settings: {
-          dots: true,
-          arrows: false
-        }
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          dots: true,
-          arrows: false,
-          speed: 600
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          dots: true,
-          arrows: false,
-          speed: 500,
-          touchThreshold: 15
-        }
-      }
-    ]
+    touchThreshold: 12,
+    waitForAnimate: false,
+    beforeChange: (_, next) => setCurrentSlide(next)
   };
 
+  const renderSlideButton = (button, index) => {
+    const className = `slider-btn slider-btn--${button.variant === 'primary' ? 'primary' : 'ghost'}`;
+    const icon = button.variant === 'primary'
+      ? <FaArrowRight className="slider-btn-icon" aria-hidden="true" />
+      : null;
 
+    if (button.text === 'Our Beliefs') {
+      return (
+        <button key={index} type="button" className={className} onClick={onBeliefsClick}>
+          {button.text}
+          {icon}
+        </button>
+      );
+    }
 
+    if (button.text === "I'm New Here") {
+      return (
+        <button key={index} type="button" className={className} onClick={() => setIsMembershipModalOpen(true)}>
+          {button.text}
+          {icon}
+        </button>
+      );
+    }
 
-  // Add screen reader only class for accessibility
-  const srOnlyStyle = {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    padding: 0,
-    margin: '-1px',
-    overflow: 'hidden',
-    clip: 'rect(0, 0, 0, 0)',
-    whiteSpace: 'nowrap',
-    border: 0
+    return (
+      <Link key={index} to={button.to} className={className}>
+        {button.text}
+        {icon}
+      </Link>
+    );
   };
 
   if (!isMounted) {
-    return <div style={{ height: '100vh', minHeight: '600px' }} />;
+    return <div className="simple-slider" aria-hidden="true" />;
   }
 
-  // Calculate dynamic styles based on screen size
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  
-  const sliderStyle = {
-    position: 'relative',
-    width: '100vw',
-    height: isMobile ? '70vh' : '100vh',
-    minHeight: isMobile ? '350px' : '500px',
-    marginTop: isMobile ? '60px' : '80px',
-    paddingTop: '0',
-    overflow: 'hidden',
-    willChange: 'transform', // Optimize for hardware acceleration
-    marginLeft: 'calc(-50vw + 50%)',
-    marginRight: 'calc(-50vw + 50%)',
-    left: '0',
-    right: '0'
-  };
-
-  const slideContentStyle = {
-    marginTop: isMobile ? '-3rem' : '0',
-    padding: isMobile ? '0 1rem 1rem' : '2rem',
-    width: '100%',
-    maxWidth: '1200px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    transition: 'opacity 0.5s ease-in-out',
-    willChange: 'opacity'
-  };
-
   return (
-    <div className="simple-slider" style={sliderStyle}>
+    <div
+      className="simple-slider"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Welcome highlights"
+    >
       <Slider {...settings}>
         {slides.map((slide, index) => {
           const isActive = currentSlide === index;
@@ -307,133 +245,37 @@ const SimpleSlider = ({ onBeliefsClick }) => {
             <Slide
               key={slide.id}
               isActive={isActive}
-              tabIndex={isActive ? 0 : -1}
               role="group"
               aria-roledescription="slide"
               aria-label={`Slide ${index + 1} of ${slides.length}`}
             >
-            <div 
-              className="slide-bg"
-              style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(/${slide.image}?v=1.0)`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'fixed',
-                height: '100%',
-                width: '100vw',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                padding: '0',
-                margin: '0',
-                imageRendering: 'crisp-edges',
-                WebkitImageRendering: 'crisp-edges',
-                backfaceVisibility: 'hidden',
-                transform: 'translateZ(0)',
-                filter: 'blur(0)',
-                willChange: 'transform, opacity',
-                WebkitBackfaceVisibility: 'hidden',
-                WebkitTransform: 'translateZ(0)',
-                WebkitFilter: 'blur(0)',
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale'
-              }}
-            >
-              <div className="slide-content" style={slideContentStyle}>
-                {slide.preTitle && <span className="slide-pre-title">{slide.preTitle}</span>}
-                <h2>
-                  {slide.title}
-                  {slide.subtitle && <span className="slide-subtitle">{slide.subtitle}</span>}
-                </h2>
-                <div className="slide-buttons">
-                  {slide.buttons.map((button, btnIndex) => {
-                    if (button.text === 'Our Beliefs') {
-                      return (
-                        <button
-                          key={btnIndex}
-                          onClick={onBeliefsClick}
-                          className={`btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-outline'}`}
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            cursor: 'pointer',
-                            ...(button.variant === 'primary' ? {
-                              backgroundColor: '#4a6cf7',
-                              color: 'white',
-                              border: '2px solid #4a6cf7'
-                            } : {
-                              backgroundColor: 'transparent',
-                              color: 'white',
-                              border: '2px solid white'
-                            })
-                          }}
-                        >
-                          {button.text}
-                          {button.variant === 'primary' && <FaArrowRight className="btn-icon" />}
-                        </button>
-                      );
-                    }
-                    if (button.text === "I'm New Here") {
-                      return (
-                        <button
-                          key={btnIndex}
-                          onClick={() => setIsMembershipModalOpen(true)}
-                          className={`btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-outline'}`}
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            cursor: 'pointer',
-                            ...(button.variant === 'primary' ? {
-                              backgroundColor: '#4a6cf7',
-                              color: 'white',
-                              border: '2px solid #4a6cf7'
-                            } : {
-                              backgroundColor: 'transparent',
-                              color: 'white',
-                              border: '2px solid white'
-                            })
-                          }}
-                        >
-                          {button.text}
-                          {button.variant === 'primary' && <FaArrowRight className="btn-icon" />}
-                        </button>
-                      );
-                    }
-                    return (
-                      <Link
-                        key={btnIndex}
-                        to={button.to}
-                        className={`btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-outline'}`}
-                        style={{
-                          ...(button.variant === 'primary' ? {
-                            backgroundColor: '#4a6cf7',
-                            color: 'white',
-                            border: '2px solid #4a6cf7'
-                          } : {
-                            backgroundColor: 'transparent',
-                            color: 'white',
-                            border: '2px solid white'
-                          })
-                        }}
-                      >
-                        {button.text}
-                        {button.variant === 'primary' && <FaArrowRight className="btn-icon" />}
-                      </Link>
-                    );
-                  })}
+              <div className="hero-slide-media" aria-hidden="true">
+                <div
+                  className="hero-slide-bg"
+                  style={{ backgroundImage: `url(/${slide.image})` }}
+                />
+                <div className="hero-slide-overlay" />
+              </div>
+
+              <div className="hero-slide-inner">
+                <div className="hero-slide-content">
+                  {slide.preTitle && (
+                    <span className="hero-slide-eyebrow">{slide.preTitle}</span>
+                  )}
+                  <h1 className="hero-slide-title">{slide.title}</h1>
+                  {slide.subtitle && (
+                    <p className="hero-slide-subtitle">{slide.subtitle}</p>
+                  )}
+                  <div className="hero-slide-buttons">
+                    {slide.buttons.map(renderSlideButton)}
+                  </div>
                 </div>
               </div>
-            </div>
             </Slide>
           );
         })}
       </Slider>
-      
+
       {/* Membership Modal */}
       <MembershipModal
         isOpen={isMembershipModalOpen}

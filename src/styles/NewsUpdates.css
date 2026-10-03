@@ -1,1073 +1,562 @@
-/* ==========================================================================
-   #NEWS & UPDATES STYLES
-   ========================================================================== */
+/* ============================================================
+   News & Updates — scoped under .news-page
+   Design system: navy #1a4d8f / gold #e6af2e, Montserrat + Roboto
+   ============================================================ */
 
-:root {
-  --color-primary: #1a5f7a;
-  --color-primary-light: #2a7a9a;
-  --color-secondary: #3b82f6;
-  --color-accent: #f59e0b;
-  --color-text: #1f2937;
-  --color-text-light: #6b7280;
-  --color-background: #ffffff;
-  --color-light: #f8fafc;
-  --color-border: #e5e7eb;
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --transition: all 0.3s ease;
+.news-page {
+  overflow-x: clip;
 }
 
-/* Base Styles */
-.news-updates-page {
-  min-height: 100vh;
-  background: var(--color-background);
-}
+/* --- Shared bits ----------------------------------------------------- */
 
-/* Hero Section */
-.news-hero {
-  position: relative;
-  height: 60vh;
-  min-height: 400px;
-  overflow: hidden;
-}
-
-.news-hero .hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(26, 95, 122, 0.9), rgba(59, 130, 246, 0.8)),
-              url('images/news-banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.news-hero .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(26, 95, 122, 0.3), rgba(0, 0, 0, 0.4));
-}
-
-.news-hero .hero-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
+.news-page .eyebrow {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  margin: 0 0 0.9rem;
+}
+
+.news-page .eyebrow::before {
+  content: '';
+  width: 34px;
+  height: 2px;
+  background: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.news-page .nu-section-head .eyebrow::after {
+  content: '';
+  width: 34px;
+  height: 2px;
+  background: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.nu-section-head {
+  max-width: 680px;
+  margin: 0 auto 3rem;
   text-align: center;
-  color: white;
-  padding: 2rem;
 }
 
-.news-hero .hero-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  opacity: 0.9;
+.nu-section-head h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0 0 1rem;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
-.news-hero .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.news-hero .hero-subtitle {
-  font-size: 1.25rem;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-/* Main News Section */
-.news-main {
-  padding: 4rem 0;
-}
-
-.news-showcase {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.news-carousel {
-  position: relative;
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  min-height: 500px;
-}
-
-.news-slide {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  transform: translateX(100%);
-}
-
-.news-slide.active {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.news-content {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.news-visual {
-  position: relative;
-  overflow: hidden;
-}
-
-.news-image-container {
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-}
-
-.news-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* News Header */
-.news-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.news-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text-light);
-  font-weight: 500;
-}
-
-.news-date .date-icon {
-  color: var(--color-primary);
-}
-
-.category-badge {
-  background: var(--color-primary);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-/* News Body */
-.news-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-}
-
-.news-description {
-  font-size: 1.125rem;
+.nu-section-desc {
+  color: var(--text-light);
+  font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--color-text);
-  margin-bottom: 2rem;
-}
-
-/* Scripture Section */
-.news-scripture {
-  background: var(--color-light);
-  border-left: 4px solid var(--color-primary);
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 2rem;
-}
-
-.news-scripture .quote-icon {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  opacity: 0.7;
-}
-
-.scripture-reference {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-}
-
-.scripture-text {
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--color-text);
-}
-
-/* Theme Section */
-.news-theme {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  border-radius: var(--radius-md);
-}
-
-.news-theme .theme-icon {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-}
-
-.news-theme h4 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 0.25rem;
-}
-
-.news-theme p {
-  font-size: 0.875rem;
-  color: var(--color-text);
   margin: 0;
 }
 
-/* News Navigation */
-.news-navigation {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
+/* --- Hero ------------------------------------------------------------ */
 
-.news-nav-btn {
+.nu-hero {
+  position: relative;
+  min-height: 52vh;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: white;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
+  padding: calc(var(--header-height, 80px) + 4rem) 0 4.5rem;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.news-nav-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.nu-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
 }
 
-.news-nav-btn.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+.nu-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
 }
 
-.news-nav-btn .news-icon {
-  font-size: 1rem;
+.nu-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 26, 52, 0.55) 0%, rgba(10, 26, 52, 0.4) 45%, rgba(14, 43, 87, 0.88) 100%);
 }
 
-/* News Indicators */
-.news-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-border);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.indicator.active {
-  background: var(--color-primary);
-  width: 24px;
-  border-radius: 4px;
-}
-
-/* Ministry Highlights */
-.ministry-highlights {
-  background: var(--color-light);
-  padding: 4rem 0;
-}
-
-.section-header {
+.nu-hero-inner {
   text-align: center;
-  margin-bottom: 3rem;
+  max-width: 720px;
 }
 
-.section-icon {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-size: 2.5rem;
+.nu-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--secondary-light);
+  margin: 0 0 1.1rem;
 }
 
-.section-description {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  max-width: 600px;
+.nu-hero-eyebrow::before,
+.nu-hero-eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.nu-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 1.15rem;
+  color: #fff;
+}
+
+.nu-hero-lead {
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 520px;
   margin: 0 auto;
-  line-height: 1.6;
+  text-wrap: pretty;
 }
 
-.highlights-grid {
+/* --- Sections --------------------------------------------------------- */
+
+.nu-section {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+}
+
+.nu-section--alt {
+  background: var(--background-light);
+}
+
+/* --- Article cards ------------------------------------------------------ */
+
+.nu-featured {
+  position: relative;
+}
+
+.nu-featured-slide {
+  display: none;
+}
+
+.nu-featured-slide.is-active {
+  display: block;
+  animation: nuFade 0.45s ease;
+}
+
+@keyframes nuFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nu-article {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: 1.1fr 0.9fr;
+  background: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 18px 45px -22px rgba(14, 43, 87, 0.4);
 }
 
-.highlight-card {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  text-align: center;
-  transition: var(--transition);
+.nu-article--flip .nu-article-body {
+  order: 2;
 }
 
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.nu-article--flip .nu-article-media {
+  order: 1;
 }
 
-.highlight-card .highlight-icon {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: 1.5rem;
+.nu-article-body {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 
-.highlight-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 1rem;
-}
-
-.highlight-card p {
-  color: var(--color-text-light);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.highlight-verse {
+.nu-article-meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  background: var(--color-light);
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  color: var(--color-text);
-}
-
-.highlight-verse .verse-icon {
-  color: var(--color-primary);
-  font-size: 1rem;
-}
-
-/* Call to Action */
-.news-cta {
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.cta-content h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1.5rem;
-}
-
-.cta-content p {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
-}
-
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.btn {
+.nu-meta-date {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  border-radius: var(--radius-md);
+  font-size: 0.85rem;
   font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  font-size: 1rem;
+  color: var(--text-light);
 }
 
-.btn-primary {
-  background: var(--color-primary);
-  color: white;
+.nu-meta-date svg {
+  color: var(--secondary-dark);
 }
 
-.btn-primary:hover {
-  background: var(--color-primary-light);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.btn-outline:hover {
-  background: var(--color-primary);
-  color: white;
-}
-
-.btn-icon {
-  font-size: 1rem;
-}
-
-/* Evangelist Commissioning Section */
-.evangelist-section {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 4rem 0;
-}
-
-.evangelist-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 500px;
-}
-
-.evangelist-content {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.evangelist-visual {
-  position: relative;
-  overflow: hidden;
-}
-
-.evangelist-image-container {
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-}
-
-.evangelist-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.evangelist-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.evangelist-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.evangelist-date .date-icon {
-  color: var(--color-primary);
-}
-
-.evangelist-category {
-  margin-left: auto;
-}
-
-.evangelist-body {
-  flex: 1;
-}
-
-.evangelist-title {
-  font-size: 2rem;
+.nu-badge {
+  display: inline-block;
+  font-size: 0.74rem;
   font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 1rem;
-  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  background: rgba(26, 77, 143, 0.09);
+  border: 1px solid rgba(26, 77, 143, 0.2);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
 }
 
-.evangelist-description {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 2rem;
+.nu-article-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 800;
+  color: var(--primary-dark);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0 0 1rem;
 }
 
-.evangelist-scripture {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-left: 4px solid var(--color-primary);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.evangelist-scripture .quote-icon {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-}
-
-.evangelist-scripture .scripture-content {
-  flex: 1;
-}
-
-.evangelist-scripture .scripture-reference {
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.nu-article-text {
+  color: var(--text-light);
   font-size: 1rem;
-}
-
-.evangelist-scripture .scripture-text {
-  color: #555;
-  font-style: italic;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-.evangelist-theme {
-  background: linear-gradient(135deg, #e8f4f8 0%, #d1ecf1 100%);
-  border-left: 4px solid #17a2b8;
-  padding: 1.5rem;
-  border-radius: 8px;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.evangelist-theme .theme-icon {
-  color: #17a2b8;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-}
-
-.evangelist-theme .theme-content {
-  flex: 1;
-}
-
-.evangelist-theme h4 {
-  color: #17a2b8;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.evangelist-theme p {
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-/* Business Forum Launch Section */
-.business-forum-section {
-  background: white;
-  padding: 4rem 0;
-}
-
-.business-forum-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 500px;
-}
-
-.business-forum-content {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.business-forum-visual {
-  position: relative;
-  overflow: hidden;
-}
-
-.business-forum-image-container {
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-}
-
-.business-forum-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.business-forum-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.business-forum-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.business-forum-date .date-icon {
-  color: var(--color-primary);
-}
-
-.business-forum-category {
-  margin-left: auto;
-}
-
-.business-forum-body {
-  flex: 1;
-}
-
-.business-forum-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.business-forum-description {
-  font-size: 1.1rem;
-  color: #555;
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin: 0 0 1.5rem;
 }
 
-.business-forum-speakers {
-  background: white;
-  border-left: 4px solid #27ae60;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+/* Speakers + keynote */
+
+.nu-speakers,
+.nu-keynote {
+  background: var(--background-light);
+  border-left: 4px solid var(--secondary-color);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding: 1.1rem 1.35rem;
+  margin-bottom: 1.25rem;
 }
 
-.business-forum-speakers h4 {
-  color: #27ae60;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+.nu-speakers h4,
+.nu-keynote h4 {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin: 0 0 0.6rem;
 }
 
-.speakers-list {
+.nu-speakers ul {
   list-style: none;
+  margin: 0;
   padding: 0;
+}
+
+.nu-speakers li {
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0;
+  font-size: 0.94rem;
+}
+
+.nu-speakers li strong {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.nu-speakers li span {
+  color: var(--text-light);
+  font-size: 0.88rem;
+}
+
+.nu-keynote p {
   margin: 0;
+  color: var(--text-color);
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
-.speakers-list li {
-  padding: 0.5rem 0;
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
+/* Scripture quote */
+
+.nu-scripture {
+  display: flex;
+  gap: 0.9rem;
+  margin: 0 0 1.25rem;
+  padding: 1.15rem 1.35rem;
+  background: rgba(230, 175, 46, 0.1);
+  border: 1px solid rgba(230, 175, 46, 0.3);
+  border-radius: var(--border-radius);
 }
 
-.speakers-list li strong {
-  color: #2c3e50;
-}
-
-.business-forum-keynote {
-  background: white;
-  border-left: 4px solid #e67e22;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.business-forum-keynote h4 {
-  color: #e67e22;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.nu-quote-icon {
+  color: var(--secondary-dark);
   font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
 }
 
-.business-forum-keynote p {
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
+.nu-scripture cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin: 0 0 0.35rem;
+}
+
+.nu-scripture p {
   margin: 0;
-}
-
-.business-forum-scripture {
-  background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
-  border-left: 4px solid #ffc107;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.business-forum-scripture .quote-icon {
-  color: #ffc107;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-}
-
-.business-forum-scripture .scripture-content {
-  flex: 1;
-}
-
-.business-forum-scripture .scripture-reference {
-  color: #e67e22;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.business-forum-scripture .scripture-text {
-  color: #555;
+  font-size: 0.95rem;
   font-style: italic;
-  line-height: 1.6;
-  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-color);
 }
 
-.business-forum-theme {
-  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-  border-left: 4px solid #28a745;
-  padding: 1.5rem;
-  border-radius: 8px;
+/* Diocesan theme */
+
+.nu-theme {
   display: flex;
-  gap: 1rem;
+  gap: 0.9rem;
   align-items: flex-start;
+  padding: 1.15rem 1.35rem;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  border-radius: var(--border-radius);
+  color: #fff;
 }
 
-.business-forum-theme .theme-icon {
-  color: #28a745;
+.nu-theme-icon {
+  color: var(--secondary-color);
   font-size: 1.5rem;
   flex-shrink: 0;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 
-.business-forum-theme .theme-content {
-  flex: 1;
+.nu-theme h4 {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary-light);
+  margin: 0 0 0.3rem;
 }
 
-.business-forum-theme h4 {
-  color: #28a745;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.business-forum-theme p {
-  color: #555;
+.nu-theme p {
+  margin: 0;
+  font-size: 0.94rem;
   line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Image side */
+
+.nu-article-media {
+  position: relative;
+  min-height: 320px;
+}
+
+.nu-article-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Carousel chrome (only rendered when multiple items exist) */
+
+.nu-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--background-white);
+  color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: background var(--transition), color var(--transition);
+}
+
+.nu-carousel-arrow:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.nu-carousel-arrow--prev { left: -10px; }
+.nu-carousel-arrow--next { right: -10px; }
+
+.nu-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.nu-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: #c9d4e2;
+  cursor: pointer;
+  transition: width var(--transition), background var(--transition);
+}
+
+.nu-dot.is-active {
+  width: 28px;
+  background: var(--secondary-color);
+}
+
+/* --- Highlights --------------------------------------------------------- */
+
+.nu-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.nu-highlight {
+  background: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  padding: 2.3rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.nu-highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(26, 77, 143, 0.3);
+}
+
+.nu-highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 12px 26px -10px rgba(26, 77, 143, 0.55);
+}
+
+.nu-highlight h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 0 0 0.7rem;
+}
+
+.nu-highlight > p {
+  color: var(--text-light);
+  line-height: 1.7;
   font-size: 0.95rem;
+  margin: 0 0 1.25rem;
 }
 
-/* Responsive Design for Business Forum Section */
-@media (max-width: 968px) {
-  .business-forum-card {
+.nu-highlight-verse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(230, 175, 46, 0.14);
+  color: var(--secondary-dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.nu-highlight-verse svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .nu-article {
     grid-template-columns: 1fr;
   }
-  
-  .business-forum-content {
-    padding: 2rem;
-  }
-  
-  .business-forum-image-container {
-    min-height: 300px;
-  }
-  
-  .business-forum-title {
-    font-size: 1.75rem;
-  }
-  
-  .business-forum-description {
-    font-size: 1rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .business-forum-section {
-    padding: 2rem 0;
+  .nu-article--flip .nu-article-body,
+  .nu-article--flip .nu-article-media {
+    order: initial;
   }
-  
-  .business-forum-content {
-    padding: 1.5rem;
-  }
-  
-  .business-forum-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .business-forum-category {
-    margin-left: 0;
-  }
-  
-  .business-forum-image-container {
-    min-height: 250px;
-  }
-  
-  .business-forum-title {
-    font-size: 1.5rem;
-  }
-  
-  .business-forum-speakers,
-  .business-forum-keynote,
-  .business-forum-scripture,
-  .business-forum-theme {
-    padding: 1rem;
-  }
-}
 
-/* Responsive Design for Evangelist Section */
-@media (max-width: 968px) {
-  .evangelist-card {
+  .nu-article-media {
+    min-height: 260px;
+    order: -1;
+  }
+
+  .nu-highlights {
     grid-template-columns: 1fr;
+    max-width: 560px;
+    margin: 0 auto;
   }
-  
-  .evangelist-content {
-    padding: 2rem;
-  }
-  
-  .evangelist-image-container {
-    min-height: 300px;
-  }
-  
-  .evangelist-title {
-    font-size: 1.75rem;
-  }
-  
-  .evangelist-description {
-    font-size: 1rem;
+
+  .nu-carousel-arrow {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .evangelist-section {
-    padding: 2rem 0;
+@media (max-width: 560px) {
+  .nu-hero {
+    min-height: auto;
+    padding-top: calc(var(--header-height, 80px) + 3rem);
+    padding-bottom: 3rem;
   }
-  
-  .evangelist-content {
-    padding: 1.5rem;
-  }
-  
-  .evangelist-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .evangelist-category {
-    margin-left: 0;
-  }
-  
-  .evangelist-image-container {
-    min-height: 250px;
-  }
-  
-  .evangelist-title {
-    font-size: 1.5rem;
-  }
-  
-  .evangelist-scripture,
-  .evangelist-theme {
-    padding: 1rem;
-  }
-}
-@media (max-width: 968px) {
-  .news-slide.active {
-    grid-template-columns: 1fr;
-  }
-  
-  .news-content {
-    padding: 2rem;
-  }
-  
-  .news-visual {
-    min-height: 300px;
-  }
-  
-  .news-title {
-    font-size: 1.75rem;
-  }
-  
-  .highlights-grid {
-    grid-template-columns: 1fr;
+
+  .nu-article-media {
+    min-height: 200px;
   }
 }
 
-@media (max-width: 768px) {
-  .news-hero {
-    height: 40vh;
-    min-height: 300px;
-  }
-  
-  .news-hero .hero-title {
-    font-size: 2rem;
-  }
-  
-  .news-hero .hero-subtitle {
-    font-size: 1rem;
-  }
-  
-  .news-main {
-    padding: 2rem 0;
-  }
-  
-  .news-content {
-    padding: 1.5rem;
-  }
-  
-  .news-title {
-    font-size: 1.5rem;
-  }
-  
-  .news-description {
-    font-size: 1rem;
-  }
-  
-  .news-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .news-navigation {
-    justify-content: center;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .cta-content h2 {
-    font-size: 2rem;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+/* --- Reduced motion ----------------------------------------------------- */
 
-@media (max-width: 480px) {
-  .news-hero .hero-icon {
-    font-size: 2rem;
+@media (prefers-reduced-motion: reduce) {
+  .news-page *,
+  .news-page *::before,
+  .news-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  
-  .news-content {
-    padding: 1rem;
-  }
-  
-  .news-scripture,
-  .news-theme {
-    padding: 1rem;
-  }
-  
-  .highlight-card {
-    padding: 1.5rem;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.news-showcase > * {
-  animation: fadeIn 0.8s ease-out;
-}
-
-.highlight-card {
-  animation: fadeIn 0.8s ease-out;
-}
-
-.highlight-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.highlight-card:nth-child(3) {
-  animation-delay: 0.4s;
 }

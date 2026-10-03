@@ -24,15 +24,33 @@
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--color-background);
+  background-color: transparent;
   box-shadow: none;
   z-index: 1000;
   transition: var(--transition);
 }
 
+/* White text while the header is transparent over the hero imagery */
+.header:not(.scrolled):not(.mobile-menu-open) .logo-text h1,
+.header:not(.scrolled):not(.mobile-menu-open) .nav-link,
+.header:not(.scrolled):not(.mobile-menu-open) .mobile-menu-toggle {
+  color: #ffffff;
+}
+
+.header:not(.scrolled):not(.mobile-menu-open) .nav-link:hover,
+.header:not(.scrolled):not(.mobile-menu-open) .nav-link.active {
+  color: #f8b400;
+}
+
+/* Solid background returns once the page is scrolled or the mobile menu is open */
+.header.scrolled,
+.header.mobile-menu-open {
+  background-color: var(--color-background);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
 .header.scrolled {
   height: var(--header-height-scrolled);
-  box-shadow: none;
 }
 
 .header-container {
@@ -317,8 +335,8 @@ a:-moz-focusring {
   transform: translateY(-1px);
 }
 
-/* Mobile Styles */
-@media (max-width: 992px) {
+/* Mobile/Tablet Styles — switch to drawer navigation below desktop widths */
+@media (max-width: 1200px) {
   .header {
     padding: 0 1rem;
   }
@@ -412,5 +430,40 @@ a:-moz-focusring {
 
   .nav-container {
     width: 90%;
+  }
+}
+
+/* Extra-small phones — keep logo + hamburger within the bar */
+@media (max-width: 400px) {
+  .logo-text h1 {
+    font-size: 0.85rem;
+    white-space: normal;
+    line-height: 1.1;
+  }
+
+  .logo-image {
+    max-height: 42px;
+  }
+
+  .logo-text {
+    margin-left: 0.6rem;
+  }
+}
+
+/* Narrow desktops — tighten spacing so all nav items fit comfortably */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .logo-text h1 {
+    font-size: 0.95rem;
+  }
+
+  .nav-link {
+    padding: 0 0.55rem;
+    font-size: 0.85rem;
+  }
+
+  .contact-btn {
+    padding: 0.5rem 1.1rem;
+    margin-left: 0.6rem;
+    font-size: 0.85rem;
   }
 }
