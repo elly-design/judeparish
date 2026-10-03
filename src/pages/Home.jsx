@@ -646,7 +646,7 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="events-empty-media">
-                <img src="/images/holy thursday easter.jpg" alt="Easter celebration at St. Jude Miritini" loading="lazy" />
+                <img src="/images/gfsprayer.jpeg" alt="Prayer gathering at St. Jude Miritini" loading="lazy" />
               </div>
               <div className="events-empty-body">
                 <h3>More Gatherings Are on the Way</h3>
