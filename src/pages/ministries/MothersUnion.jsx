@@ -32,7 +32,7 @@ const MothersUnion = () => {
         'Annual women\'s conference and retreats'
       ],
       requirements: 'Open to all women committed to Christian family values',
-      leaders: <><div>Mrs. Jane Wanjiku (Chairlady)</div><div>Mrs. Mary Wambui (Secretary)</div></>
+      leaders: <><div>Chairlady - Margaret Maina</div><div>Secretary - Charity Masha</div></>
     }
   };
 

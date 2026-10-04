@@ -699,6 +699,7 @@
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
   }
 
   .sidebar-card,
@@ -729,6 +730,13 @@
 @media (max-width: 560px) {
   .ministry-sidebar {
     flex-direction: column;
+  }
+
+  /* In a column layout the 300px flex-basis becomes a minimum height —
+     let the cards size to their content instead */
+  .sidebar-card,
+  .sidebar-cta {
+    flex: none;
   }
 
   .mp-card {
