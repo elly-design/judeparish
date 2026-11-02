@@ -20,6 +20,26 @@ import '../styles/NewsUpdates.css';
 
 const NEWS_ITEMS = [
   {
+    id: 2,
+    date: '1st November 2026',
+    title: "All Saints' Day at ACK St. Jude Miritini",
+    category: 'Diocesan Celebration',
+    image: '/images/bishoptable.jpg',
+    content: [
+      "The Diocesan Bishop, The Rt. Rev. Dr. Alphonce Mwaro Baya, led the All Saints' Day celebration at ACK St. Jude Miritini, calling on Christians to embrace a life of holiness rooted in Jesus Christ.",
+      "Preaching under the theme “Maisha ya Utakatifu katika Kristo” (A Life of Holiness in Christ), the Bishop challenged the congregation to reflect on the question, “How can I become holy?” He outlined three key principles that guide Christians in their pursuit of holiness."
+    ],
+    pointsTitle: 'Three Key Principles of Holiness',
+    points: [
+      'Cleansed by the Blood of Jesus Christ (Revelation 7:14) — being washed and cleansed by the blood of Jesus Christ is the foundation of a holy life.',
+      'Loving Christ and Keeping His Word (John 14) — genuine love for Christ is demonstrated through obedience to His commandments, remaining faithful to His teachings and putting His Word into practice in our daily lives.',
+      'A Daily Commitment — holiness is not simply a religious identity but a daily commitment to Christ, reflected in our conduct, relationships and service to others.'
+    ],
+    scripture: 'Revelation 7:14',
+    scriptureText: '"These are they who have come out of the great tribulation; they have washed their robes and made them white in the blood of the Lamb."',
+    closing: "The All Saints' Day celebration provided an opportunity for Christians to renew their commitment to living out their faith and reflecting the character of Christ in their families, the Church and the wider community."
+  },
+  {
     id: 1,
     date: '12th April 2026',
     title: 'A Blessed Sunday School Sunday',
@@ -140,7 +160,22 @@ const ArticleCard = ({ article, flip = false }) => (
       </div>
 
       <h3 className="nu-article-title">{article.title}</h3>
-      <p className="nu-article-text">{article.content}</p>
+      {(Array.isArray(article.content) ? article.content : [article.content]).map((paragraph, i) => (
+        <p key={i} className="nu-article-text">{paragraph}</p>
+      ))}
+
+      {article.points && (
+        <div className="nu-points">
+          <h4>{article.pointsTitle || 'Key Points'}</h4>
+          <ol>
+            {article.points.map((point, i) => (
+              <li key={i}>{point}</li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {article.closing && <p className="nu-article-text">{article.closing}</p>}
 
       {article.speakers && (
         <div className="nu-speakers">

@@ -12,32 +12,43 @@ const slides = [
     id: 1,
     preTitle: 'Welcome to',
     title: "St. Jude Miritini Anglican Church",
-    subtitle: "Miritini Anglican Church",
-    image: 'images/lay.jpeg',
+    subtitle: "A Life of Holiness in Christ",
+    image: 'images/bishop visit.jpg',
     buttons: [
       { text: 'Our Story', to: '/about', variant: 'primary' },
-      { text: 'Our Beliefs', to: '/what-we-believe', variant: 'outline' }
+      { text: 'Our Beliefs', to: '/about/beliefs', variant: 'outline' }
     ]
   },
   {
     id: 2,
-    preTitle: 'Rise in God’s Glory',
-    title: 'Transformed Neighbourhoods',
-    subtitle: "Where Love Meets Action",
-    image: 'images/mu.jpeg',
+    preTitle: 'Raising the Next Generation',
+    title: "Growing in Faith Together",
+    subtitle: "Where children meet Jesus",
+    image: 'images/chijude.jpg',
     buttons: [
       { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
-      { text: 'Connect With Us', to: '/contact', variant: 'outline' }
+      { text: 'Plan a Visit', to: '/visit', variant: 'outline' }
     ]
   },
   {
     id: 3,
-    preTitle: 'Faith That Moves',
-    title: 'Christ-Centered Community',
-    subtitle: "Join Our Faith Journey",
-    image: 'images/sunday.jpeg',
+    preTitle: 'Lift Your Voice',
+    title: 'Worship in Spirit and Truth',
+    subtitle: "Join our choir in praise",
+    image: 'images/chirjude.jpg',
     buttons: [
-      { text: "I'm New Here", to: '/new-here', variant: 'primary' },
+      { text: 'Service Times', to: '/services', variant: 'primary' },
+      { text: 'Connect With Us', to: '/connect', variant: 'outline' }
+    ]
+  },
+  {
+    id: 4,
+    preTitle: 'Brothers in Christ',
+    title: 'A Band of Men on Mission',
+    subtitle: "KAMA — Kenya Anglican Men's Association",
+    image: 'images/kmajude.jpg',
+    buttons: [
+      { text: 'Explore Our Ministries', to: '/ministries', variant: 'primary' },
       { text: 'Discover Baptism', to: '/baptism', variant: 'outline' }
     ]
   }
@@ -252,7 +263,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
               <div className="hero-slide-media" aria-hidden="true">
                 <div
                   className="hero-slide-bg"
-                  style={{ backgroundImage: `url(/${slide.image})` }}
+                  style={{ backgroundImage: `url("/${slide.image}")` }}
                 />
                 <div className="hero-slide-overlay" />
               </div>

@@ -759,8 +759,8 @@ const Home = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <iframe
-                src="https://www.youtube.com/embed/wD4XnFTCB1E"
-                title="Featured sermon — Revive Us Oh Lord!"
+                src="https://www.youtube.com/embed/WhJRJmjyYrU"
+                title="Featured sermon — Maisha ya Utakatifu katika Kristo"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -775,18 +775,18 @@ const Home = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <motion.p className="eyebrow" variants={rise}>Featured Message</motion.p>
-              <motion.h2 className="sermon-title" variants={rise}>Revive Us Oh Lord!</motion.h2>
+              <motion.h2 className="sermon-title" variants={rise}>Maisha ya Utakatifu katika Kristo</motion.h2>
               <motion.div className="sermon-meta" variants={rise}>
-                <span className="meta-item"><FaCalendarAlt className="meta-icon" aria-hidden="true" /> 05/07/2026</span>
-                <span className="meta-item"><FaUser className="meta-icon" aria-hidden="true" /> Rev. Esther Mrenje</span>
-                <span className="meta-item"><FaBook className="meta-icon" aria-hidden="true" /> Psalms 85</span>
+                <span className="meta-item"><FaCalendarAlt className="meta-icon" aria-hidden="true" /> 01/11/2026</span>
+                <span className="meta-item"><FaUser className="meta-icon" aria-hidden="true" /> The Rt. Rev. Dr. Alphonce Mwaro Baya</span>
+                <span className="meta-item"><FaBook className="meta-icon" aria-hidden="true" /> Revelation 7:14</span>
               </motion.div>
               <motion.p className="sermon-excerpt" variants={rise}>
-                Jumapili Ya Tano Baada ya Siku Ya Utatu — a message of renewal and restoration.
+                All Saints' Day — a call to a life of holiness rooted in Jesus Christ.
               </motion.p>
               <motion.div className="sermon-actions" variants={rise}>
                 <a
-                  href="https://www.youtube.com/watch?v=wD4XnFTCB1E"
+                  href="https://www.youtube.com/live/WhJRJmjyYrU"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

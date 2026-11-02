@@ -245,7 +245,8 @@
 /* Speakers + keynote */
 
 .nu-speakers,
-.nu-keynote {
+.nu-keynote,
+.nu-points {
   background: var(--background-light);
   border-left: 4px solid var(--secondary-color);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -254,7 +255,8 @@
 }
 
 .nu-speakers h4,
-.nu-keynote h4 {
+.nu-keynote h4,
+.nu-points h4 {
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 800;
@@ -292,6 +294,25 @@
   color: var(--text-color);
   font-size: 0.94rem;
   line-height: 1.65;
+}
+
+.nu-points ol {
+  margin: 0;
+  padding-left: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nu-points li {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-color);
+}
+
+.nu-points li::marker {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 /* Scripture quote */
