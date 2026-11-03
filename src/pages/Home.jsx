@@ -467,7 +467,7 @@ const Home = () => {
               <div className="welcome-badge">
                 <span className="welcome-badge-icon" aria-hidden="true"><FaCross /></span>
                 <span className="welcome-badge-text">
-                  A Parish of the<br />Anglican Church of Kenya
+                  A Parish of the Anglican Church of Kenya<br />Diocese of Mombasa
                 </span>
               </div>
             </motion.div>

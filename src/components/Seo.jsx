@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 
 const SITE_NAME = 'ACK St. Jude Miritini Parish';
 const DEFAULT_DESC =
-  'ACK St. Jude Miritini Parish is a vibrant Anglican church family in Miritini, Mombasa. Join us for Sunday worship, ministries, fellowship and service. All are welcome.';
+  'ACK St. Jude Miritini Parish is a vibrant Anglican church family in Miritini, Mombasa, within the ACK Diocese of Mombasa. Join us for Sunday worship, ministries, fellowship and service. All are welcome.';
 
 const PAGE_META = {
   '/': {
-    title: `${SITE_NAME} | Anglican Church in Miritini, Mombasa`,
+    title: `${SITE_NAME} | Diocese of Mombasa, Anglican Church of Kenya`,
     description: DEFAULT_DESC
   },
   '/about': {

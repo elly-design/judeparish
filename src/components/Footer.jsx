@@ -82,7 +82,8 @@ const Footer = () => {
             </div>
             <p className="footer-tagline">
               Proclaiming the risen Christ; establishing and strengthening the
-              church on the mission frontier.
+              church on the mission frontier. A parish of the ACK Diocese of
+              Mombasa, Anglican Church of Kenya.
             </p>
             <div className="footer-socials">
               {SOCIALS.map(({ name, icon: Icon, href }) => (
