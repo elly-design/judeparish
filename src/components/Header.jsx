@@ -169,7 +169,7 @@ const Header = () => {
               className="logo-image" 
             />
             <div className="logo-text">
-              <h1>ACK ST. JUDE MIRITINI PARISH</h1>
+              <span className="logo-name">ACK ST. JUDE MIRITINI PARISH</span>
             </div>
           </Link>
 

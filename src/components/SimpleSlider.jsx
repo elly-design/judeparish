@@ -249,6 +249,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
       aria-roledescription="carousel"
       aria-label="Welcome highlights"
     >
+      <h1 className="sr-only">ACK St. Jude Miritini Parish — Anglican Church in Miritini, Mombasa, Kenya</h1>
       <Slider {...settings}>
         {slides.map((slide, index) => {
           const isActive = currentSlide === index;
@@ -273,7 +274,7 @@ const SimpleSlider = ({ onBeliefsClick }) => {
                   {slide.preTitle && (
                     <span className="hero-slide-eyebrow">{slide.preTitle}</span>
                   )}
-                  <h1 className="hero-slide-title">{slide.title}</h1>
+                  <h2 className="hero-slide-title">{slide.title}</h2>
                   {slide.subtitle && (
                     <p className="hero-slide-subtitle">{slide.subtitle}</p>
                   )}

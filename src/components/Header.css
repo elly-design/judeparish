@@ -31,7 +31,7 @@
 }
 
 /* White text while the header is transparent over the hero imagery */
-.header:not(.scrolled):not(.mobile-menu-open) .logo-text h1,
+.header:not(.scrolled):not(.mobile-menu-open) .logo-text .logo-name,
 .header:not(.scrolled):not(.mobile-menu-open) .nav-link,
 .header:not(.scrolled):not(.mobile-menu-open) .mobile-menu-toggle {
   color: #ffffff;
@@ -114,7 +114,7 @@
   text-decoration: none;
 }
 
-.logo-text h1 {
+.logo-text .logo-name {
   color: var(--color-primary);
   font-size: 1.1rem;
   font-weight: 500;
@@ -128,9 +128,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.logo-text h1:focus,
-.logo-text h1:active,
-.logo-text h1:focus-visible {
+.logo-text .logo-name:focus,
+.logo-text .logo-name:active,
+.logo-text .logo-name:focus-visible {
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
@@ -420,7 +420,7 @@ a:-moz-focusring {
 
 /* Small devices */
 @media (max-width: 576px) {
-  .logo-text h1 {
+  .logo-text .logo-name {
     font-size: 1rem;
   }
 
@@ -435,7 +435,7 @@ a:-moz-focusring {
 
 /* Extra-small phones — keep logo + hamburger within the bar */
 @media (max-width: 400px) {
-  .logo-text h1 {
+  .logo-text .logo-name {
     font-size: 0.85rem;
     white-space: normal;
     line-height: 1.1;
@@ -452,7 +452,7 @@ a:-moz-focusring {
 
 /* Narrow desktops — tighten spacing so all nav items fit comfortably */
 @media (min-width: 1201px) and (max-width: 1400px) {
-  .logo-text h1 {
+  .logo-text .logo-name {
     font-size: 0.95rem;
   }
 

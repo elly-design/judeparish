@@ -10,6 +10,7 @@ import Services from './pages/Services.jsx';
 import Gallery from './pages/Gallery.jsx';
 import Contact from './pages/Contact.jsx';
 import Header from './components/Header.jsx';
+import Seo from './components/Seo.jsx';
 import Footer from './components/Footer.jsx';
 import Chatbot from './components/Chatbot/Chatbot';
 
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <Seo />
       <main>
         <Chatbot />
         <Routes>

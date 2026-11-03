@@ -1,25 +1,16 @@
 {
-  "name": "Ack St. Faith Anglican Church",
-  "short_name": "St. Faith",
+  "name": "ACK St. Jude Miritini Parish",
+  "short_name": "St. Jude Miritini",
+  "description": "A vibrant Anglican church family in Miritini, Mombasa.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "/images/cropped-LOGOmsa.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "750x925"
     }
   ],
-  "theme_color": "#1a365d",
+  "theme_color": "#1a4d8f",
   "background_color": "#ffffff",
   "display": "standalone",
-  "start_url": "."
+  "start_url": "/"
 }
